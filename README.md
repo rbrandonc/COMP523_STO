@@ -1,12 +1,11 @@
-## Welcome to GitHub Pages
+## Welcome to Comp523 Project - Stop the Outbreak Page
 
 You can use the [editor on GitHub](https://github.com/IvyJy312/COMP523_BTO/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Project Description
+Design an interactive game to educate the visitors about the most effective tools to fight malaria outbreaks.
 
 ```markdown
 Syntax highlighted code block
