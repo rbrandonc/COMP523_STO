@@ -1,36 +1,10 @@
 ## Welcome to Comp523 Project - Stop the Outbreak Page
 
-You can use the [editor on GitHub](https://github.com/IvyJy312/COMP523_BTO/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+PLEASE MAKE SURE YOU CHECKOUT THE DEVELOPMENT BRANCH
+DO NOT PUSH TO THE MASTER BRANCH
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The following command will start the server:
 
-### Project Description
-Design an interactive game to educate the visitors about the most effective tools to fight malaria outbreaks.
+```cocos run -p web```
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/IvyJy312/COMP523_BTO/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Navigate to 127.0.0.1:8000 in your browser to see the game
