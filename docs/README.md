@@ -1,6 +1,6 @@
-## Welcome to Comp523 Project - Stop the Outbreak 
+https://ivyjy312.github.io/COMP523_BTO/
 
-Page
+## Welcome to Comp523 Project - Stop the Outbreak 
 
 PLEASE MAKE SURE YOU CHECKOUT THE DEVELOPMENT BRANCH
 DO NOT PUSH TO THE MASTER BRANCH
