@@ -6,13 +6,26 @@ title: Personas and User Stories
 ### James C
 ```
 Age:12                                   Personal Description:                   
-Gender: Male                                   James is an elemetary school student who is interested in play video games.He seeks for 
-Location: Carborro, NC                   new experience and discover new things. He has no knowledge of malaria outbreak. James is also a 
-Occupation: Elementary School Student    detail lover. He likes to explore all possible outcomes of the game.
+Gender: Male                                   James is an elemetary school student who is interested in playing video games. 
+Location: Carborro, NC                         He seeks for new experience and discover new things. 
+Occupation: Elementary School Student          He has no knowledge of malaria outbreak.
+                                                      .
 ```
 
 ### Hannah L
+```
+Age:10                                   Personal Description:                   
+Gender: Female                                 Hannah is an elemetary school student. Her IT skill is fairly minimum. 
+Location: Chapel Hill, NC                      Hannah is a smart girl but can be stubborn and will insist on doing things on her own term.
+Occupation: Elementary School Student          She has difficulty concentrating. 
+```
 
 ### Thomas R
+```
+Age:15                                   Personal Description:                   
+Gender: Male                                  Thomas is a middle school student who loves challenges. 
+Location: Lenoir, NC                          He has a wide collection of digital devices. He is a self-taught coder. 
+Occupation: Elementary School Student         He is also a detail lover,who likes to explore all possible outcomes of the game. 
+```
 
 # User Stories
