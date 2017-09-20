@@ -21,7 +21,9 @@ Architect       - Brandon Clark <br>
 
 # Launch Instructions
 After cloning the repository, running the following command from the root directory will start the game server:
-```cocos run -p web```
+```
+cocos run -p web
+```
 Navigate to 127.0.0.1:8000 in your browser to see the game
 
 
