@@ -9,15 +9,15 @@ The interface for the game is a touchscreen where we will display all the button
 # <a href="https://ivyjy312.github.io/COMP523_STO/personas">Personas and User Stories</a>
 
 # Meeting Schedule
-Professor: Thursdays at 2:10
-Moorehead: Fridays at 1:25
-Team: Tuesdays at 2:30
+Professor: Thursdays at 2:10 <br>
+Moorehead: Fridays at 1:25 <br>
+Team: Tuesdays at 2:30 <br>
 
 # Team
-Client Manager  - Luke Duffer
-Project Manager - Jordan Taylor
-Editor          - Ivy Liu
-Architect       - Brandon Clark
+Client Manager  - Luke Duffer <br>
+Project Manager - Jordan Taylor <br>
+Editor          - Ivy Liu <br>
+Architect       - Brandon Clark <br>
 
 # Launch Instructions
 After cloning the repository, running the following command from the root directory will start the game server:
