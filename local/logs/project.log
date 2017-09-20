@@ -1,0 +1,52 @@
+2017-09-20T00:54:38.997Z - normal: Load ~/.CocosCreator/settings.json
+2017-09-20T00:54:38.997Z - normal: checking language setting...
+2017-09-20T00:54:38.997Z - normal: Language: en
+2017-09-20T00:54:42.927Z - success: protocol editor-framework registered
+2017-09-20T00:54:42.927Z - success: protocol app registered
+2017-09-20T00:54:42.927Z - success: protocol theme registered
+2017-09-20T00:54:42.927Z - success: protocol profile registered
+2017-09-20T00:54:42.927Z - success: protocol packages registered
+2017-09-20T00:54:42.927Z - success: protocol unpack registerred
+2017-09-20T00:54:42.927Z - success: protocol disable-commonjs registerred
+2017-09-20T00:54:44.567Z - normal: connected!
+2017-09-20T00:54:44.567Z - normal: Check project C:\Users\brandon\Desktop\COMP523_BTO
+2017-09-20T00:54:44.567Z - normal: Initializing Cocos2d
+2017-09-20T00:54:47.132Z - normal: Initializing Asset Database
+2017-09-20T00:54:47.224Z - success: protocol uuid registerred
+2017-09-20T00:54:47.224Z - success: protocol db registerred
+2017-09-20T00:54:47.224Z - success: protocol thumbnail registerred
+2017-09-20T00:54:47.224Z - normal: Loading editor/builtin packages
+2017-09-20T00:54:47.309Z - success: anysdk loaded
+2017-09-20T00:54:47.709Z - success: assets loaded
+2017-09-20T00:54:47.709Z - success: builder loaded
+2017-09-20T00:54:47.709Z - success: hierarchy loaded
+2017-09-20T00:54:47.740Z - success: inspector loaded
+2017-09-20T00:54:47.740Z - success: keystore loaded
+2017-09-20T00:54:47.756Z - success: node-library loaded
+2017-09-20T00:54:47.771Z - success: package-asset loaded
+2017-09-20T00:54:47.771Z - success: preferences loaded
+2017-09-20T00:54:47.771Z - success: project-exporter loaded
+2017-09-20T00:54:47.787Z - success: project-importer loaded
+2017-09-20T00:54:47.787Z - success: project-settings loaded
+2017-09-20T00:54:47.803Z - success: ui-kit loaded
+2017-09-20T00:54:47.825Z - success: ui-grid loaded
+2017-09-20T00:54:47.825Z - success: scene loaded
+2017-09-20T00:54:47.825Z - success: sprite-editor loaded
+2017-09-20T00:54:47.825Z - success: store loaded
+2017-09-20T00:54:47.840Z - success: timeline loaded
+2017-09-20T00:54:47.840Z - normal: Loading builtin packages
+2017-09-20T00:54:47.840Z - success: asset-db-debugger loaded
+2017-09-20T00:54:47.856Z - success: color-picker loaded
+2017-09-20T00:54:47.856Z - success: console loaded
+2017-09-20T00:54:47.856Z - success: package-manager loaded
+2017-09-20T00:54:47.887Z - success: sdkbox loaded
+2017-09-20T00:54:47.887Z - success: tester loaded
+2017-09-20T00:54:47.887Z - success: ui-kit-preview-extra loaded
+2017-09-20T00:54:47.887Z - success: ui-kit-preview loaded
+2017-09-20T00:54:47.887Z - success: ui-tree loaded
+2017-09-20T00:54:49.489Z - normal: Initializing project C:\Users\brandon\Desktop\COMP523_BTO
+2017-09-20T00:54:49.510Z - normal: Loading packages
+2017-09-20T00:54:49.510Z - normal: Watching packages
+2017-09-20T00:54:49.526Z - normal: Run Application
+2017-09-20T00:54:51.343Z - success: preview server running at http://localhost:7456
+2017-09-20T00:55:08.399Z - normal: 1.6.1
