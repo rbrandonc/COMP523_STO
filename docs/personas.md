@@ -4,10 +4,10 @@ title: Personas and User Stories
 
 # Personas
 
-### James C.
+### James C
 
-### Hannah L.
+### Hannah L
 
-### Thomas R.
+### Thomas R
 
 # User Stories
