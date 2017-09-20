@@ -1,6 +1,13 @@
 ---
-title: This will be used as the title-tag of the page head
+title: Personas and User Stories
 ---
+
 # Personas
+
+### James C.
+
+### Hannah L.
+
+## Thomas R.
 
 # User Stories
