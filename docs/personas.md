@@ -8,6 +8,6 @@ title: Personas and User Stories
 
 ### Hannah L.
 
-## Thomas R.
+### Thomas R.
 
 # User Stories
