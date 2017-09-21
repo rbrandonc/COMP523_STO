@@ -14,10 +14,10 @@ Occupation: Elementary School Student          He has no knowledge of malaria ou
 
 ### Hannah L
 ```
-Age:10                                   Personal Description:                   
-Gender: Female                                 Hannah is an elemetary school student. Her IT skill is fairly minimum. 
-Location: Chapel Hill, NC                      Hannah is a smart girl but can be stubborn and will insist on doing things on her own term.
-Occupation: Elementary School Student          She has difficulty concentrating. 
+Age:45                                   Personal Description:                   
+Gender: Female                                 Hannah is a middle school teacher. Her IT skill is fairly minimum. 
+Location: Chapel Hill, NC                      She teaches biology and chemistry.
+Occupation: Middle School Teacher           
 ```
 
 ### Thomas R
