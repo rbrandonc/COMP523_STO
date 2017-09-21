@@ -29,3 +29,6 @@ Occupation: Elementary School Student         He is also a detail lover,who like
 ```
 
 # User Stories
+```
+Watch critical information on standby mode (including scientist bio). Scan bar code and get scenario. Pick first treatment and money allocation. Pick how to use, (mini-game portion). Show effect on map (some effects are delayed). Repeat four times and give final score.
+```
