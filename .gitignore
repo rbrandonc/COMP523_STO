@@ -1,1 +1,2 @@
-./Server/node_modules
+.gitignore
+Server/node_modules
