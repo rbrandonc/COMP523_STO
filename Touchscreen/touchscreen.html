@@ -2,10 +2,69 @@
 <html>
   <head>
     <script src='touchscreen.js'></script>
+    <style>
+      .body{
+          width: 100%;
+          height: 100%;
+      }
+
+      [class*='col-'] {
+          float: left;
+          text-align: center;
+          min-height: 1px;
+          width: 16.66%;
+          padding: 12px;
+          background-color: #ddd;
+      }
+
+      .col-1{ width: 16.66%; }
+      .col-2{ width: 33.33%; }
+      .col-3{ width: 50%;    }
+      .col-4{ width: 66.66%; }
+      .col-5{ width: 83.33%; }
+      .col-6{ width: 100%;   }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
 
   <body>
-    <div id='time'></div></br>
-    <div id='debug'>Click me</div>
+    <div class='row'>
+      <div class='col-6' id='debug'>
+        Debug
+      </div>
+
+      <div class='col-6' id='insecticide'>
+        Insecticide
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-6' id='gmomosquitos'>
+        GMO Mosquitos
+      </div>
+
+      <div class='col-6' id='bednetting'>
+        Bed Netting
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-6' id='vaccinetrial'>
+        Vaccine Trial
+      </div>
+
+      <div class='col-6' id="iforgot">
+        I Forgot the Other One
+      </div>
+    </div>
   </body>
 </html>

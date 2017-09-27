@@ -1,18 +1,28 @@
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
-ws.name = "touchscreen";
+var connected = false;
+var id = "touchscreen"
+
+//Do this when we finish loading the DOM
+document.addEventListener("DOMContentLoaded", function(event) {
+
+  //Add a handler to one of the buttons
+  document.getElementById('debug').onclick=function() {
+    //send a simple click event over websocket when div is clicked
+    var click = {eventType: 'buttonClick', buttonID: 'debug'};
+    this.send(click);
+  }.bind(this);
+}.bind(this));
 
 //When the server sends us something
 ws.onmessage = function(event) {
-  console.log(JSON.parse(event.data));
-
-  if(event.data.time) {
-    document.getElementById('time').innerHTML = event.time;
+  //Server asks us to identify on first connection, send it a blank message
+  if(JSON.parse(event.data).identify) {
+    send({});
   }
 };
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById('debug').onclick=function() {
-    //send a simple message over websocket when div is clicked
-    ws.send('Button Clicked');
-  }
-});
+//append our id to all the data we send
+var send = function(data) {
+  data.id = this.id;
+  ws.send(JSON.stringify(data));
+}
