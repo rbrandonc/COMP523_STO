@@ -1,4 +1,4 @@
-## Welcome to Comp523 Project - Stop the Outbreak 
+## Welcome to Comp523 Project - Stop the Outbreak
 This is a game designed for the Moorehead Planetarium with the goal of spreading awareness about one of the worlds most deadly diseases, Malaria.
 
 # Concept
@@ -20,12 +20,12 @@ Editor          - Ivy Liu <br>
 Architect       - Brandon Clark <br>
 
 # Launch Instructions
-After cloning the repository, running the following command from the root directory will start the game server:
-```
-cocos run -p web
-```
-Navigate to 127.0.0.1:8000 in your browser to see the game
+Step 1:
+Windows: Go to Server/ and run server-win.exe
+Mac: Go to Server/ and run server-macos
 
-
+Step 2:
+Go to Project/ and open projector.html
+Go to Touchscreen/ and open touchscreen.html
 
 Github.io link: https://ivyjy312.github.io/COMP523_STO/
