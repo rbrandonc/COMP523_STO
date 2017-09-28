@@ -21,11 +21,13 @@ Architect       - Brandon Clark <br>
 
 # Launch Instructions
 Step 1:
-Windows: Go to Server/ and run server-win.exe
-Mac: Go to Server/ and run server-macos
+
+Windows: Go to Server/ and run server-win.exe<br>
+Mac: Go to Server/ and run server-macos<br>
 
 Step 2:
-Go to Project/ and open projector.html
-Go to Touchscreen/ and open touchscreen.html
+
+Go to Project/ and open projector.html<br>
+Go to Touchscreen/ and open touchscreen.html<br>
 
 Github.io link: https://ivyjy312.github.io/COMP523_STO/
