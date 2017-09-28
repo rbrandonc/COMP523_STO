@@ -1,14 +1,19 @@
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
-var connected = false;
-var id = "touchscreen"
+var id = 'touchscreen';
 
 //Do this when we finish loading the DOM
 document.addEventListener("DOMContentLoaded", function(event) {
 
   //Add a handler to one of the buttons
-  document.getElementById('debug').onclick=function() {
+  document.getElementById('increase').onclick=function() {
     //send a simple click event over websocket when div is clicked
-    var click = {eventType: 'buttonClick', buttonID: 'debug'};
+    var click = {eventType: 'buttonClick', buttonID: 'increase'};
+    this.send(click);
+  }.bind(this);
+
+  document.getElementById('decrease').onclick=function() {
+    //send a simple click event over websocket when div is clicked
+    var click = {eventType: 'buttonClick', buttonID: 'decrease'};
     this.send(click);
   }.bind(this);
 }.bind(this));
