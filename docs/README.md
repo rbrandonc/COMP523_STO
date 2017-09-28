@@ -19,6 +19,9 @@ Project Manager - Jordan Taylor <br>
 Editor          - Ivy Liu <br>
 Architect       - Brandon Clark <br>
 
+# Formatting Guide
+https://google.github.io/styleguide/jsguide.html#features-functions
+
 # Launch Instructions
 Step 1:
 
