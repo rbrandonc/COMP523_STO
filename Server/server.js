@@ -31,7 +31,7 @@ var outbreakType = null; //0 or 1
 
 
 //Just a log to see if we have a screen connected or nah
-// var log = setInterval(() => {console.log(connections)}, 2000);
+//var log = setInterval(() => {console.log(connections)}, 2000);
 
 //This is for detecting if we lose connection to a screen
 //Doesn't work but doesn't need to be implemented yet
@@ -84,6 +84,18 @@ wss.on('connection', function (ws) {
 
             //If we are still missing a connection, dont do anything
             if(!this.touchscreen || !this.mainscreen || !this.projector) { return; }
+        }
+
+        if(event.data.buttonID === 'increase') {
+            spread += 100;
+            var data = {spread: spread}
+            connections.projector.send(JSON.stringify(data));
+        }
+
+        if(event.data.buttonID === 'decrease') {
+            spread = spread > 0 ? spread - 100 : spread;
+            var data = {spread: spread}
+            connections.projector.send(JSON.stringify(data));
         }
     };
 
