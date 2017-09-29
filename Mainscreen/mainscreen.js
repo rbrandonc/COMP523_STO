@@ -29,7 +29,12 @@ ws.onmessage = function(event) {
     // if(JSON.parse(event.data).identify) {
     //     send({});
     //
-    console.log(event.data);
+    //console.log(event.data);
+    if(event.data === 'Start the game'){
+        document.getElementById("start").style.visibility='hidden';
+        document.querySelector('h1').style.visibility='hidden';
+        document.getElementById("myProgress").style.visibility='visible';
+    }
 };
 function setTitle(title){
     document.querySelector('h1').innerHTML = title;

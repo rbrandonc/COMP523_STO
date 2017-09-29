@@ -62,7 +62,7 @@ ws.onmessage = function(event) {
     // if(JSON.parse(event.data).identify) {
     //   send({});
     // }
-    console.log(event.data === 'Start the game');
+    //console.log(event.data === 'Start the game');
     if(event.data === 'Start the game'){
         var bug = document.getElementById("bug_resistance");
         var ins = document.getElementById("ins_resistance");

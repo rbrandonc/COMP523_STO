@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed6852f9-aa85-404a-b2e9-a8302c72c0da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Touchscreen/touchscreen.html" afterPath="$PROJECT_DIR$/Touchscreen/touchscreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mainscreen/mainscreen.html" afterPath="$PROJECT_DIR$/Mainscreen/mainscreen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mainscreen/mainscreen.js" afterPath="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Touchscreen/touchscreen.js" afterPath="$PROJECT_DIR$/Touchscreen/touchscreen.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="mainscreen.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainscreen.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+            <state relative-caret-position="432">
+              <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainscreen.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/mainscreen.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -30,8 +42,8 @@
       <file leaf-file-name="mainscreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="41" column="1" lean-forward="false" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+            <state relative-caret-position="275">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -40,8 +52,8 @@
       <file leaf-file-name="touchscreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Touchscreen/touchscreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1750">
-              <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+            <state relative-caret-position="625">
+              <caret line="70" column="5" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -50,8 +62,8 @@
       <file leaf-file-name="projector.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projector/projector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+            <state relative-caret-position="1025">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -60,8 +72,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="33" column="2" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+            <state relative-caret-position="950">
+              <caret line="98" column="9" lean-forward="true" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -77,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="touchscreen.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="touchscreen.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Touchscreen/touchscreen.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            <state relative-caret-position="100">
+              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -124,12 +136,14 @@
       <list>
         <option value="$PROJECT_DIR$/common/touchscreen.css" />
         <option value="$PROJECT_DIR$/Projector/projector.js" />
-        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
-        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.html" />
-        <option value="$PROJECT_DIR$/Touchscreen/touchscreen.js" />
         <option value="$PROJECT_DIR$/Server/server.js" />
         <option value="$PROJECT_DIR$/common/common.css" />
         <option value="$PROJECT_DIR$/Touchscreen/touchscreen.html" />
+        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.css" />
+        <option value="$PROJECT_DIR$/Touchscreen/touchscreen.js" />
+        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
+        <option value="$PROJECT_DIR$/common/mainscreen.css" />
+        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.html" />
       </list>
     </option>
   </component>
@@ -143,12 +157,13 @@
     <handled-path value="$PROJECT_DIR$/Server/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="699" />
+    <option name="x" value="276" />
+    <option name="y" value="15" />
     <option name="width" value="1260" />
     <option name="height" value="1068" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -161,41 +176,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
-              <item name="Mainscreen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
-              <item name="Touchscreen" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -227,15 +208,15 @@
       <updated>1506701854775</updated>
       <workItem from="1506701858134" duration="2387000" />
       <workItem from="1506704552195" duration="22000" />
-      <workItem from="1506704731001" duration="716000" />
+      <workItem from="1506704731001" duration="2926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3125000" />
+    <option name="totallyTimeSpent" value="5335000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="699" y="0" width="1260" height="1068" extended-state="0" />
+    <frame x="276" y="15" width="1260" height="1068" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.016145833" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -411,42 +392,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="41" column="1" lean-forward="false" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Projector/projector.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projector/projector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="33" column="2" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -467,18 +416,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Touchscreen/touchscreen.js">
+    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1750">
-          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projector/projector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Touchscreen/touchscreen.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        <state relative-caret-position="100">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="98" column="9" lean-forward="true" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Touchscreen/touchscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/mainscreen.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding />
         </state>
       </provider>
