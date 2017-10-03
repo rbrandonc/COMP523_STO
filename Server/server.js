@@ -4,13 +4,13 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var server = require('http').createServer();
-var connections = {
-  touchscreen: null,
-  mainscreen: null,
-  projector: null
-}
 var wss = new WebSocketServer({server: server});
 app.use(express.static(path.join(__dirname, '/public')));
+
+//import our screen functions
+var projector = require('./projector');
+var mainscreen = require('./mainscreen');
+var touchscreen = require('./touchscreen');
 
 //Server start listening
 server.on('request', app);
@@ -18,15 +18,12 @@ server.listen(8080, function () {
   console.log('Listening on http://localhost:8080');
 });
 
-//Game state
-var spread = 100;
-outbreakTypes = ['vaccineResistant', 'forgotTheOtherOne'];
-var outbreakType = null; //0 or 1
-
-
-
 //Just a log to see if we have a screen connected or nah
-var log = setInterval(() => {console.log(connections.touchscreen && true, connections.projector && true)}, 2000);
+var log = setInterval(() => {
+  console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)'): ''),
+              ' projector: ' + (projector.ws ? 'connected '  + (projector.busy ? '(busy)' : '(idle)') : ''),
+              ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)'): ''))
+}, 2000);
 
 //This is for detecting if we lose connection to a screen
 //Doesn't work but doesn't need to be implemented yet
@@ -56,33 +53,24 @@ wss.on('connection', function (ws) {
   ws.send(JSON.stringify(data));
 
   ws.onmessage = function(event) {
-    console.log(event);
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
 
-    //If we are missing a connection check and see if this message is from missing client
-    if(!connections.touchscreen ||
-        !connections.mainscreen ||
-        !connections.projector) {
-      connections.touchscreen = !connections.touchscreen && event.data.id === "touchscreen" ? ws : connections.touchscreen;
-      connections.mainscreen = !connections.mainscreen && event.data.id === "mainscreen" ? ws : connections.mainscreen;
-      connections.projector = !connections.projector && event.data.id === "projector" ? ws : connections.projector;
+    //Add connection to our list of conncetions
+    // TODO: need to reset state if we reconnect a screen
+    touchscreen.ws = event.data.id === "touchscreen" ? ws : touchscreen.ws;
+    mainscreen.ws = event.data.id === "mainscreen" ? ws : mainscreen.ws;
+    projector.ws = event.data.id === "projector" ? ws : projector.ws;
 
-      //If we are still missing a connection, dont do anything
-      // if(!this.touchscreen || !this.mainscreen || !this.projector) { return; }
-    }
+    //If the frontend is just telling us it finished
+    //Set its busy variable to false
+    if(event.data.done) { eval(event.data.id + '.busy' + ' = ' + false); return; }
 
-    if(event.data.buttonID === 'increase') {
-      spread += 100;
-      var data = {spread: spread}
-      connections.projector.send(JSON.stringify(data));
-    }
+    //If we are still missing a connection, dont do anything
+    if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
-    if(event.data.buttonID === 'decrease') {
-      spread = spread > 0 ? spread - 100 : spread;
-      var data = {spread: spread}
-      connections.projector.send(JSON.stringify(data));
-    }
+    //Actual game code goes here
+
   };
 
   ws.on('close', function () {
@@ -93,7 +81,12 @@ wss.on('connection', function (ws) {
   });
 });
 
-//Reset Game
-resetGame = function() {
-  console.log('Game Reset');
+//Game state
+var state = {
+  initialize: () => {
+    this.spread = 100;
+    this.outbreakTypes = ['vaccineResistant', 'forgotTheOtherOne'];
+    this.outbreakType = null; //0 or 1
+  }
 }
+state.initialize();
