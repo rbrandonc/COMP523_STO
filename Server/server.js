@@ -1,5 +1,5 @@
 /**
- * This file is the main process.
+ * @overview This file is the main process.
  * It controls connecting and disconnecting of the screens,
  * passes them functions to run, and does game logic.
  * @module Server
@@ -92,7 +92,7 @@ wss.on('connection', function (ws) {
  * Game State
  * @constant {Object}
  * @default
- */
+ */yy
 var state = {
   initialize: () => {
     this.spread = 100;
