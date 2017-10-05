@@ -27,14 +27,14 @@ Kick to idle.
 Requirements
 ---
 
-### Priority 2
+### Priority 1
 ```
 Output to three screens set-up (finished)
 Choices programmed into tree. (Mostly finished, might need editing)
 Verified sensible structure of choices. (verify with researcher)
 ```
 
-### Priority 1
+### Priority 2
 ```
 Keep documentation updated.
 Video structure determined and placeholders set up.
