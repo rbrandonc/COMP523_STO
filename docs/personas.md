@@ -60,8 +60,7 @@ James finishes the game after with a slightly higher score and they both leave t
 ```
 Hannah is a teacher judging the learning value of the game. 
 She jumps in and quickly tries various combinations of choices. 
-She likes the amount of information which is displayed and read along with small bits of text on the screen. 
-It makes it easier to digest and she knows that the kids will learn more from it. 
+She likes that info is easy to digest and knows that the kids will learn more from it. 
 She also likes that the visual map representation shows information while also looking really interesting. 
 She knows this will interest and draw in her students. 
 She decides to take her students one day because she is impressed with the resources of the Morehead Science Center.
@@ -72,7 +71,7 @@ She decides to take her students one day because she is impressed with the resou
 Thomas sees someone else playing STO. 
 He ponders how many choices are actually available to the player and wants to see if the game is replayable. 
 He starts by choosing obvious wrong choices to see what happens. 
-The whole map lights up red and he gets a try again screen. 
+The whole map lights up red and he gets a "try" again screen. 
 Intrigued by the interaction he spends 30 minutes trying every decision. 
 He ends up at the the top of the leaderboard, just before he leaves with his group and is pleased with his result.
 ```
@@ -82,7 +81,7 @@ He ends up at the the top of the leaderboard, just before he leaves with his gro
 Bob watches the idle video for a while before starting the game. 
 Unlike his other peers, he seems to be drawn in by the information more than the game. 
 He takes a full five minutes to play through the game, carefully reading each decision and the information with each choice. 
-He chuckles at some of the bad choices, but ultimately picks the perfect options the fist time around. 
-He is please with his result and geos on the other exhibits.
+He chuckles at some of the bad choices, but ultimately picks the perfect options the first time around. 
+He is pleased with his result and goes on the other exhibits.
 ```
 
