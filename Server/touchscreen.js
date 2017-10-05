@@ -1,3 +1,8 @@
+/**
+ * All functions to be passed to the touch screen
+ * @module Touchscreen
+ */
+
 //the websocket reference of the projector, set by server
 exports.ws = null;
 

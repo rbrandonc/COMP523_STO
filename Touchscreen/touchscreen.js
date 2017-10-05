@@ -1,3 +1,9 @@
+/**
+ * Dumb front end, runs functions passed to it by the server
+ * and tells the server when we click a button
+ * @module Touchscreen
+ */
+
 //create websocket
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 var id = 'touchscreen';

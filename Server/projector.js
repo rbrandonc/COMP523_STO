@@ -1,26 +1,31 @@
+/**
+ * All functions to be passed to the projector
+ * @module Projector
+ */
+
 //the websocket reference of the projector, set by server
 exports.ws = null;
 
 //whether we have finished running whatever function the server passes us
 exports.busy = false;
 
-//All functions should look like this
-//Call this function from server.js by doing projector.functionName(args)
-//it will then be sent to the front end to be executed
-// exports.functionName = function(arg1, arg2) {
-//
-//   funct = function (arg1, arg2) {
-//     // This is where all your stuff goes
-//
-//      EVERY FUNCTION MUST END WITH THIS LINE
-//      this tells the server that we finished the function
-//      send({done: true});
-//   }
-//
-// Just change this to match whatever arguments your function takes in
-//   var data = {callback: funct.toString(), args: {arg1: arg1, arg2, arg2}};
-//   send(data);
-// }
+/** All functions should look like this
+Call this function from server.js by doing projector.functionName(args)
+it will then be sent to the front end to be executed
+ exports.functionName = function(arg1, arg2) {
+
+   funct = function (arg1, arg2) {
+      This is where all your stuff goes
+
+      EVERY FUNCTION MUST END WITH THIS LINE
+      this tells the server that we finished the function
+      send({done: true});
+   }
+
+ Just change this to match whatever arguments your function takes in
+   var data = {callback: funct.toString(), args: {arg1: arg1, arg2, arg2}};
+   send(data);
+ }*/
 
 //Tells the front end to increase/decrease the spread
 //Dont even try to understand this CSS wizardry just accept that it works plz
@@ -59,8 +64,8 @@ exports.spread = function(spread) {
   send(data);
 }
 
-//Send something to the projector
-//We will only ever send a function and its arguments
+/** Send function to the projector
+We will only ever send a function and its arguments */
 var send = (data) => {
   var stuffToSend = {};
   if(this.ws) {

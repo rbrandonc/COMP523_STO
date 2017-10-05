@@ -1,3 +1,8 @@
+/**
+ * All functions to be passed to the main screen
+ * @module Mainscreen
+ */
+
 //the websocket reference of the projector, set by server
 exports.ws = null;
 

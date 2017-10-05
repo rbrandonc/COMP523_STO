@@ -1,3 +1,8 @@
+/**
+ * Dumb front end, just runs functions passed to it by the server
+ * @module Mainscreen
+ */
+
 //create websocket
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 var id = 'mainscreen';
