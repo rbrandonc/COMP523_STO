@@ -1,0 +1,7 @@
+dir: ./
+
+branches:
+
+ 	- master
+  
+packageJson: ./Server/package.json
