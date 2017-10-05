@@ -1,9 +1,8 @@
 
+#Functional Spec
 ---
-Functional Spec:
+Use Cases
 ---
-
-# Use Case
 ### Middle School Student
 ```
 Student walks up to game.
