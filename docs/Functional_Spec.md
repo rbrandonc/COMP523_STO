@@ -30,7 +30,7 @@ Requirements
 ### Priority 1
 ```
 Output to three screens set-up (finished)
-Choices programmed into tree. (Mostly finished, might need editing)
+Choices programmed into tree. (Mostly finished, needs editing)
 Verified sensible structure of choices. (verify with researcher)
 ```
 
