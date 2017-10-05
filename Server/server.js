@@ -95,7 +95,7 @@ wss.on('connection', function (ws) {
 
 /**
  * Game State
- * @constant {Object}
+ * @class {Object}
  * @default
  */
 var state = {
