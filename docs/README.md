@@ -14,8 +14,8 @@ Morehead: Fridays at 1:25 <br>
 Team: Tuesdays at 2:30 <br>
 
 # Team
-Client Manager  - Luke Duffer <br>
-Project Manager - Jordan Taylor <br>
+Client Manager  - Jordan Taylor <br>
+Project Manager - Luke Duffer <br>
 Editor          - Ivy Liu <br>
 Architect       - Brandon Clark <br>
 
@@ -33,4 +33,4 @@ Step 2:
 Go to Project/ and open projector.html<br>
 Go to Touchscreen/ and open touchscreen.html<br>
 
-Github.io link: https://ivyjy312.github.io/COMP523_STO/
+Github.io link: https://rbrandonc.github.io/COMP523_STO/
