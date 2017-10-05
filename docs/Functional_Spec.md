@@ -27,7 +27,7 @@ Kick to idle.
 Requirements
 ---
 
-### Priority 1
+### Priority 2
 ```
 Output to three screens set-up (finished)
 Choices programmed into tree. (Mostly finished, might need editing)
