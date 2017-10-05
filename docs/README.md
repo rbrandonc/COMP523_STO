@@ -6,7 +6,7 @@ The basic mechanic of this game is to provide the player with a fixed budget, as
 
 The interface for the game is a touchscreen where we will display all the buttons and tools. There will also be an overhead projector that will display a map that shows the area that has been infected. Above the touch screen will be a second larger screen, where the cutscenes and the information we want to share with the players will be displayed.
 
-## <a href="https://ivyjy312.github.io/COMP523_STO/personas">Personas and User Stories</a>
+## <a href="https://rbrandonc.github.io/COMP523_STO/personas">Personas and User Stories</a>
 
 ## Meeting Schedule
 Professor: Thursdays at 2:10 <br>
