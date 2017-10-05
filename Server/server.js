@@ -1,8 +1,10 @@
-/** @fileOverview This file is the main process.
+/** This file is the main process.
  * It controls connecting and disconnecting of the screens,
- * passes them functions to run, and does game logic. */
+ * passes them functions to run, and does game logic.
+ * @module Server
+ * */
 
-/** Web socket/express stuff */
+// Websocket/express setup
 var WebSocketServer = require('ws').Server;
 var express = require('express');
 var path = require('path');
@@ -11,18 +13,18 @@ var server = require('http').createServer();
 var wss = new WebSocketServer({server: server});
 app.use(express.static(path.join(__dirname, '/public')));
 
-/** References to our screen functions */
+// References to our screen functions
 var projector = require('./projector');
 var mainscreen = require('./mainscreen');
 var touchscreen = require('./touchscreen');
 
-/** Server start listening */
+// Server start listening
 server.on('request', app);
 server.listen(8080, function () {
   console.log('Listening on http://localhost:8080');
 });
 
-/** Screen connection debugging */
+// Screen connection debugging
 var log = setInterval(() => {
   console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)'): ''),
               ' projector: ' + (projector.ws ? 'connected '  + (projector.busy ? '(busy)' : '(idle)') : ''),
