@@ -1,8 +1,9 @@
-/** This file is the main process.
+/**
+ * This file is the main process.
  * It controls connecting and disconnecting of the screens,
  * passes them functions to run, and does game logic.
  * @module Server
- * */
+ */
 
 // Websocket/express setup
 var WebSocketServer = require('ws').Server;
