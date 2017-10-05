@@ -1,5 +1,5 @@
 
-Functional Spec
+# Functional Spec
 
 ---
 Use Cases
