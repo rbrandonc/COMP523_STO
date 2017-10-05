@@ -48,7 +48,7 @@ var log = setInterval(() => {
 //   });
 // }, 1000);
 
-//When we establish a connection
+/** When a connection to a screen is made, ask it to identify itself. */
 wss.on('connection', function (ws) {
   // Also for screen loss detection
   // ws.isAlive = true;
@@ -58,6 +58,12 @@ wss.on('connection', function (ws) {
   var data = {identify: true}
   ws.send(JSON.stringify(data));
 
+  /** When the server receives a message from a screen, if it has an ID
+   * update our reference to that websocket. If it is a message telling the server
+   * the screen is no longer busy, set that screens busy variable to false.
+   * If we don't have a connection to any of the three screens, return. If we have
+   * All 3 screens or we just had a screen reconnect, initialize the game state
+   * and continue the game. */
   ws.onmessage = function(event) {
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
@@ -91,7 +97,7 @@ wss.on('connection', function (ws) {
  * Game State
  * @constant {Object}
  * @default
- */yy
+ */
 var state = {
   initialize: () => {
     this.spread = 100;

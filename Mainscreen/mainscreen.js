@@ -3,19 +3,16 @@
  * @module FrontEndMainscreen
  */
 
-//create websocket
+ /** @type {WebSocket} Websocket reference */
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
+/** @type {String} Screen ID */
 var id = 'mainscreen';
 
-// Stupid mainscreen
-// All we do is identify outself on connection
-// and run the function the server passes to us if it exists
-
-// When the server sends us something
+/** Either identify ourself or run the function send by the server if it exists */
 ws.onmessage = function(event) {
   var data = JSON.parse(event.data);
 
-  // Server asks us to identify on first connection, send it a blank message
+  /** Server asks us to identify on first connection, send it a blank message */
   if(data.identify) {
     send({});
   }

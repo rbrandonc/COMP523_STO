@@ -3,10 +3,10 @@
  * @module Projector
  */
 
-//the websocket reference of the projector, set by server
+/** @type {WebSocket} A reference to the websocket, set by server */
 exports.ws = null;
 
-//whether we have finished running whatever function the server passes us
+/** @type {Boolean} Whether or not we are still running a function passed by the server */
 exports.busy = false;
 
 /** All functions should look like this
@@ -28,8 +28,9 @@ it will then be sent to the front end to be executed.
    send(data);
  } */
 
-//Tells the front end to increase/decrease the spread
-//Dont even try to understand this CSS wizardry just accept that it works plz
+/** A function to demonstrate the disease spread effect.
+It's a bunch of CSS black magic we aren't gonna use anyways
+so don't bother trying to understand how it works. */
 exports.spread = function(spread) {
   funct = function (spread) {
     // console.log('spreading ' + spread);

@@ -3,10 +3,10 @@
  * @module Mainscreen
  */
 
-//the websocket reference of the projector, set by server
+ /** @type {WebSocket} A reference to the websocket, set by server */
 exports.ws = null;
 
-//whether we have finished running whatever function the server passes us
+/** @type {Boolean} Whether or not we are still running a function passed by the server */
 exports.busy = false;
 
 //All functions should look like this
@@ -27,8 +27,8 @@ exports.busy = false;
 //   send(data);
 // }
 
-//Send something to the projector
-//We will only ever send a function and its arguments
+/** Send something to the projector
+We will only ever send a function and its arguments */
 var send = (data) => {
   var stuffToSend = {};
   if(this.ws) {
