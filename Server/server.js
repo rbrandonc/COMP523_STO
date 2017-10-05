@@ -3,6 +3,7 @@
  * It controls connecting and disconnecting of the screens,
  * passes them functions to run, and does game logic.
  * @module Server
+ * @global
  */
 
 // Websocket/express setup
