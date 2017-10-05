@@ -1,7 +1,7 @@
 /**
  * Dumb front end, runs functions passed to it by the server
  * and tells the server when we click a button
- * @module Touchscreen
+ * @module FrontEndTouchscreen
  */
 
 //create websocket

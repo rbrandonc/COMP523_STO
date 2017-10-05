@@ -1,6 +1,6 @@
 /**
  * Dumb front end, just runs functions passed to it by the server
- * @module Projector
+ * @module FrontEndProjector
  */
 
 //create websocket
