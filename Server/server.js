@@ -85,7 +85,7 @@ wss.on('connection', function (ws) {
     //scan the barcode event
     if(event.data.buttonID === 'barcode'){
       console.log("Start the game");
-      connections.mainscreen.send("explan the scenario")
+      connections.mainscreen.send("explain the scenario")
     }
 
   };
