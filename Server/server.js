@@ -18,6 +18,38 @@ var projector = require('./projector');
 var mainscreen = require('./mainscreen');
 var touchscreen = require('./touchscreen');
 
+//References to Video Streaming
+const express = require('express')
+//file size
+const fs = require('fs')
+//const path = require('path')
+//const app = express()
+
+// app.get('/',function(req,res){
+//   //const path=...path to the video
+//     const stat = fs.statSync(path)
+//     const fileSize = stat.size
+//     const range = req.headers.range
+//
+//     if (range) {
+//         const parts = range.replace(/bytes=/, "").split("-")
+//         const start = parseInt(parts[0], 10)
+//         const end = parts[1]
+//             ? parseInt(parts[1], 10)
+//             : fileSize-1
+//
+//         const chunksize = (end-start)+1
+//         const file = fs.createReadStream(path, {start, end})
+//         const head = {
+//             'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+//             'Accept-Ranges': 'bytes',
+//             'Content-Length': chunksize,
+//             'Content-Type': 'video/mp4',
+//         }
+//
+//
+// })
+
 // Server start listening
 server.on('request', app);
 server.listen(8080, function () {
