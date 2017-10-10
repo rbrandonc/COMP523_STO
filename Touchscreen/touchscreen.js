@@ -12,7 +12,9 @@ var id = 'touchscreen';
 
 document.addEventListener("DOMContentLoaded", function(event){
   document.getElementById('barcode').onclick=barcode_scan('barcode').bind(this);
-  document.getElementById('skip').onclick=skip_clicked().bind(this);
+  document.getElementById('skip_ini').onclick=skip_ini().bind(this);
+  document.getElementById('skip_opt1').onclick=skip_opt1().bind(this);
+  document.getElementById('skip_opt2').onclick=skip_opt2().bind(this);
 })
 /** Either identify ourself or run the function send by the server if it exists */
 ws.onmessage = function(event) {
@@ -44,6 +46,17 @@ var barcode_scan = function(button_id){
   this.send(click);
 }
 
-var skip_clicked= function(){
+var skip_ini= function(){
     //skip the video
 }
+
+var skip_opt1=functions(){
+   //skip the short term options video
+}
+
+var skip_opt2=functions(){
+  //skip the long term options video
+}
+
+
+
