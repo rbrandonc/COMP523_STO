@@ -82,6 +82,11 @@ wss.on('connection', function (ws) {
     if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
     //Actual game code goes here
+    //scan the barcode event
+    if(event.data.buttonID === 'barcode'){
+      console.log("Start the game");
+      connections.mainscreen.send("explan the scenario")
+    }
 
   };
 

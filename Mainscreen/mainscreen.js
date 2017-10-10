@@ -8,6 +8,10 @@ var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 /** @type {String} Screen ID */
 var id = 'mainscreen';
 
+document.addEventListener("DOMContentLoaded", function(event){
+
+})
+
 /** Either identify ourself or run the function send by the server if it exists */
 ws.onmessage = function(event) {
   var data = JSON.parse(event.data);
@@ -32,3 +36,4 @@ var send = function(data) {
   data.id = this.id;
   ws.send(JSON.stringify(data));
 }
+

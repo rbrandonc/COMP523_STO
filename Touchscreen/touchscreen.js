@@ -9,6 +9,11 @@ var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 /** @type {String} Screen ID */
 var id = 'touchscreen';
 
+
+document.addEventListener("DOMContentLoaded", function(event){
+  document.getElementById('barcode').onclick=barcode_scan('barcode').bind(this);
+  document.getElementById('skip').onclick=skip_clicked().bind(this);
+})
 /** Either identify ourself or run the function send by the server if it exists */
 ws.onmessage = function(event) {
   var data = JSON.parse(event.data);
@@ -32,4 +37,13 @@ ws.onmessage = function(event) {
 var send = function(data) {
   data.id = this.id;
   ws.send(JSON.stringify(data));
+}
+
+var barcode_scan = function(button_id){
+  var click = {eventType: 'buttonClick', buttonID: button_id};
+  this.send(click);
+}
+
+var skip_clicked= function(){
+    //skip the video
 }

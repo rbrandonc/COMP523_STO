@@ -1,0 +1,17 @@
+#myProgress {
+    width: 50%;
+    background-color: #ddd;
+    position:absolute;
+    top:0;
+    right:0;
+    Visibility:hidden;
+}
+#title{
+    background-color: white;
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #4CAF50;
+}
