@@ -15,3 +15,7 @@
     height: 30px;
     background-color: #4CAF50;
 }
+
+#skip{
+    visibility: hidden;
+}

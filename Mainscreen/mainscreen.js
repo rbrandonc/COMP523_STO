@@ -11,15 +11,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log("Clicked!");
 
     }.bind(this);
+
+    document.getElementById('skip').onclick=function(){
+        document.querySelector('h1').style.visibility='hidden';
+        document.getElementById('skip').style.visibility='hidden';
+        sendMsg("nextRound");
+    }
 }.bind(this));
 
 
 ws.onopen = function(){
-    setTitle("Connected to Mainscreen");
+    setTitle('Connected to Mainscreen');
 };
 
 ws.onclose = function(){
-    setTitle("DISCONNECTED");
+    setTitle('DISCONNECTED');
 
 };
 
@@ -29,13 +35,25 @@ ws.onmessage = function(event) {
     // if(JSON.parse(event.data).identify) {
     //     send({});
     //
-    //console.log(event.data);
+    console.log(event.data);
+
     if(event.data === 'Start the game'){
         document.getElementById("start").style.visibility='hidden';
         document.querySelector('h1').style.visibility='hidden';
-        document.getElementById("myProgress").style.visibility='visible';
+    }
+
+    if(event.data === 'Play the video'){
+        document.querySelector('h1').style.visibility='visible';
+        setTitle('Video Playing ....')
+        document.getElementById('skip').style.visibility='visible';
     }
 };
+
+function sendMsg(msg){
+    var click = {eventType: 'buttonClick', msg: msg};
+    this.send(click);
+}
+
 function setTitle(title){
     document.querySelector('h1').innerHTML = title;
 }
