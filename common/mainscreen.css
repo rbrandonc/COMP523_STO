@@ -19,3 +19,14 @@
 #skip{
     visibility: hidden;
 }
+
+#bed_netting{
+    visibility: hidden;
+    width:100%;
+    height:80%;
+}
+#beginning{
+    visibility: hidden;
+    width: 100%;
+    height: 90%;
+}

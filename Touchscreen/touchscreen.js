@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.getElementById('bug_resistance').onclick=function(){
 
-    scenario_choose('bug_resistance');
+        scenario_choose('bug_resistance');
 
     }.bind(this);
 
@@ -37,7 +37,7 @@ function addListeners(){
             confirmChosenTool(chose_tool_num);
             console.log(button_tracker);
             if(chose_tool_num == 2 && button_tracker['confirm'] === true){
-               sendMsg('playVideo');
+                sendMsg('playVideo');
             }
         })
     })
@@ -91,9 +91,9 @@ function  setColor(btn){
 
     }else {
         if (btn != 'confirm') {
-        property.style.backgroundColor = "#F5F5DC";
-        chose_tool_num--;
-       }
+            property.style.backgroundColor = "#F5F5DC";
+            chose_tool_num--;
+        }
         button_tracker[btn] = false;
     }
 }
