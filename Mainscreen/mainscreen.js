@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.send(click);
         console.log("Clicked!");
         document.getElementById('beginning').style.visibility='hidden';
-        pauseVideo(document.getElementById('beginning'));
+
     }.bind(this);
 
     document.getElementById('skip').onclick=function(){
@@ -45,6 +45,7 @@ ws.onmessage = function(event) {
     if(event.data === 'Start the game'){
         document.getElementById("start").style.visibility='hidden';
         document.querySelector('h1').style.visibility='hidden';
+        pauseVideo(document.getElementById('beginning'));
     }
 
     if(event.data === 'Play the video'){

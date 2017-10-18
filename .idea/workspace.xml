@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed6852f9-aa85-404a-b2e9-a8302c72c0da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mainscreen/mainscreen.html" afterPath="$PROJECT_DIR$/Mainscreen/mainscreen.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mainscreen/mainscreen.js" afterPath="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Touchscreen/touchscreen.html" afterPath="$PROJECT_DIR$/Touchscreen/touchscreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Touchscreen/touchscreen.js" afterPath="$PROJECT_DIR$/Touchscreen/touchscreen.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/mainscreen.css" afterPath="$PROJECT_DIR$/common/mainscreen.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainscreen.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainscreen.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="69" lean-forward="false" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+            <state relative-caret-position="359">
+              <caret line="47" column="57" lean-forward="false" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -73,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2300">
-              <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+            <state relative-caret-position="1356">
+              <caret line="80" column="49" lean-forward="true" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -130,11 +124,11 @@
         <option value="$PROJECT_DIR$/common/common.css" />
         <option value="$USER_HOME$/AppData/Local/Temp/Temp1_Box_Model1.zip/Box_Model1/resources/style.css" />
         <option value="$PROJECT_DIR$/Touchscreen/touchscreen.html" />
-        <option value="$PROJECT_DIR$/Server/server.js" />
         <option value="$PROJECT_DIR$/Touchscreen/touchscreen.js" />
         <option value="$PROJECT_DIR$/common/mainscreen.css" />
-        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
         <option value="$PROJECT_DIR$/Mainscreen/mainscreen.html" />
+        <option value="$PROJECT_DIR$/Server/server.js" />
+        <option value="$PROJECT_DIR$/Mainscreen/mainscreen.js" />
       </list>
     </option>
   </component>
@@ -204,12 +198,12 @@
       <workItem from="1506701858134" duration="2387000" />
       <workItem from="1506704552195" duration="22000" />
       <workItem from="1506704731001" duration="2926000" />
-      <workItem from="1508333850478" duration="8301000" />
+      <workItem from="1508333850478" duration="9003000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27470000" />
+    <option name="totallyTimeSpent" value="28172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -608,10 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
+    <entry file="file://$PROJECT_DIR$/Server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="69" lean-forward="false" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+        <state relative-caret-position="1356">
+          <caret line="80" column="49" lean-forward="true" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -624,10 +618,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/server.js">
+    <entry file="file://$PROJECT_DIR$/Mainscreen/mainscreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2300">
-          <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+        <state relative-caret-position="359">
+          <caret line="47" column="57" lean-forward="false" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
           <folding />
         </state>
       </provider>
