@@ -2,26 +2,10 @@
 <html>
   <head>
     <script src='projector.js'></script>
+    <script src='simpleheat.js'></script>
   </head>
 
   <style>
-  #mask {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    -webkit-mask-image: url('./res/mask.png');
-    -webkit-mask-size: 100px;
-    -webkit-mask-position: 50vw 70vh;
-    -webkit-mask-repeat: no-repeat;
-  }
-
-  #map {
-    width: 100vw;
-    height: 100vh;
-  }
-
   body {
     margin: 0;
     padding: 0;
@@ -31,7 +15,6 @@
   </style>
 
   <body>
-    <img id='map' src='./res/map.jpg'></div>
-    <img id='mask' src='./res/rivers.png' />
+    <canvas id='canvas'></canvas>
   </body>
 </html>
