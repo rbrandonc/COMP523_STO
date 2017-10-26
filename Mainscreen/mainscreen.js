@@ -21,8 +21,8 @@ ws.onmessage = function(event) {
     //Create a function from the string of the function the server gave us
     //with the arguments passed in data.args
     //then execute it with the value of the args
-    var f = Function(Object.keys(data.args), data.callback);
-    f(Object.values(data.args));
+    var f = Function(...Object.keys(data.args), data.callback);
+    f(...Object.values(data.args));
   }
 
 };

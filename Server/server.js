@@ -67,6 +67,7 @@ wss.on('connection', function (ws) {
   ws.onmessage = function(event) {
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
+    console.log(event.data);
 
     //Add connection to our list of conncetions
     // TODO: need to reset state if we reconnect a screen
@@ -74,15 +75,73 @@ wss.on('connection', function (ws) {
     mainscreen.ws = event.data.id === "mainscreen" ? ws : mainscreen.ws;
     projector.ws = event.data.id === "projector" ? ws : projector.ws;
 
+    //initialize spread
+    if(projector.ws != undefined && state.initialized == false) {
+      projector.initialize();
+      state.initialized = true;
+    }
+
     //If the frontend is just telling us it finished
     //Set its busy variable to false
     if(event.data.done) { eval(event.data.id + '.busy' + ' = ' + false); return; }
 
     //If we are still missing a connection, dont do anything
-    if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
+    // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
     //Actual game code goes here
 
+    //If we received a button press event
+    if(event.data.buttonID) {
+      var buttonID = event.data.buttonID;
+      //If button is one of the tools
+      if(state.tools[buttonID] !== undefined) {
+
+        //Toggle the selected state of the tool as long as we have less than two selected tools
+        state.tools[buttonID].selected = !state.tools[buttonID].selected;
+        if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
+        //Then tell the screen to toggle the button color or whatever
+        touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+
+        //If we have two tools selected, show the confirm button
+        if(state.numberOfSelectedTools == 2) {
+          touchscreen.toggleButtonVisibility('confirm', true);
+        } else if(state.numberOfSelectedTools > 2) {
+          state.tools[buttonID].selected = !state.tools[buttonID].selected;
+          if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
+          //Then tell the screen to toggle the button color or whatever
+          touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+        } else {
+          //If two tools not selected, hide confirm
+          touchscreen.toggleButtonVisibility('confirm', false);
+        }
+      }
+
+      //If the button was outbreak type
+      if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
+        state['outbreakType'] = buttonID;
+        touchscreen.showTools();
+      }
+
+      //If the button was confirm, play the corresponding videos and update the map
+      if(buttonID === 'confirm') {
+        //play videos
+        mainscreen.playVideo(state.tools);
+
+        //calculate spread and animate projector
+        var spread = 2000;
+        projector.spread(spread);
+
+        //reset touchscreen
+        touchscreen.reset();
+
+        //reset gamestate
+        state.numberOfSelectedTools = 0;
+        for(let item of Object.keys(state.tools)) {
+          state.tools[item].selected = false;
+        }
+      }
+
+    }
   };
 
   ws.on('close', function () {
@@ -99,10 +158,12 @@ wss.on('connection', function (ws) {
  * @default
  */
 var state = {
-  initialize: () => {
-    this.spread = 100;
-    this.outbreakTypes = ['vaccineResistant', 'forgotTheOtherOne'];
-    this.outbreakType = null; //0 or 1
-  }
+    initialized: false,
+    outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
+    outbreakType: null,
+    tools: {'bug_rep': {selected: false}, 'insecticide': {selected: false}, 'gen_modi_mos': {selected: false},
+                  'bed_netting': {selected: false}, 'vaccine_trial': {selected: false}, 'anti_mal_medi': {selected: false}},
+    numberOfSelectedTools: 0
 }
-state.initialize();
+
+var defaultState = state;

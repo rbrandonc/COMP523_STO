@@ -43,3 +43,45 @@ var send = (data) => {
     console.log('mainscreen not connected');
   }
 }
+
+exports.playVideo = function(videos) {
+
+  funct = function (videos) {
+    // This is where all your stuff goes
+    var player = document.getElementById('video');
+    var source = document.getElementById('source');
+    var i = 0;
+
+    player.addEventListener('ended', function() {
+      next();
+    }, false);
+
+    var next = () => {
+      console.log(i);
+      for(let j = i; j <= Object.keys(videos).length; j++) {
+        if(videos[Object.keys(videos)[j]].selected) {
+          source.src = '../res/' + Object.keys(videos)[j] + '.mp4';
+          console.log(j);
+          player.load();
+          i = j+1;
+
+          if(i > Object.keys(videos).length) {
+            send({done: true});
+          }
+          break;
+        }
+      }
+    }
+
+    next();
+
+  }
+
+  var data = {callback: funct.toString(), args: {videos: videos}};
+  send(data);
+}
+
+var play = (video) => {
+  var player = document.getElementById('video');
+  var source = document.getElementById('source');
+}

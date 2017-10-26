@@ -28,43 +28,6 @@ it will then be sent to the front end to be executed.
    send(data);
  } */
 
-/** A function to demonstrate the disease spread effect.
-It's a bunch of CSS black magic we aren't gonna use anyways
-so don't bother trying to understand how it works. */
-exports.spread = function(spread) {
-  funct = function (spread) {
-    // console.log('spreading ' + spread);
-    var mask = document.getElementById('mask');
-    var increment = parseInt(window.getComputedStyle(mask)['-webkit-mask-size']) < spread ? 2 : -2;
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
-    var spreading = setInterval(function() {
-      var currentSpread = parseInt(window.getComputedStyle(mask)['-webkit-mask-size'].substring(0, window.getComputedStyle(mask)['-webkit-mask-size'].length-2));
-      var xy = window.getComputedStyle(mask)['-webkit-mask-position'];
-      var currentX = parseInt(xy.substring(0, xy.indexOf('p')));
-      var currentY = parseInt(xy.substring(xy.indexOf('x')+1, xy.length-2));
-      console.log(currentX, currentY, increment);
-
-      if((increment > 0 && currentSpread < spread)|| (increment < 0 && currentSpread > spread)) {
-        mask.style['-webkit-mask-size'] = (currentSpread + increment) + 'px';
-
-        var x = 100*(currentX - (increment/2))/w;
-        var y = 100*(currentY - (increment/2))/h;
-        console.log(x, y);
-        mask.style['-webkit-mask-position'] = x + 'vw ' + y + 'vh';
-      } else {
-        send({done: true});
-        clearInterval(spreading);
-      }
-    }, 100);
-
-
-  }
-
-  var data = {callback: funct.toString(), args: {spread: spread}};
-  send(data);
-}
 
 /** Send function to the projector
 We will only ever send a function and its arguments */
@@ -81,4 +44,92 @@ var send = (data) => {
   } else {
     console.log('projector not connected');
   }
+}
+
+var spreadData = [];
+
+exports.spread = function(amount) {
+
+  //Shrink
+  if(amount < 0) {
+    var shrink = setInterval(() => {
+      for(var k = 0; k > amount; k--) {
+        spreadData.pop();
+
+        if(spreadData.length <= 20) {
+          break;
+        }
+      }
+
+      clearInterval(shrink);
+    }, 1);
+
+  } else {
+    for(let point of spreadData) {
+      if(point[2] < 1)
+        point[2] += .001;
+    }
+    var n = [];
+    var points = 0;
+    for(let point of spreadData) {
+      for(var x = 0; x < 1; x++) {
+        var probability = Math.random();
+        if(probability < 0.05) {
+          n.push([
+            point[0] + (((Math.random()*2)-1)*50),
+            point[1] + (((Math.random()*2)-1)*50),
+            .1]);
+            points++;
+        }
+        if(points >= amount) {
+          break;
+        }
+      }
+      if(points >= amount) {
+        break;
+      }
+    }
+
+    for(let p of n) {
+      spreadData.push(p);
+    }
+
+  }
+
+  funct = function (amount, spreadData) {
+    var canvas = document.getElementById('canvas');
+    var heat = simpleheat(canvas);
+
+    heat.data(spreadData);
+    heat.draw();
+
+    send({done: true});
+  }
+
+  var data = {callback: funct.toString(), args: {amount: amount, spreadData: spreadData}};
+  send(data);
+}
+
+exports.initialize = function() {
+  for(var j = 1; j < 10; j+=1) {
+    var item = [400*Math.random(),Math.random()*400,Math.random()];
+    spreadData.push(item);
+  }
+  funct = function (spreadData) {
+    var canvas = document.getElementById('canvas');
+    var heat = simpleheat(canvas);
+
+
+
+    heat.data(spreadData);
+    heat.gradient({0.0: 'rgb(150, 255, 0)', 0.5: 'rgb(255, 237, 0)', 1: 'rgb(255, 0, 0)'});
+    heat.resize();
+    heat.radius(10, 25);
+    heat.draw();
+
+    send({done: true});
+  }
+
+  var data = {callback: funct.toString(), args: {spreadData: spreadData}};
+  send(data);
 }

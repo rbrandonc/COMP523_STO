@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src='touchscreen.js'></script>
-    <link rel="stylesheet" type="text/css" href="../common/common.css" />
-  </head>
+<head>
+  <script src='touchscreen.js'></script>
+  <link rel="stylesheet" type="text/css" href="../common/common.css" />
+  <link rel="stylesheet" type="text/css" href="./res/touchscreen.css" />
+</head>
 
-  <body>
-    <div class='row'>
-      <div class='col-6' id='increase'>
-        Increase Spread
-      </div>
+<body>
 
-      <div class='col-6' id='decrease'>
-        Decrease Spread
-      </div>
-    </div>
+<div id='outbreakTypes' class='row'>
+  <button id='vac_resistant' class='col-6'>
+    Vaccine resistant
+  </button>
 
-    <div class='row'>
-      <div class='col-6' id='debug'>
-        Debug
-      </div>
+  <button id='ins_resistant' class='col-6'>
+    Insecticide resistant
+  </button>
+</div>
 
-      <div class='col-6' id='insecticide'>
-        Insecticide
-      </div>
-    </div>
+<div id='tools' class='hidden'>
+  <div class='row'>
+    <button class='col-6' id='confirm' style='background-color: rgb(245, 245, 220)'>
+      Confirm
+      <!--short term-->
+    </button>
+  </div>
 
-    <div class='row'>
-      <div class='col-6' id='gmomosquitos'>
-        GMO Mosquitos
-      </div>
+  <div class='row'>
+    <button class='col-6' id='bug_rep' style='background-color: rgb(245, 245, 220)'>
+      Bug Repellent
+      <!--short term-->
+    </button>
 
-      <div class='col-6' id='bednetting'>
-        Bed Netting
-      </div>
-    </div>
+    <button class='col-6' id='insecticide' style='background-color: rgb(245, 245, 220)'>
+      Insecticide
+      <!--short term, no for insecticide-resistance-->
+    </button>
+  </div>
 
-    <div class='row'>
-      <div class='col-6' id='vaccinetrial'>
-        Vaccine Trial
-      </div>
+  <div class='row'>
+    <button class='col-6' id='gen_modi_mos' style='background-color: rgb(245, 245, 220)'>
+      Genetic Mosquitos
+      <!--long term ?? short term-->
+    </button>
 
-      <div class='col-6' id="iforgot">
-        I Forgot the Other One
-      </div>
-    </div>
-  </body>
+    <button class='col-6' id='bed_netting' style='background-color: rgb(245, 245, 220)'>
+      Bed Netting
+    </button>
+  </div>
+
+  <div class='row'>
+    <button class='col-6' id='vaccine_trial' style='background-color: rgb(245, 245, 220)'>
+      Vaccine Trial
+      <!--long term-->
+    </button>
+
+    <button class='col-6' id="anti_mal_medi" style='background-color: rgb(245, 245, 220)'>
+      Anti-malarial medication
+      <!--short term, doesn't stop transmission, tread individual-->
+    </button>
+  </div>
+</div>
+
+</body>
+<script src='touchscreen.js'></script>
 </html>
