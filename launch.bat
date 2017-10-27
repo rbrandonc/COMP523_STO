@@ -1,2 +1,2 @@
-start "./Server/" server-win.exe
-start "" file://%CD%\main.html
+start "Node Server" "./Server/" server-win.exe
+start "Main Window" file://%CD%\main.html
