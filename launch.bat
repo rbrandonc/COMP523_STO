@@ -1,2 +1,4 @@
-start "Node Server" "./Server/" server-win.exe
-start "Main Window" file://%CD%\main.html
+spushd %~dp0\Server\
+start "" server-win.exe
+popd
+start file://%CD%\main.html
