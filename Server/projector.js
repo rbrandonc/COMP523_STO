@@ -50,64 +50,42 @@ var spreadData = [];
 
 exports.spread = function(amount) {
 
-  //Shrink
-  if(amount < 0) {
-    var shrink = setInterval(() => {
-      for(var k = 0; k > amount; k--) {
-        spreadData.pop();
-
-        if(spreadData.length <= 20) {
-          break;
-        }
-      }
-
-      clearInterval(shrink);
-    }, 1);
-
-  } else {
+  //While the num points we have added < amount given
+  //add 10 more points and send them to the frontend
+  var updateMap = setInterval((amount) => {
+    var added = 0;
     for(let point of spreadData) {
-      if(point[2] < 1)
-        point[2] += .001;
-    }
-    var n = [];
-    var points = 0;
-    for(let point of spreadData) {
-      for(var x = 0; x < 1; x++) {
-        var probability = Math.random();
-        if(probability < 0.05) {
-          n.push([
-            point[0] + (((Math.random()*2)-1)*50),
-            point[1] + (((Math.random()*2)-1)*50),
-            .1]);
-            points++;
-        }
-        if(points >= amount) {
-          break;
-        }
-      }
-      if(points >= amount) {
-        break;
+      if(added < 10 && Math.random() > .5) {
+        var p = [
+          (100*(Math.random()-.5))+point[0],
+          (100*(Math.random()-.5))+point[1],
+          .05
+        ];
+
+        spreadData.push(p);
+        added++;
       }
     }
 
-    for(let p of n) {
-      spreadData.push(p);
+    funct = function (amount, spreadData) {
+      var canvas = document.getElementById('canvas');
+      var heat = simpleheat(canvas);
+
+      heat.data(spreadData);
+      heat.draw();
+
+      //Only have projector says its done if this is the last map update
+      if(amount < spreadData.length)
+        send({done: true});
     }
 
-  }
+    var data = {callback: funct.toString(), args: {amount: amount, spreadData: spreadData}};
+    send(data);
 
-  funct = function (amount, spreadData) {
-    var canvas = document.getElementById('canvas');
-    var heat = simpleheat(canvas);
+    if(amount < spreadData.length)
+      clearInterval(updateMap);
+  }, 100)
 
-    heat.data(spreadData);
-    heat.draw();
-
-    send({done: true});
-  }
-
-  var data = {callback: funct.toString(), args: {amount: amount, spreadData: spreadData}};
-  send(data);
 }
 
 exports.initialize = function() {

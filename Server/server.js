@@ -116,7 +116,7 @@ wss.on('connection', function (ws) {
         }
       }
 
-      //If the button was outbreak type
+      //If the button was outbreak type, show the tool scree
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
@@ -128,7 +128,7 @@ wss.on('connection', function (ws) {
         mainscreen.playVideo(state.tools);
 
         //calculate spread and animate projector
-        var spread = 2000;
+        var spread = 7000;
         projector.spread(spread);
 
         //reset touchscreen
