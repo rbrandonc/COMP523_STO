@@ -11,18 +11,25 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({server: server});
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/frontend')));
 
 // References to our screen functions
-var projector = require('./projector');
-var mainscreen = require('./mainscreen');
-var touchscreen = require('./touchscreen');
+var projector = require('./backend/projector');
+var mainscreen = require('./backend/mainscreen');
+var touchscreen = require('./backend/touchscreen');
 
 // Server start listening
 server.on('request', app);
 server.listen(8080, function () {
-  console.log('Listening on http://localhost:8080');
+  console.log('listening on 8080');
+  const opn = require('opn');
+  opn('http://localhost:8080');
 });
+
+//Serve up the dev screen if we go to localhost:8080/
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/frontend/main.html');
+})
 
 // Screen connection debugging
 var log = setInterval(() => {
