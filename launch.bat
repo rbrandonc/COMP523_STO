@@ -1,2 +1,4 @@
-start "./Server/" server-win.exe
-start "" file://%CD%\main.html
+pushd %~dp0\Server\
+start "" server-win.exe
+popd
+start file://%CD%\main.html
