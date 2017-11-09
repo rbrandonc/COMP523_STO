@@ -108,6 +108,8 @@ wss.on('connection', function (ws) {
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
         //Then tell the screen to toggle the button color or whatever
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+        touchscreen.updatePanel(buttonID,state.numberOfSelectedTools,state.tools[buttonID].selected);
+        console.log(state.numberOfSelectedTools);
 
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
