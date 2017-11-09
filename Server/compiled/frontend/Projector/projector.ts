@@ -27,7 +27,7 @@ ws.onmessage = function(event) {
 };
 
 // append our id to all the data we send
-var send = function(data) {
+var send = function(data: any) {
   data.id = this.id;
   ws.send(JSON.stringify(data));
 }
@@ -36,9 +36,9 @@ var send = function(data) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
   var canvas = document.getElementById('canvas');
-  w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   var canvas = document.getElementById('canvas');
-  canvas.height = h;
-  canvas.width = w;
+  canvas['height'] = h;
+  canvas['width'] = w;
 });

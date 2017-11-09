@@ -2,10 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "STOB server",
-  "main": "server.js",
-  "bin": "server.js",
+  "main": "compiled/server.js",
+  "bin": "compiled/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "tsc && npm run copy && node compiled/server.js",
+    "copy": "cp -r ./frontend ./compiled",
     "build": "pkg package.json --out-path ./bin"
   },
   "pkg": {
@@ -18,6 +19,10 @@
     "express": "^4.15.4",
     "open": "0.0.5",
     "opn": "^5.1.0",
+    "typescript": "^2.6.1",
     "ws": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.50"
   }
 }

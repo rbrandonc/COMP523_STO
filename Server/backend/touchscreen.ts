@@ -29,8 +29,8 @@ exports.busy = false;
 
 //Send something to the projector
 //We will only ever send a function and its arguments
-var send = (data) => {
-  var stuffToSend = {};
+var send = (data: any) => {
+  var stuffToSend = {callback: String, args: Object};
   if(this.ws) {
     if(data.callback) {
       //We can only send strings so parse the function body as a string
@@ -80,8 +80,8 @@ var send = (data) => {
 // }
 
 //Toggle the state of the selected tool button
-exports.toggleButtonSelected = function(buttonID, state) {
-  funct = function(buttonID, state) {
+exports.toggleButtonSelected = function(buttonID: any, state: any) {
+  var funct = function(buttonID: any, state: any) {
     // console.log(buttonID, state);
     document.getElementById(buttonID).style.backgroundColor = state ? '#7FFF00' : '#F5F5DC';
     send({done: true});
@@ -91,8 +91,8 @@ exports.toggleButtonSelected = function(buttonID, state) {
   send(data);
 }
 
-exports.toggleButtonVisibility = function(buttonID, state) {
-  funct = function(buttonID, state) {
+exports.toggleButtonVisibility = function(buttonID: any, state: any) {
+  var funct = function(buttonID: any, state: any) {
     document.getElementById(''+buttonID).style.visibility = state ? 'visible' : 'hidden';
     send({done: true});
   }
@@ -112,7 +112,7 @@ exports.toggleButtonVisibility = function(buttonID, state) {
 //We picked the scenario, so hide the scenario buttons and show the tool buttons
 exports.showTools = function() {
 
-  funct = function(){
+  var funct = function(){
     document.getElementById('tools').style.visibility='visible';
     document.getElementById('outbreakTypes').style.visibility='hidden';
     // document.getElementById('confirm').disabled=true;
@@ -125,9 +125,9 @@ exports.showTools = function() {
 
 exports.reset = function() {
 
-  funct = function (arg1, arg2) {
+  var funct = function (arg1: any, arg2: any) {
     // This is where all your stuff goes
-    var buttons = document.getElementsByTagName('button');
+    var buttons = Array.prototype.slice.call(document.getElementsByTagName('button'));
     console.log(buttons)
     for(let button of buttons) {
       button.style.backgroundColor = "#F5F5DC";
@@ -142,23 +142,23 @@ exports.reset = function() {
   send(data);
 }
 
-//Reset the touchscreen
-function reset(){
-    for(var i = 0; i != elems.length; ++i)
-    {
-        if(elems[i].id != 'confirm'){
-
-            elems[i].disabled=false;
-        }
-        elems[i].style.visibility = "visible"; // hidden has to be a string
-
-    }
-    document.getElementById('bug_resistance').style.visibility='hidden';
-    document.getElementById('ins_resistance').style.visibility='hidden';
-    //document.getElementById('confirm').disabled=true;
-    setTitle("Choose two tools")
-
-    chose_tool_num = 0;
-    setTracker();
-    round++;
-}
+// //Reset the touchscreen
+// function reset(){
+//     for(var i = 0; i != elems.length; ++i)
+//     {
+//         if(elems[i].id != 'confirm'){
+//
+//             elems[i].disabled=false;
+//         }
+//         elems[i].style.visibility = "visible"; // hidden has to be a string
+//
+//     }
+//     document.getElementById('bug_resistance').style.visibility='hidden';
+//     document.getElementById('ins_resistance').style.visibility='hidden';
+//     //document.getElementById('confirm').disabled=true;
+//     setTitle("Choose two tools")
+//
+//     chose_tool_num = 0;
+//     setTracker();
+//     round++;
+// }

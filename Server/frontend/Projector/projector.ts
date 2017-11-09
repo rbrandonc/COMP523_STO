@@ -1,12 +1,12 @@
 /**
  * Dumb front end, just runs functions passed to it by the server
- * @module FrontEndMainscreen
+ * @module FrontEndProjector
  */
 
  /** @type {WebSocket} Websocket reference */
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 /** @type {String} Screen ID */
-var id = 'mainscreen';
+var id = 'projector';
 
 /** Either identify ourself or run the function send by the server if it exists */
 ws.onmessage = function(event) {
@@ -24,11 +24,21 @@ ws.onmessage = function(event) {
     var f = Function(...Object.keys(data.args), data.callback);
     f(...Object.values(data.args));
   }
-
 };
 
 // append our id to all the data we send
-var send = function(data) {
+var send = function(data: any) {
   data.id = this.id;
   ws.send(JSON.stringify(data));
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  var canvas = document.getElementById('canvas');
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  var canvas = document.getElementById('canvas');
+  canvas['height'] = h;
+  canvas['width'] = w;
+});

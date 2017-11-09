@@ -8,6 +8,7 @@ exports.ws = null;
 
 /** @type {Boolean} Whether or not we are still running a function passed by the server */
 exports.busy = false;
+var simpleheat = require('./simpleheat.js');
 
 /** All functions should look like this
 Call this function from server.js by doing projector.functionName(args)
@@ -31,8 +32,8 @@ it will then be sent to the front end to be executed.
 
 /** Send function to the projector
 We will only ever send a function and its arguments */
-var send = (data) => {
-  var stuffToSend = {};
+var send = (data: any) => {
+  var stuffToSend = {callback: String, args: String};
   if(this.ws) {
     if(data.callback) {
       //We can only send strings so parse the function body as a string
@@ -46,9 +47,9 @@ var send = (data) => {
   }
 }
 
-var spreadData = [];
+var spreadData: any = [];
 
-exports.spread = function(amount) {
+exports.spread = function(amount: any) {
 
   //While the num points we have added < amount given
   //add 10 more points and send them to the frontend
@@ -67,7 +68,7 @@ exports.spread = function(amount) {
       }
     }
 
-    funct = function (amount, spreadData) {
+    var funct = function (amount: any, spreadData: any) {
       var canvas = document.getElementById('canvas');
       var heat = simpleheat(canvas);
 
@@ -93,7 +94,7 @@ exports.initialize = function() {
     var item = [400*Math.random(),Math.random()*400,Math.random()];
     spreadData.push(item);
   }
-  funct = function (spreadData) {
+  var funct = function (spreadData: any) {
     var canvas = document.getElementById('canvas');
     var heat = simpleheat(canvas);
 

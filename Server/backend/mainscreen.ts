@@ -29,8 +29,8 @@ exports.busy = false;
 
 /** Send something to the projector
 We will only ever send a function and its arguments */
-var send = (data) => {
-  var stuffToSend = {};
+var send = (data: any) => {
+  var stuffToSend = {callback: String, args: String};
   if(this.ws) {
     if(data.callback) {
       //We can only send strings so parse the function body as a string
@@ -44,9 +44,9 @@ var send = (data) => {
   }
 }
 
-exports.playVideo = function(videos) {
+exports.playVideo = function(videos: any) {
 
-  funct = function (videos) {
+  var funct = function (videos: any) {
     // This is where all your stuff goes
     var player = document.getElementById('video');
     var source = document.getElementById('source');
@@ -60,9 +60,9 @@ exports.playVideo = function(videos) {
       console.log(i);
       for(let j = i; j <= Object.keys(videos).length; j++) {
         if(videos[Object.keys(videos)[j]].selected) {
-          source.src = '../res/' + Object.keys(videos)[j] + '.mp4';
+          source['src'] = '../res/' + Object.keys(videos)[j] + '.mp4';
           console.log(j);
-          player.load();
+          player['load']();
           i = j+1;
 
           if(i > Object.keys(videos).length) {
@@ -81,7 +81,7 @@ exports.playVideo = function(videos) {
   send(data);
 }
 
-var play = (video) => {
+var play = (video: any) => {
   var player = document.getElementById('video');
   var source = document.getElementById('source');
 }

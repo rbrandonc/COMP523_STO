@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2017", "DOM"],
+	      "suppressImplicitAnyIndexErrors": true,
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "compiled/",
+        "sourceMap": true,
+        "types": [
+             "node"
+        ],
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "include": [
+        "./server.ts",
+        "./frontend/**/*",
+        "./backend/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

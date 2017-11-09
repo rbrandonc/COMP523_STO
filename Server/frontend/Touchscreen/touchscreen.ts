@@ -48,7 +48,7 @@ ws.onmessage = function(event) {
 };
 
 /** Send a message to the server */
-var send = function(data) {
+var send = function(data: any) {
   data.id = this.id;
   ws.send(JSON.stringify(data));
 }
