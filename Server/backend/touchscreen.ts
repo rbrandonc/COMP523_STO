@@ -78,8 +78,8 @@ var send = (data: any) => {
 //         }
 //     }
 // }
-exports.updatePanel = function(buttonID,numberOfSelectedTools,state){
-    funct = function(buttonID){
+exports.updatePanel = function(buttonID: any, numberOfSelectedTools: any, state:any){
+    var funct = function(buttonID: any){
         var panel = document.getElementById("toolPanel");
         panel.style.visibility = 'visible';
         if(numberOfSelectedTools == 0 && panel.childNodes[1]!=null){

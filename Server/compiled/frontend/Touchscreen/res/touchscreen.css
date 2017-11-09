@@ -9,6 +9,163 @@
     display: inline-block;
     font-size: 16px;
 }*/
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,cyrillic);
+* {
+    box-sizing: border-box;
+}
+
+html section button, body section button {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    background: transparent;
+    padding: 1rem 1rem;
+    margin: 0 1rem;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    color: #41403E;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    outline: none;
+    box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+html section button:hover, body section button:hover {
+    box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+}
+
+html section button.lined.thin, body section button.lined.thin {
+    border: solid 2px #41403E;
+}
+
+@media (max-width: 620px) {
+    body h1 {
+        margin-top: 2rem;
+    }
+    body section {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    body section button {
+        -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+        margin-bottom: 2rem;
+    }
+}
+
+
+body {
+    min-height: 450px;
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle, #3C3B3F, #3C3B3F, #605C3C, #000000);
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: relative;
+    color: #DAA520;
+    outline: none;
+    border: transparent;
+    text-shadow: -1px -1px 0 rgba(26, 26, 26, 0.5);
+    background: transparent;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    /* Pass any colors you like, I hope the mixin will handle it */
+    padding: 0.5em 1em;
+    font: normal normal 3em/1 "Lobster", serif;
+    text-decoration: none;
+}
+.button:hover {
+    text-shadow: 0 0 5px rgba(243, 141, 16, 0.65), -1px -1px 0 rgba(26, 26, 26, 0.5);
+}
+.button:active, .button:focus {
+    top: 4px;
+}
+
+
+[class*='col-'] {
+    text-align: center;
+    min-height: 1px;
+    padding: 12px;
+    background-color: #ddd;
+    margin: 2px;
+}
+
+.col-6{
+    background-color: beige;
+    }
+
+.row {
+    width:700px;
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.type{
+    visibility: hidden;
+}
+
+type .show {
+    visibility: visible;
+}
+
+
+h1 {
+    font-family: "Seaweed Script";
+    color: orange;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 50px;
+    position: relative;
+    margin:0;
+}
+
+#toolPanel{
+    visibility: hidden;
+    position:absolute;
+    top:60px;
+    right:85px;
+    font-weight:bold;
+    font-family: 'Ubuntu', cursive;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: darkorange;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #34495E;
+    text-shadow:
+            -1px 1px 0 #34495E,
+            -2px 2px 0 #34495E,
+            -3px 3px 0 #34495E,
+            -4px 4px 0 #34495E,
+            -5px 5px 0 #34495E,
+            7px 8px 0 rgba(0, 0, 0, 0.1);
+    margin: 0 0 10px 0;
+}
 
 .hidden {
     visibility: hidden;
