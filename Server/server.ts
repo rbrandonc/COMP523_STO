@@ -90,7 +90,10 @@ wss.on('connection', function (ws: any) {
 
     //If the frontend is just telling us it finished
     //Set its busy variable to false
-    if(event.data.done) { eval(event.data.id + '.busy' + ' = ' + false); return; }
+    if(event.data.done) {
+      eval(event.data.id + '.busy' + ' = ' + false);
+      state.isPanelEmpty=event.data.isPanelEmpty;
+      return; }
 
     //If we are still missing a connection, dont do anything
     // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
@@ -108,6 +111,7 @@ wss.on('connection', function (ws: any) {
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
         //Then tell the screen to toggle the button color or whatever
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+        touchscreen.updatePanel(buttonID,state.tools[buttonID].price,state.tools[buttonID].ratio,state.isPanelEmpty,state.tools[buttonID].selected);
 
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
@@ -168,10 +172,12 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: {'bug_rep': {selected: false}, 'insecticide': {selected: false}, 'gen_modi_mos': {selected: false},
-                  'bed_netting': {selected: false}, 'vaccine_trial': {selected: false}, 'anti_mal_medi': {selected: false}
+    tools: {'bug_rep': {selected: false, price:'$10', ratio:''}, 'insecticide': {selected: false, price:'$20', ratio:''}, 'gen_modi_mos': {selected: false, price:'$50', ratio:''},
+                  'bed_netting': {selected: false,price:'$35', ratio:''}, 'vaccine_trial': {selected: false, price:'$55', ratio:''}, 'anti_mal_medi': {selected: false,price:'$13', ratio:''}
                 },
-    numberOfSelectedTools: 0
-}
+    numberOfSelectedTools: 0,
+    isPanelEmpty: true
+
+};
 
 var defaultState = state;

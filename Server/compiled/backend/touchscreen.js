@@ -17,127 +17,31 @@ var send = function (data) {
         console.log('touchscreen not connected');
     }
 };
-exports.updatePanel = function (buttonID, numberOfSelectedTools, state) {
-    var funct = function (buttonID) {
-        var panel = document.getElementById("toolPanel");
-        panel.style.visibility = 'visible';
-        if (numberOfSelectedTools == 0 && panel.childNodes[1] != null) {
+exports.updatePanel = function (buttonID, price, ratio, isPanelEmpty, selected) {
+    var funct = function (buttonID, price, ratio, isPanelEmpty, selected) {
+        console.log(buttonID, price);
+        var div = document.createElement('div');
+        var p = document.createTextNode('Price: ' + price);
+        var newLine = document.createElement('br');
+        div.className = 'info';
+        var r = document.createTextNode('Impact Ratio: ' + ratio);
+        var panel = document.getElementById('toolPanel');
+        if (!isPanelEmpty) {
             panel.removeChild(panel.childNodes[1]);
+            isPanelEmpty = true;
+            console.log(panel.childNodes[1]);
         }
-        switch (buttonID) {
-            case 'bug_rep':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $10 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'insecticide':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $15 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'gen_modi_mos':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $100 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'bed_netting':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $18 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'vaccine_trial':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $30 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'anti_mal_medi':
-                var div = document.createElement("div");
-                var price = document.createTextNode("Price: $25 ");
-                var newLine = document.createElement("br");
-                div.className = "info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if (panel.childNodes[1] != null) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if (panel.childNodes[1] != null && !state) {
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
+        div.appendChild(p);
+        div.appendChild(newLine);
+        div.appendChild(r);
+        if (!isPanelEmpty && selected == false) {
+            panel.removeChild(panel.childNodes[1]);
+            isPanelEmpty = true;
         }
+        isPanelEmpty = false;
         send({ done: true });
     };
-    var data = { callback: funct.toString(), args: {} };
-    send(data);
+    var data = { callback: funct.toString(), args: { buttonID: buttonID, price: price, ratio: ratio, isPanelEmpty: isPanelEmpty, selected: selected } };
 };
 exports.toggleButtonSelected = function (buttonID, state) {
     var funct = function (buttonID, state) {

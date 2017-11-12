@@ -35,6 +35,7 @@ wss.on('connection', function (ws) {
         }
         if (event.data.done) {
             eval(event.data.id + '.busy' + ' = ' + false);
+            state.isPanelEmpty = event.data.isPanelEmpty;
             return;
         }
         if (event.data.buttonID) {
@@ -49,6 +50,7 @@ wss.on('connection', function (ws) {
                 }
                 ;
                 touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+                touchscreen.updatePanel(buttonID, state.tools[buttonID].price, state.tools[buttonID].ratio, state.isPanelEmpty, state.tools[buttonID].selected);
                 if (state.numberOfSelectedTools == 2) {
                     touchscreen.toggleButtonVisibility('confirm', true);
                 }
@@ -92,10 +94,11 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: { 'bug_rep': { selected: false }, 'insecticide': { selected: false }, 'gen_modi_mos': { selected: false },
-        'bed_netting': { selected: false }, 'vaccine_trial': { selected: false }, 'anti_mal_medi': { selected: false }
+    tools: { 'bug_rep': { selected: false, price: '$10', ratio: '' }, 'insecticide': { selected: false, price: '$20', ratio: '' }, 'gen_modi_mos': { selected: false, price: '$50', ratio: '' },
+        'bed_netting': { selected: false, price: '$35', ratio: '' }, 'vaccine_trial': { selected: false, price: '$55', ratio: '' }, 'anti_mal_medi': { selected: false, price: '$13', ratio: '' }
     },
-    numberOfSelectedTools: 0
+    numberOfSelectedTools: 0,
+    isPanelEmpty: true
 };
 var defaultState = state;
 //# sourceMappingURL=server.js.map
