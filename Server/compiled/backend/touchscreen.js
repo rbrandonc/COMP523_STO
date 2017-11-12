@@ -17,31 +17,28 @@ var send = function (data) {
         console.log('touchscreen not connected');
     }
 };
-exports.updatePanel = function (buttonID, price, ratio, isPanelEmpty, selected) {
-    var funct = function (buttonID, price, ratio, isPanelEmpty, selected) {
-        console.log(buttonID, price);
-        var div = document.createElement('div');
-        var p = document.createTextNode('Price: ' + price);
-        var newLine = document.createElement('br');
-        div.className = 'info';
-        var r = document.createTextNode('Impact Ratio: ' + ratio);
+exports.updatePanel = function (buttonID, state) {
+    var funct = function (buttonID, state) {
         var panel = document.getElementById('toolPanel');
-        if (!isPanelEmpty) {
+        if (panel.childNodes[1] != null) {
             panel.removeChild(panel.childNodes[1]);
-            isPanelEmpty = true;
-            console.log(panel.childNodes[1]);
         }
-        div.appendChild(p);
-        div.appendChild(newLine);
-        div.appendChild(r);
-        if (!isPanelEmpty && selected == false) {
-            panel.removeChild(panel.childNodes[1]);
-            isPanelEmpty = true;
+        if (state.tools[buttonID].selected == true) {
+            var div = document.createElement('div');
+            var p = document.createTextNode('Price: ' + state.tools[buttonID].price);
+            var newLine = document.createElement('br');
+            div.className = 'info';
+            var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio);
+            panel.style.visibility = 'visible';
+            div.appendChild(p);
+            div.appendChild(newLine);
+            div.appendChild(r);
+            panel.appendChild(div);
         }
-        isPanelEmpty = false;
         send({ done: true });
     };
-    var data = { callback: funct.toString(), args: { buttonID: buttonID, price: price, ratio: ratio, isPanelEmpty: isPanelEmpty, selected: selected } };
+    var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
+    send(data);
 };
 exports.toggleButtonSelected = function (buttonID, state) {
     var funct = function (buttonID, state) {

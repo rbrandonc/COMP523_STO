@@ -35,10 +35,10 @@ wss.on('connection', function (ws) {
         }
         if (event.data.done) {
             eval(event.data.id + '.busy' + ' = ' + false);
-            state.isPanelEmpty = event.data.isPanelEmpty;
             return;
         }
         if (event.data.buttonID) {
+            console.log(JSON.stringify(data));
             var buttonID = event.data.buttonID;
             if (state.tools[buttonID] !== undefined) {
                 state.tools[buttonID].selected = !state.tools[buttonID].selected;
@@ -50,7 +50,8 @@ wss.on('connection', function (ws) {
                 }
                 ;
                 touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
-                touchscreen.updatePanel(buttonID, state.tools[buttonID].price, state.tools[buttonID].ratio, state.isPanelEmpty, state.tools[buttonID].selected);
+                touchscreen.updatePanel(buttonID, state);
+                state.isPanelEmpty = event.data.isPanelEmpty;
                 if (state.numberOfSelectedTools == 2) {
                     touchscreen.toggleButtonVisibility('confirm', true);
                 }

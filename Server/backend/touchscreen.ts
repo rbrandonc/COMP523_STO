@@ -46,33 +46,31 @@ var send = (data: any) => {
 
 
 //Update Price Panel
-exports.updatePanel = function(buttonID: any, price:any,ratio:any,isPanelEmpty:boolean,selected:boolean){
-  var funct = function(buttonID:any, price:any,ratio:any,isPanelEmpty:boolean,selected:boolean){
-      console.log(buttonID,price);
-      var div = document.createElement('div');
-      var p = document.createTextNode('Price: '+price);
-      var newLine = document.createElement('br');
-      div.className='info';
-      var r = document.createTextNode('Impact Ratio: '+ratio);
-      var panel=document.getElementById('toolPanel');
-      if(!isPanelEmpty){
+exports.updatePanel = function(buttonID:any,state:any){
+  var funct = function(buttonID:any,state:any){
+      var panel = document.getElementById('toolPanel');
+      if (panel.childNodes[1]!=null) {
           panel.removeChild(panel.childNodes[1]);
-          isPanelEmpty = true;
-          console.log(panel.childNodes[1]);
+          //console.log();
       }
-      div.appendChild(p);
-      div.appendChild(newLine);
-      div.appendChild(r);
-      if(!isPanelEmpty && selected == false){
-          panel.removeChild(panel.childNodes[1]);
-          isPanelEmpty = true;
+      if(state.tools[buttonID].selected ==true){
+          var div = document.createElement('div');
+          var p = document.createTextNode('Price: ' + state.tools[buttonID].price);
+          var newLine = document.createElement('br');
+          div.className = 'info';
+          var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio)
+          panel.style.visibility = 'visible';
+
+          div.appendChild(p);
+          div.appendChild(newLine);
+          div.appendChild(r);
+          panel.appendChild(div);
       }
-      isPanelEmpty = false;
       send({done:true});
   };
 
-  var data = {callback:funct.toString(),args:{buttonID:buttonID,price:price,ratio:ratio,isPanelEmpty:isPanelEmpty,selected:selected}}
-
+  var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
+  send(data);
 };
 
 //Toggle the state of the selected tool button

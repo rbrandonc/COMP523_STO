@@ -92,7 +92,7 @@ wss.on('connection', function (ws: any) {
     //Set its busy variable to false
     if(event.data.done) {
       eval(event.data.id + '.busy' + ' = ' + false);
-      state.isPanelEmpty=event.data.isPanelEmpty;
+
       return; }
 
     //If we are still missing a connection, dont do anything
@@ -101,7 +101,9 @@ wss.on('connection', function (ws: any) {
     //Actual game code goes here
 
     //If we received a button press event
+
     if(event.data.buttonID) {
+      console.log(JSON.stringify(data));
       var buttonID = event.data.buttonID;
       //If button is one of the tools
       if(state.tools[buttonID] !== undefined) {
@@ -111,8 +113,8 @@ wss.on('connection', function (ws: any) {
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
         //Then tell the screen to toggle the button color or whatever
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
-        touchscreen.updatePanel(buttonID,state.tools[buttonID].price,state.tools[buttonID].ratio,state.isPanelEmpty,state.tools[buttonID].selected);
-
+        touchscreen.updatePanel(buttonID,state);
+        state.isPanelEmpty=event.data.isPanelEmpty;
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
           touchscreen.toggleButtonVisibility('confirm', true);
@@ -176,8 +178,6 @@ var state = {
                   'bed_netting': {selected: false,price:'$35', ratio:''}, 'vaccine_trial': {selected: false, price:'$55', ratio:''}, 'anti_mal_medi': {selected: false,price:'$13', ratio:''}
                 },
     numberOfSelectedTools: 0,
-    isPanelEmpty: true
-
 };
 
 var defaultState = state;
