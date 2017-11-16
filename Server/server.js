@@ -11,7 +11,8 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({server: server});
-app.use(express.static(path.join(__dirname, '/frontend')));
+
+app.use(express.static(path.join(__dirname, 'res/')));
 
 // References to our screen functions
 var projector = require('./backend/projector');

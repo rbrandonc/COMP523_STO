@@ -4,7 +4,8 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({ server: server });
-app.use(express.static(path.join(__dirname, '/frontend')));
+app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static('res'));
 var projector = require('./backend/projector');
 var mainscreen = require('./backend/mainscreen');
 var touchscreen = require('./backend/touchscreen');
@@ -73,7 +74,7 @@ wss.on('connection', function (ws) {
             }
             if (buttonID === 'confirm') {
                 mainscreen.playVideo(state.tools);
-                var spread = 7000;
+                var spread = 1000;
                 projector.spread(spread);
                 touchscreen.reset();
                 state.numberOfSelectedTools = 0;

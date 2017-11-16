@@ -78,7 +78,7 @@ var send = (data: any) => {
 //         }
 //     }
 // }
-exports.updatePanel = function(buttonID: any, numberOfSelectedTools: any, state:any){
+exports.updatePanel = function(buttonID: any, numberOfSelectedTools: any, state: any){
     var funct = function(buttonID: any){
         var panel = document.getElementById("toolPanel");
         panel.style.visibility = 'visible';
@@ -199,7 +199,6 @@ exports.updatePanel = function(buttonID: any, numberOfSelectedTools: any, state:
     };
     var data = {callback: funct.toString(), args: {}};
     send(data);
-
 };
 
 //Toggle the state of the selected tool button

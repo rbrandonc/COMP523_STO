@@ -11,7 +11,8 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({server: server});
-app.use(express.static(path.join(__dirname, '/frontend')));
+app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static('res'));
 
 // References to our screen functions
 var projector = require('./backend/projector');
@@ -26,7 +27,7 @@ server.listen(8080, function () {
   opn('http://localhost:8080');
 });
 
-//Serve up the dev screen if we go to localhost:8080/
+// Serve up the dev screen if we go to localhost:8080/
 app.get('/', function (req: any, res: any) {
   res.sendFile(__dirname + '/frontend/main.html');
 })
@@ -135,7 +136,7 @@ wss.on('connection', function (ws: any) {
         mainscreen.playVideo(state.tools);
 
         //calculate spread and animate projector
-        var spread = 7000;
+        var spread = 1000;
         projector.spread(spread);
 
         //reset touchscreen

@@ -19,38 +19,56 @@ var send = function (data) {
     }
 };
 var spreadData = [];
+var spread = 0;
 exports.spread = function (amount) {
-    var updateMap = setInterval(function (amount) {
-        var added = 0;
-        for (var _i = 0, spreadData_1 = spreadData; _i < spreadData_1.length; _i++) {
-            var point = spreadData_1[_i];
-            if (added < 10 && Math.random() > .5) {
-                var p = [
-                    (100 * (Math.random() - .5)) + point[0],
-                    (100 * (Math.random() - .5)) + point[1],
-                    .05
-                ];
+    var difference = amount - spread;
+    var updateMap = setInterval(function () {
+        if (difference > 0) {
+            var idx = Math.floor(Math.random() * spreadData.length);
+            if (spreadData[idx][2] < 1) {
+                spreadData[idx][2] += .02;
+                spreadData.splice(spreadData.length - 1, 0, spreadData.splice(idx, 1)[0]);
+            }
+            if (spreadData[idx][2] > .2) {
+                var x = Math.floor(spreadData[idx][0] + (100 * (Math.random() - .5)));
+                var y = Math.floor(spreadData[idx][1] + (100 * (Math.random() - .5)));
+                var p = [x, y, 0.0];
                 spreadData.push(p);
-                added++;
             }
         }
-        var funct = function (amount, spreadData) {
+        else {
+            if (spreadData[spreadData.length - 1][2] > 0) {
+                spreadData[spreadData.length - 1][2] -= .02;
+                spreadData.splice(0, 0, spreadData.splice(spreadData.length - 1, 1)[0]);
+            }
+            if (spreadData[spreadData.length - 1][2] < .2) {
+                spreadData.pop();
+            }
+        }
+        var funct = function (spreadData) {
             var canvas = document.getElementById('canvas');
             var heat = simpleheat(canvas);
+            console.log(heat);
             heat.data(spreadData);
-            heat.draw();
-            if (amount < spreadData.length)
-                send({ done: true });
+            heat.draw(.01);
+            send({ done: true });
         };
-        var data = { callback: funct.toString(), args: { amount: amount, spreadData: spreadData } };
+        var data = { callback: funct.toString(), args: { spreadData: spreadData } };
         send(data);
-        if (amount < spreadData.length)
+        if (difference > 0) {
+            difference--;
+        }
+        else if (amount < 0) {
+            difference++;
+        }
+        else {
             clearInterval(updateMap);
-    }, 100);
+        }
+    }, 5);
 };
 exports.initialize = function () {
-    for (var j = 1; j < 10; j += 1) {
-        var item = [400 * Math.random(), Math.random() * 400, Math.random()];
+    for (var x = 0; x < 10; x++) {
+        var item = [Math.floor(800 * Math.random()), Math.floor(400 * Math.random()), 0.0];
         spreadData.push(item);
     }
     var funct = function (spreadData) {
@@ -59,8 +77,8 @@ exports.initialize = function () {
         heat.data(spreadData);
         heat.gradient({ 0.0: 'rgb(150, 255, 0)', 0.5: 'rgb(255, 237, 0)', 1: 'rgb(255, 0, 0)' });
         heat.resize();
-        heat.radius(10, 25);
-        heat.draw();
+        heat.radius(15, 25);
+        heat.draw(.01);
         send({ done: true });
     };
     var data = { callback: funct.toString(), args: { spreadData: spreadData } };
