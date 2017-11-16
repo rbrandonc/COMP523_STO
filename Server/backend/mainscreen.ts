@@ -42,7 +42,16 @@ var send = (data: any) => {
   } else {
     console.log('mainscreen not connected');
   }
-}
+};
+
+exports.hideBgTitle = function(){
+    var funct = function() {
+      document.getElementById('bg').style.visibility='hidden';
+      send({done: true});
+    }
+    var data = {callback: funct.toString(), args: {}};
+    send(data);
+};
 
 exports.playVideo = function(videos: any) {
 
@@ -71,17 +80,18 @@ exports.playVideo = function(videos: any) {
           break;
         }
       }
-    }
+    };
 
     next();
 
-  }
+  };
+
 
   var data = {callback: funct.toString(), args: {videos: videos}};
   send(data);
-}
+};
 
 var play = (video: any) => {
   var player = document.getElementById('video');
   var source = document.getElementById('source');
-}
+};

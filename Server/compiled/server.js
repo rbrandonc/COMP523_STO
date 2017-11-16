@@ -72,6 +72,7 @@ wss.on('connection', function (ws) {
             if (buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
                 state['outbreakType'] = buttonID;
                 touchscreen.showTools();
+                mainscreen.hideBgTitle();
             }
             if (buttonID === 'confirm') {
                 mainscreen.playVideo(state.tools);

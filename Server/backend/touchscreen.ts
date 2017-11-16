@@ -115,13 +115,14 @@ exports.showTools = function() {
   var funct = function(){
     document.getElementById('tools').style.visibility='visible';
     document.getElementById('outbreakTypes').style.visibility='hidden';
+
     // document.getElementById('confirm').disabled=true;
     send({done: true});
-  }
+  };
 
   var data = {callback: funct.toString(), args: {}};
   send(data);
-}
+};
 
 exports.reset = function() {
 

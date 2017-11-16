@@ -137,7 +137,10 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
+        mainscreen.hideBgTitle();
              }
+        //hide mainscreen background
+
 
       //If the button was confirm, play the corresponding videos and update the map
       if(buttonID === 'confirm') {

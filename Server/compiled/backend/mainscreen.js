@@ -17,6 +17,14 @@ var send = function (data) {
         console.log('mainscreen not connected');
     }
 };
+exports.hideBgTitle = function () {
+    var funct = function () {
+        document.getElementById('bg').style.visibility = 'hidden';
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: {} };
+    send(data);
+};
 exports.playVideo = function (videos) {
     var funct = function (videos) {
         var player = document.getElementById('video');
