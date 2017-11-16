@@ -77,37 +77,7 @@ exports.updatePanel = function(buttonID: any, state: any) {
 
   var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
   send(data);
-<<<<<<< HEAD
-}
-
-// function confirmChosenTool(chose_tool_num){
-//     console.log(chose_tool_num);
-//     var elems = document.getElementsByClassName('col-6');
-//     if(chose_tool_num === 2){
-//         setTitle('You chose 2 tools');
-//         for (var i = 0; i != elems.length; ++i){
-//             if(!button_tracker[elems[i].id]){
-//                 elems[i].disabled=true;
-//             }
-//             if(elems[i].id === 'confirm'){
-//                 elems[i].disabled=false;
-//             }
-//         }
-//     }else{
-//         setTitle('Please choose '+ (2-chose_tool_num)+' more tool(s)')
-//         for (var i = 0; i != elems.length; ++i){
-//             if(!button_tracker[elems[i].id]){
-//                 elems[i].disabled=false;
-//             }
-//             if(elems[i].id === 'confirm'){
-//                 elems[i].disabled=true;
-//             }
-//         }
-//     }
-// }
-=======
 };
->>>>>>> bd8f19c98dd48b74189935deae82878e939a3451
 
 //Toggle the state of the selected tool button
 exports.toggleButtonSelected = function(buttonID: any, state: any) {
