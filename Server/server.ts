@@ -75,7 +75,7 @@ wss.on('connection', function (ws: any) {
   ws.onmessage = function(event: any) {
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
-    // console.log(event.data);
+    console.log(event.data);
 
     //Add connection to our list of conncetions
     // TODO: need to reset state if we reconnect a screen
@@ -89,17 +89,26 @@ wss.on('connection', function (ws: any) {
       state.initialized = true;
     }
 
+    //generate random tools
+
     //If the frontend is just telling us it finished
     //Set its busy variable to false
-    if(event.data.done) { eval(event.data.id + '.busy' + ' = ' + false); return; }
+    if(event.data.done) {
+      eval(event.data.id + '.busy' + ' = ' + false);
+
+      return;
+    }
 
     //If we are still missing a connection, dont do anything
     // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
     //Actual game code goes here
 
+
     //If we received a button press event
+
     if(event.data.buttonID) {
+      console.log(JSON.stringify(data));
       var buttonID = event.data.buttonID;
       //If button is one of the tools
       if(state.tools[buttonID] !== undefined) {
@@ -109,7 +118,9 @@ wss.on('connection', function (ws: any) {
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
         //Then tell the screen to toggle the button color or whatever
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
+        touchscreen.updatePanel(buttonID,state);
 
+        //state.isPanelEmpty=event.data.isPanelEmpty;
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
           touchscreen.toggleButtonVisibility('confirm', true);
@@ -128,7 +139,10 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
+        mainscreen.hideBgTitle();
       }
+        //hide mainscreen background
+
 
       //If the button was confirm, play the corresponding videos and update the map
       if(buttonID === 'confirm') {
@@ -136,15 +150,15 @@ wss.on('connection', function (ws: any) {
         mainscreen.playVideo(state.tools);
 
         //calculate spread and animate projector
-        var effectiveness = 0;
+        var ratio = 0;
         for(let t of Object.keys(state.tools)) {
           if(state.tools[t].selected){
-            effectiveness += state.tools[t].effectiveness;
+            ratio += state.tools[t].ratio;
           }
         }
-        effectiveness = (effectiveness - .5)*(-1);
-        var spread = Math.floor(effectiveness * 100);
-        console.log(effectiveness + ' ' + spread)
+        ratio = (ratio - .5)*(-1);
+        var spread = Math.floor(ratio * 1000);
+        console.log(ratio + ' ' + spread)
         projector.spread(spread);
 
         //reset touchscreen
@@ -173,14 +187,61 @@ wss.on('connection', function (ws: any) {
  * @class {GameState}
  * @default
  */
-var state = {
+var state: any = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: {'bug_rep': {selected: false, effectiveness: .5}, 'insecticide': {selected: false, effectiveness: .6}, 'gen_modi_mos': {selected: false, effectiveness: .1},
-                  'bed_netting': {selected: false, effectiveness: .1}, 'vaccine_trial': {selected: false, effectiveness: .2}, 'anti_mal_medi': {selected: false, effectiveness: .7}
-                },
-    numberOfSelectedTools: 0
+    tools:{
+     'mda':{
+        name: 'Mass Drug Administration',
+        selected: false,
+        price: 300,
+        ratio: .4
+     },
+     'irs':{
+        selected:false,
+        name: 'Household Spraying',
+        price: 100,
+        ratio: .3
+     },
+     'deet': {
+        selected: false,
+        name: 'Insect Repellent',
+        price: 200,
+        ratio: .3
+     },
+     'clothing': {
+        selected: false,
+        name: 'Clothing',
+        price: 5000,
+        ratio: .3
+     },
+     'bed_netting': {
+        selected: false,
+        name: 'Bed Nets',
+        price: 400,
+        ratio: .4
+     },
+     'gin': {
+        selected: false,
+        name: 'Drink gin and tonics',
+        price: 4000,
+        ratio: 0
+     },
+     'mosquito_repellant': {
+        selected: false,
+        name :'Ultrasonic mosquito repellant',
+        price: 3000,
+        ratio: .3
+     },
+     'mangos': {
+        selected: false,
+        name: 'Don\'t eat mangos',
+        price: 100,
+        ratio: 0
+     },
+   },
+   numberOfSelectedTools: 0
 }
 
-var defaultState = state;
+// var defaultState: any = state;

@@ -17,6 +17,14 @@ var send = function (data) {
         console.log('mainscreen not connected');
     }
 };
+exports.hideBgTitle = function () {
+    var funct = function () {
+        document.getElementById('bg').style.visibility = 'hidden';
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: {} };
+    send(data);
+};
 exports.playVideo = function (videos) {
     var funct = function (videos) {
         var player = document.getElementById('video');
@@ -26,11 +34,11 @@ exports.playVideo = function (videos) {
             next();
         }, false);
         var next = function () {
-            console.log(i);
+            console.log('video should be playing!!!');
             for (var j = i; j <= Object.keys(videos).length; j++) {
                 if (videos[Object.keys(videos)[j]].selected) {
                     source['src'] = '/' + Object.keys(videos)[j] + '.mp4';
-                    console.log(j);
+                    console.log('telling the player to load the video');
                     player['load']();
                     i = j + 1;
                     if (i > Object.keys(videos).length) {
