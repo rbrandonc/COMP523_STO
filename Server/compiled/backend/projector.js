@@ -23,6 +23,7 @@ var spread = 0;
 exports.spread = function (amount) {
     var difference = amount - spread;
     var updateMap = setInterval(function () {
+        console.log(difference);
         if (difference > 0) {
             var idx = Math.floor(Math.random() * spreadData.length);
             if (spreadData[idx][2] < 1) {
@@ -36,7 +37,7 @@ exports.spread = function (amount) {
                 spreadData.push(p);
             }
         }
-        else {
+        else if (difference < 0) {
             if (spreadData[spreadData.length - 1][2] > 0) {
                 spreadData[spreadData.length - 1][2] -= .02;
                 spreadData.splice(0, 0, spreadData.splice(spreadData.length - 1, 1)[0]);
@@ -48,20 +49,21 @@ exports.spread = function (amount) {
         var funct = function (spreadData) {
             var canvas = document.getElementById('canvas');
             var heat = simpleheat(canvas);
-            console.log(heat);
             heat.data(spreadData);
             heat.draw(.01);
             send({ done: true });
         };
         var data = { callback: funct.toString(), args: { spreadData: spreadData } };
         send(data);
+        console.log('checking difference');
         if (difference > 0) {
             difference--;
         }
-        else if (amount < 0) {
+        else if (difference < 0) {
             difference++;
         }
         else {
+            console.log("CLEARING MAP UPDATE");
             clearInterval(updateMap);
         }
     }, 5);
@@ -83,5 +85,6 @@ exports.initialize = function () {
     };
     var data = { callback: funct.toString(), args: { spreadData: spreadData } };
     send(data);
+    this.spread(1000);
 };
 //# sourceMappingURL=projector.js.map

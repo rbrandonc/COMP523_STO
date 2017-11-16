@@ -75,7 +75,7 @@ wss.on('connection', function (ws: any) {
   ws.onmessage = function(event: any) {
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
-    console.log(event.data);
+    // console.log(event.data);
 
     //Add connection to our list of conncetions
     // TODO: need to reset state if we reconnect a screen
@@ -136,7 +136,15 @@ wss.on('connection', function (ws: any) {
         mainscreen.playVideo(state.tools);
 
         //calculate spread and animate projector
-        var spread = 1000;
+        var effectiveness = 0;
+        for(let t of Object.keys(state.tools)) {
+          if(state.tools[t].selected){
+            effectiveness += state.tools[t].effectiveness;
+          }
+        }
+        effectiveness = (effectiveness - .5)*(-1);
+        var spread = Math.floor(effectiveness * 100);
+        console.log(effectiveness + ' ' + spread)
         projector.spread(spread);
 
         //reset touchscreen
@@ -169,8 +177,8 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: {'bug_rep': {selected: false}, 'insecticide': {selected: false}, 'gen_modi_mos': {selected: false},
-                  'bed_netting': {selected: false}, 'vaccine_trial': {selected: false}, 'anti_mal_medi': {selected: false}
+    tools: {'bug_rep': {selected: false, effectiveness: .5}, 'insecticide': {selected: false, effectiveness: .6}, 'gen_modi_mos': {selected: false, effectiveness: .1},
+                  'bed_netting': {selected: false, effectiveness: .1}, 'vaccine_trial': {selected: false, effectiveness: .2}, 'anti_mal_medi': {selected: false, effectiveness: .7}
                 },
     numberOfSelectedTools: 0
 }
