@@ -77,6 +77,7 @@ exports.updatePanel = function(buttonID: any, state: any) {
 
   var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
   send(data);
+<<<<<<< HEAD
 }
 
 // function confirmChosenTool(chose_tool_num){
@@ -104,6 +105,9 @@ exports.updatePanel = function(buttonID: any, state: any) {
 //         }
 //     }
 // }
+=======
+};
+>>>>>>> bd8f19c98dd48b74189935deae82878e939a3451
 
 //Toggle the state of the selected tool button
 exports.toggleButtonSelected = function(buttonID: any, state: any) {
