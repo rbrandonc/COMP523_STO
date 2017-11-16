@@ -66,11 +66,48 @@ exports.updatePanel = function(buttonID: any, state: any) {
           div.className = 'info';
           var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio)
           panel.style.visibility = 'visible';
+          var bt1 = document.createElement('button');
+          bt1.innerHTML='small'; bt1.setAttribute('class','package'); bt1.setAttribute('id','1');
+          var bt2 = document.createElement('button');
+          bt2.innerHTML='medium'; bt2.setAttribute('class','package'); bt2.setAttribute('id','2');
+          var bt3 = document.createElement('button');
+          bt3.innerHTML='large'; bt3.setAttribute('class','package'); bt3.setAttribute('id','3');
 
           div.appendChild(p);
           div.appendChild(newLine);
           div.appendChild(r);
+          div.appendChild(bt1);
+          div.appendChild(bt2);
+          div.appendChild(bt3);
           panel.appendChild(div);
+
+          var packages = document.getElementsByClassName('package');
+          var price = state.tools[buttonID].price;
+          for(var i=0;i<3;i++){
+              packages[i].addEventListener("click",function(){
+                  console.log(this);
+                  if(this.id==1){
+                      price =Math.ceil(state.tools[buttonID].price*(1/3));
+                  }else if(this.id==2){
+                      price = Math.ceil(state.tools[buttonID].price*(2/3));
+                  }else if(this.id==3){
+                      price = Math.ceil(state.tools[buttonID].price);
+                  }
+                  panel.removeChild(panel.childNodes[1]);
+
+                  p=document.createTextNode('Price: $' + price);
+                  div.appendChild(p);
+                  div.appendChild(newLine);
+                  div.appendChild(r);
+                  div.appendChild(bt1);
+                  div.appendChild(bt2);
+                  div.appendChild(bt3);
+                  panel.appendChild(div);
+
+              })
+
+          }
+
       }
       send({done:true});
   };

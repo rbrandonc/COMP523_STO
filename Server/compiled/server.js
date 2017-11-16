@@ -110,49 +110,49 @@ var state = {
             name: 'Mass Drug Administration',
             selected: false,
             price: 300,
-            ratio: .4
+            ratio: '\u2605\u2605\u2605\u2605\u2606'
         },
         'irs': {
             selected: false,
             name: 'Household Spraying',
             price: 100,
-            ratio: .3
+            ratio: '\u2605\u2605\u2605\u2606\u2606'
         },
         'deet': {
             selected: false,
             name: 'Insect Repellent',
             price: 200,
-            ratio: .3
+            ratio: '\u2605\u2605\u2605\u2606\u2606'
         },
         'clothing': {
             selected: false,
             name: 'Clothing',
             price: 5000,
-            ratio: .3
+            ratio: '\u2605\u2605\u2605\u2606\u2606'
         },
         'bed_netting': {
             selected: false,
             name: 'Bed Nets',
             price: 400,
-            ratio: .4
+            ratio: '\u2605\u2605\u2605\u2605\u2606'
         },
         'gin': {
             selected: false,
             name: 'Drink gin and tonics',
             price: 4000,
-            ratio: 0
+            ratio: '\u2606\u2606\u2606\u2606\u2606'
         },
         'mosquito_repellant': {
             selected: false,
             name: 'Ultrasonic mosquito repellant',
             price: 3000,
-            ratio: .3
+            ratio: '\u2605\u2605\u2605\u2606\u2606'
         },
         'mangos': {
             selected: false,
             name: 'Don\'t eat mangos',
             price: 100,
-            ratio: 0
+            ratio: '\u2606\u2606\u2606\u2606\u2606'
         }
     },
     numberOfSelectedTools: 0
