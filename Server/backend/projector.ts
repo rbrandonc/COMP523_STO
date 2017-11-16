@@ -47,68 +47,98 @@ var send = (data: any) => {
   }
 }
 
-var spreadData: any = [];
+//Keep track of the spread data on the server end
+var spreadData: number[][] = [];
+var spread = 0;
 
+//give a positive amount to increase spread by that amount, negative to decrease
 exports.spread = function(amount: any) {
+  var difference = amount - spread;
+  var updateMap = setInterval(() => {
 
-  //While the num points we have added < amount given
-  //add 10 more points and send them to the frontend
-  var updateMap = setInterval((amount) => {
-    var added = 0;
-    for(let point of spreadData) {
-      if(added < 10 && Math.random() > .5) {
-        var p = [
-          (100*(Math.random()-.5))+point[0],
-          (100*(Math.random()-.5))+point[1],
-          .05
-        ];
+    //if the difference between spread on the map and what we want is +, increase intensity, otherwise decrase
+    console.log(difference)
+    if(difference > 0) {
+      //pick a random point
+      var idx = Math.floor(Math.random()*spreadData.length);
+      if(spreadData[idx][2] < 1) {
+        //if intensity is < 1 increase it
+        spreadData[idx][2] += .02;
+        spreadData.splice(spreadData.length-1, 0, spreadData.splice(idx, 1)[0]);
+      }
 
+      if(spreadData[idx][2] > .2){
+        //otherwise create a new point nearby
+        var x = Math.floor(spreadData[idx][0] + (100*(Math.random()-.5)))
+        var y = Math.floor(spreadData[idx][1] + (100*(Math.random()-.5)))
+        var p = [x, y, 0.0];
         spreadData.push(p);
-        added++;
+      }
+    } else if(difference < 0){
+      //shrink spread
+      if(spreadData[spreadData.length-1][2] > 0) {
+        spreadData[spreadData.length-1][2] -= .02;
+        spreadData.splice(0, 0, spreadData.splice(spreadData.length-1, 1)[0]);
+      }
+      if(spreadData[spreadData.length-1][2] < .2){
+        spreadData.pop();
       }
     }
 
-    var funct = function (amount: any, spreadData: any) {
+    //This is what the front end will execute
+    var funct = function (spreadData: any) {
+      // console.log(spreadData);
+      //get the canvas
       var canvas = document.getElementById('canvas');
       var heat = simpleheat(canvas);
+      // console.log(heat)
 
+      //Draw the data
       heat.data(spreadData);
-      heat.draw();
+      heat.draw(.01);
 
-      //Only have projector says its done if this is the last map update
-      if(amount < spreadData.length)
-        send({done: true});
+      send({done: true});
     }
 
-    var data = {callback: funct.toString(), args: {amount: amount, spreadData: spreadData}};
+    var data = {callback: funct.toString(), args: {spreadData: spreadData}};
     send(data);
 
-    if(amount < spreadData.length)
+    console.log('checking difference')
+    if(difference > 0) {
+      difference--;
+    } else if(difference < 0) {
+      difference++;
+    } else {
+      console.log("CLEARING MAP UPDATE")
       clearInterval(updateMap);
-  }, 100)
+    }
+  }, 5)
 
 }
 
 exports.initialize = function() {
-  for(var j = 1; j < 10; j+=1) {
-    var item = [400*Math.random(),Math.random()*400,Math.random()];
+
+  for(var x = 0; x < 10; x++) {
+    var item = [Math.floor(800*Math.random()), Math.floor(400*Math.random()), 0.0];
     spreadData.push(item);
   }
+
+  // console.log(spreadData);
   var funct = function (spreadData: any) {
     var canvas = document.getElementById('canvas');
     var heat = simpleheat(canvas);
 
-
-
     heat.data(spreadData);
     heat.gradient({0.0: 'rgb(150, 255, 0)', 0.5: 'rgb(255, 237, 0)', 1: 'rgb(255, 0, 0)'});
     heat.resize();
-    heat.radius(10, 25);
-    heat.draw();
+    heat.radius(15, 25);
+    heat.draw(.01);
 
     send({done: true});
   }
 
   var data = {callback: funct.toString(), args: {spreadData: spreadData}};
   send(data);
+
+  this.spread(1000);
 }
