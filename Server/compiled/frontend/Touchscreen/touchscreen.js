@@ -3,7 +3,7 @@ var id = 'touchscreen';
 var listeners = false;
 var tools = [{ id: 'mda', selected: false, name: 'Mass Drug Administration', price: '$300', ratio: '4' }, { id: 'irs', selected: false, name: 'Household Spraying', price: '$100', ratio: '3' }, { id: 'deet', selected: false, name: 'Insect Repellent', price: '$200', ratio: '3' },
     { id: 'clothing', selected: false, name: 'Clothing', price: '$5000', ratio: '3' }, { id: 'bed_netting', selected: false, name: 'Bed Nets', price: '$400', ratio: '4' }, { id: 'gin', selected: false, name: 'Drink gin and tonics', price: '$4000', ratio: '0' },
-    { id: 'mosquito_repellant', selected: false, name: 'Ultrasonic mosquito repellant', price: '$3000', ratio: '3' }, { id: 'mangoes', selected: false, name: "Don't eat mangoes", price: '$100', ratio: '0' }];
+    { id: 'mosquito_repellant', selected: false, name: 'Ultrasonic mosquito repellant', price: '$3000', ratio: '3' }, { id: 'mangos', selected: false, name: "Don't eat mangoe", price: '$100', ratio: '0' }];
 function shuffle() {
     for (var j, x, i = tools.length; i; j = Math.floor(Math.random() * i), x = tools[--i], tools[i] = tools[j], tools[j] = x)
         ;

@@ -34,11 +34,11 @@ exports.playVideo = function (videos) {
             next();
         }, false);
         var next = function () {
-            console.log(i);
+            console.log('video should be playing!!!');
             for (var j = i; j <= Object.keys(videos).length; j++) {
                 if (videos[Object.keys(videos)[j]].selected) {
                     source['src'] = '/' + Object.keys(videos)[j] + '.mp4';
-                    console.log(j);
+                    console.log('telling the player to load the video');
                     player['load']();
                     i = j + 1;
                     if (i > Object.keys(videos).length) {

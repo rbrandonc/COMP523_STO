@@ -51,18 +51,17 @@ var send = (data: any) => {
 };
 
 
-<<<<<<< HEAD
 //Update Price Panel
-exports.updatePanel = function(buttonID:any,state:any){
-  var funct = function(buttonID:any,state:any){
+exports.updatePanel = function(buttonID: any, state: any) {
+  var funct = function(buttonID: any, state: any) {
       var panel = document.getElementById('toolPanel');
       if (panel.childNodes[1]!=null) {
           panel.removeChild(panel.childNodes[1]);
           //console.log();
       }
-      if(state.tools[buttonID].selected ==true){
+      if(state.tools[buttonID].selected == true){
           var div = document.createElement('div');
-          var p = document.createTextNode('Price: ' + state.tools[buttonID].price);
+          var p = document.createTextNode('Price: $' + state.tools[buttonID].price);
           var newLine = document.createElement('br');
           div.className = 'info';
           var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio)
@@ -78,7 +77,8 @@ exports.updatePanel = function(buttonID:any,state:any){
 
   var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
   send(data);
-=======
+}
+
 // function confirmChosenTool(chose_tool_num){
 //     console.log(chose_tool_num);
 //     var elems = document.getElementsByClassName('col-6');
@@ -104,129 +104,6 @@ exports.updatePanel = function(buttonID:any,state:any){
 //         }
 //     }
 // }
-exports.updatePanel = function(buttonID: any, numberOfSelectedTools: any, state: any){
-    var funct = function(buttonID: any){
-        var panel = document.getElementById("toolPanel");
-        panel.style.visibility = 'visible';
-        if(numberOfSelectedTools == 0 && panel.childNodes[1]!=null){
-            panel.removeChild(panel.childNodes[1]);
-        }
-        switch(buttonID){
-            case 'bug_rep':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $10 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'insecticide':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $15 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'gen_modi_mos':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $100 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'bed_netting':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $18 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null &&!state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'vaccine_trial':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $30 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-            case 'anti_mal_medi':
-                var div = document.createElement("div")
-                var price = document.createTextNode("Price: $25 ");
-                var newLine = document.createElement("br");
-                div.className="info";
-                var ratio = document.createTextNode("Impact ratio: ");
-                if(panel.childNodes[1]!=null){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                div.appendChild(price);
-                div.appendChild(newLine);
-                div.appendChild(ratio);
-                panel.appendChild(div);
-                console.log(panel.childNodes[1]);
-                if(panel.childNodes[1]!=null && !state){
-                    panel.removeChild(panel.childNodes[1]);
-                }
-                break;
-        }
-        send({done: true});
-    };
-    var data = {callback: funct.toString(), args: {}};
-    send(data);
->>>>>>> master
-};
 
 //Toggle the state of the selected tool button
 exports.toggleButtonSelected = function(buttonID: any, state: any) {
