@@ -51,7 +51,6 @@ wss.on('connection', function (ws) {
                 ;
                 touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
                 touchscreen.updatePanel(buttonID, state);
-                state.isPanelEmpty = event.data.isPanelEmpty;
                 if (state.numberOfSelectedTools == 2) {
                     touchscreen.toggleButtonVisibility('confirm', true);
                 }
@@ -95,11 +94,11 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: { 'bug_rep': { selected: false, price: '$10', ratio: '' }, 'insecticide': { selected: false, price: '$20', ratio: '' }, 'gen_modi_mos': { selected: false, price: '$50', ratio: '' },
-        'bed_netting': { selected: false, price: '$35', ratio: '' }, 'vaccine_trial': { selected: false, price: '$55', ratio: '' }, 'anti_mal_medi': { selected: false, price: '$13', ratio: '' }
+    tools: { 'mda': { selected: false, name: 'Mass Drug Administration', price: '$300', ratio: '4' }, 'irs': { selected: false, name: 'Household Spraying', price: '$100', ratio: '3' }, 'deet': { selected: false, name: 'Insect Repellent', price: '$200', ratio: '3' },
+        'clothing': { selected: false, name: 'Clothing', price: '$5000', ratio: '3' }, 'bed_netting': { selected: false, name: 'Bed Nets', price: '$400', ratio: '4' }, 'gin': { selected: false, name: 'Drink gin and tonics', price: '$4000', ratio: '0' },
+        'mosquito_repellant': { selected: false, name: 'Ultrasonic mosquito repellant', price: '$3000', ratio: '3' }, 'mangoes': { selected: false, name: "Don't eat mangoes", price: '$100', ratio: '0' }
     },
-    numberOfSelectedTools: 0,
-    isPanelEmpty: true
+    numberOfSelectedTools: 0
 };
 var defaultState = state;
 //# sourceMappingURL=server.js.map

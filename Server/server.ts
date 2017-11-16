@@ -88,6 +88,8 @@ wss.on('connection', function (ws: any) {
       state.initialized = true;
     }
 
+    //generate random tools
+
     //If the frontend is just telling us it finished
     //Set its busy variable to false
     if(event.data.done) {
@@ -99,6 +101,7 @@ wss.on('connection', function (ws: any) {
     // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
     //Actual game code goes here
+
 
     //If we received a button press event
 
@@ -114,7 +117,8 @@ wss.on('connection', function (ws: any) {
         //Then tell the screen to toggle the button color or whatever
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
         touchscreen.updatePanel(buttonID,state);
-        state.isPanelEmpty=event.data.isPanelEmpty;
+
+        //state.isPanelEmpty=event.data.isPanelEmpty;
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
           touchscreen.toggleButtonVisibility('confirm', true);
@@ -133,7 +137,7 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
-      }
+             }
 
       //If the button was confirm, play the corresponding videos and update the map
       if(buttonID === 'confirm') {
@@ -174,8 +178,9 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: {'bug_rep': {selected: false, price:'$10', ratio:''}, 'insecticide': {selected: false, price:'$20', ratio:''}, 'gen_modi_mos': {selected: false, price:'$50', ratio:''},
-                  'bed_netting': {selected: false,price:'$35', ratio:''}, 'vaccine_trial': {selected: false, price:'$55', ratio:''}, 'anti_mal_medi': {selected: false,price:'$13', ratio:''}
+    tools: {'mda': {selected: false, name:'Mass Drug Administration',price:'$300', ratio:'4'}, 'irs': {selected: false, name:'Household Spraying',price:'$100', ratio:'3'}, 'deet': {selected: false, name:'Insect Repellent',price:'$200', ratio:'3'},
+                  'clothing': {selected: false, name:'Clothing',price:'$5000', ratio:'3'}, 'bed_netting': {selected: false, name:'Bed Nets',price:'$400', ratio:'4'}, 'gin': {selected: false, name:'Drink gin and tonics',price:'$4000', ratio:'0'},
+        'mosquito_repellant':{selected:false, name:'Ultrasonic mosquito repellant',price:'$3000',ratio:'3'},'mangoes':{selected:false,name:"Don't eat mangoes",price:'$100',ratio:'0'}
                 },
     numberOfSelectedTools: 0,
 };

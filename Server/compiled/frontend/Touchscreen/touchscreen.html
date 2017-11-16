@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src='touchscreen.js'></script>
+  <script src='touchscreen.ts'></script>
   <link rel="stylesheet" type="text/css" href="../common/common.css" />
   <link rel="stylesheet" type="text/css" href="./res/touchscreen.css" />
 </head>
@@ -11,11 +11,11 @@
 
 </div>
 <div id='outbreakTypes' class='row'>
-  <button id='vac_resistant' class='col-6'>
+  <button id='vac_resistant' onclick="initialize_tools()" class='col-6'>
     Vaccine resistant
   </button>
 
-  <button id='ins_resistant' class='col-6'>
+  <button id='ins_resistant' onclick="initialize_tools()" class='col-6'>
     Insecticide resistant
   </button>
 </div>
@@ -29,37 +29,19 @@
   </div>
 
   <div class='row'>
-    <button  class='col-6 lined thin' id='bug_rep' style='background-color: rgb(245, 245, 220)'>
-      Bug Repellent
-      <!--short term-->
+    <button  class='col-6 lined thin tool'  style='background-color: rgb(245, 245, 220)'>
     </button>
 
-    <button  class='col-6 lined thin' id='insecticide' style='background-color: rgb(245, 245, 220)'>
-      Insecticide
-      <!--short term, no for insecticide-resistance-->
+    <button  class='col-6 lined thin tool'  style='background-color: rgb(245, 245, 220)'>
     </button>
   </div>
 
   <div class='row'>
-    <button  class='col-6 lined thin' id='gen_modi_mos' style='background-color: rgb(245, 245, 220)'>
-      Genetic Mosquitos
-      <!--long term ?? short term-->
+    <button  class='col-6 lined thin tool' style='background-color: rgb(245, 245, 220)'>
+
     </button>
 
-    <button  class='col-6 lined thin' id='bed_netting' style='background-color: rgb(245, 245, 220)'>
-      Bed Netting
-    </button>
-  </div>
-
-  <div class='row'>
-    <button  class='col-6 lined thin' id='vaccine_trial' style='background-color: rgb(245, 245, 220)'>
-      Vaccine Trial
-      <!--long term-->
-    </button>
-
-    <button  class='col-6 lined thin' id="anti_mal_medi" style='background-color: rgb(245, 245, 220)'>
-      Anti-malarial medication
-      <!--short term, doesn't stop transmission, tread individual-->
+    <button  class='col-6 lined thin tool'  style='background-color: rgb(245, 245, 220)'>
     </button>
   </div>
 </div>
