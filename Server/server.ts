@@ -181,11 +181,12 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-    tools: {'mda': {selected: false, name:'Mass Drug Administration',price:'$300', ratio:'4'}, 'irs': {selected: false, name:'Household Spraying',price:'$100', ratio:'3'}, 'deet': {selected: false, name:'Insect Repellent',price:'$200', ratio:'3'},
-                  'clothing': {selected: false, name:'Clothing',price:'$5000', ratio:'3'}, 'bed_netting': {selected: false, name:'Bed Nets',price:'$400', ratio:'4'}, 'gin': {selected: false, name:'Drink gin and tonics',price:'$4000', ratio:'0'},
-        'mosquito_repellant':{selected:false, name:'Ultrasonic mosquito repellant',price:'$3000',ratio:'3'},'mangoes':{selected:false,name:"Don't eat mangoes",price:'$100',ratio:'0'}
+    tools: {'mda': {selected: false, name:'Mass Drug Administration',price:'$300', ratio:'\u2605\u2605\u2605\u2605\u2606'}, 'irs': {selected: false, name:'Household Spraying',price:'$100', ratio:'\u2605\u2605\u2605\u2606\u2606'}, 'deet': {selected: false, name:'Insect Repellent',price:'$200', ratio:'\u2605\u2605\u2605\u2606\u2606'},
+                  'clothing': {selected: false, name:'Clothing',price:'$5000', ratio:'\u2605\u2605\u2605\u2606\u2606'}, 'bed_netting': {selected: false, name:'Bed Nets',price:'$400', ratio:'\u2605\u2605\u2605\u2605\u2606'}, 'gin': {selected: false, name:'Drink gin and tonics',price:'$4000', ratio:'\u2606\u2606\u2606\u2606\u2606'},
+        'mosquito_repellant':{selected:false, name:'Ultrasonic mosquito repellant',price:'$3000',ratio:'\u2605\u2605\u2605\u2606\u2606\u2606'},'mangoes':{selected:false,name:"Don't eat mangoes",price:'$100',ratio:'0'}
                 },
     numberOfSelectedTools: 0,
 };
+
 
 var defaultState = state;
