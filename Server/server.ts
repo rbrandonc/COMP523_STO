@@ -190,20 +190,10 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
-<<<<<<< HEAD
+
     tools: {'mda': {selected: false, name:'Mass Drug Administration',price:'$300', ratio:'\u2605\u2605\u2605\u2605\u2606'}, 'irs': {selected: false, name:'Household Spraying',price:'$100', ratio:'\u2605\u2605\u2605\u2606\u2606'}, 'deet': {selected: false, name:'Insect Repellent',price:'$200', ratio:'\u2605\u2605\u2605\u2606\u2606'},
                   'clothing': {selected: false, name:'Clothing',price:'$5000', ratio:'\u2605\u2605\u2605\u2606\u2606'}, 'bed_netting': {selected: false, name:'Bed Nets',price:'$400', ratio:'\u2605\u2605\u2605\u2605\u2606'}, 'gin': {selected: false, name:'Drink gin and tonics',price:'$4000', ratio:'\u2606\u2606\u2606\u2606\u2606'},
         'mosquito_repellant':{selected:false, name:'Ultrasonic mosquito repellant',price:'$3000',ratio:'\u2605\u2605\u2605\u2606\u2606\u2606'},'mangoes':{selected:false,name:"Don't eat mangoes",price:'$100',ratio:'0'}
-=======
-<<<<<<< HEAD
-    tools: {'mda': {selected: false, name:'Mass Drug Administration',price:'$300', ratio:'4'}, 'irs': {selected: false, name:'Household Spraying',price:'$100', ratio:'3'}, 'deet': {selected: false, name:'Insect Repellent',price:'$200', ratio:'3'},
-                  'clothing': {selected: false, name:'Clothing',price:'$5000', ratio:'3'}, 'bed_netting': {selected: false, name:'Bed Nets',price:'$400', ratio:'4'}, 'gin': {selected: false, name:'Drink gin and tonics',price:'$4000', ratio:'0'},
-        'mosquito_repellant':{selected:false, name:'Ultrasonic mosquito repellant',price:'$3000',ratio:'3'},'mangoes':{selected:false,name:"Don't eat mangoes",price:'$100',ratio:'0'}
-=======
-    tools: {'bug_rep': {selected: false, effectiveness: .5}, 'insecticide': {selected: false, effectiveness: .6}, 'gen_modi_mos': {selected: false, effectiveness: .1},
-                  'bed_netting': {selected: false, effectiveness: .1}, 'vaccine_trial': {selected: false, effectiveness: .2}, 'anti_mal_medi': {selected: false, effectiveness: .7}
->>>>>>> master
->>>>>>> 3c5e49be8f30b9fbc0b6539880968ff377ef0745
                 },
     numberOfSelectedTools: 0,
 };
