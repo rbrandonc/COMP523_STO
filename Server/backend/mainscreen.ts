@@ -69,7 +69,7 @@ exports.playVideo = function(videos: any) {
       console.log(i);
       for(let j = i; j <= Object.keys(videos).length; j++) {
         if(videos[Object.keys(videos)[j]].selected) {
-          source['src'] = '../res/' + Object.keys(videos)[j] + '.mp4';
+          source['src'] = '/' + Object.keys(videos)[j] + '.mp4';
           console.log(j);
           player['load']();
           i = j+1;

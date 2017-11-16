@@ -42,6 +42,16 @@ simpleheat.prototype = {
         return this;
     },
 
+    increase: function(idx) {
+      spreadData[idx][2] += .1;
+      this._data.splice(this._data.length-1, 0, this._data.splice(idx, 1)[0]);
+    },
+
+    decrease: function(idx) {
+      this._data[this._data.length-1][2] -= .01;
+      this._data.splice(0, 0, this._data.splice(this._data.length-1, 1)[0]);
+    },
+
     clear: function () {
         this._data = [];
         return this;

@@ -6,7 +6,7 @@
   "bin": "compiled/server.js",
   "scripts": {
     "start": "tsc && npm run copy && node compiled/server.js",
-    "copy": "cp -r ./frontend ./compiled",
+    "copy": "cp -r ./frontend ./compiled && cp -r ./res ./compiled",
     "build": "pkg package.json --out-path ./bin"
   },
   "pkg": {

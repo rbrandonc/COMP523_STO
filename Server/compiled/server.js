@@ -4,7 +4,8 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({ server: server });
-app.use(express.static(path.join(__dirname, '/frontend')));
+app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static('res'));
 var projector = require('./backend/projector');
 var mainscreen = require('./backend/mainscreen');
 var touchscreen = require('./backend/touchscreen');
@@ -25,7 +26,6 @@ wss.on('connection', function (ws) {
     ws.send(JSON.stringify(data));
     ws.onmessage = function (event) {
         event.data = JSON.parse(event.data);
-        console.log(event.data);
         touchscreen.ws = event.data.id === "touchscreen" ? ws : touchscreen.ws;
         mainscreen.ws = event.data.id === "mainscreen" ? ws : mainscreen.ws;
         projector.ws = event.data.id === "projector" ? ws : projector.ws;
@@ -76,12 +76,21 @@ wss.on('connection', function (ws) {
             }
             if (buttonID === 'confirm') {
                 mainscreen.playVideo(state.tools);
-                var spread = 7000;
+                var effectiveness = 0;
+                for (var _i = 0, _a = Object.keys(state.tools); _i < _a.length; _i++) {
+                    var t = _a[_i];
+                    if (state.tools[t].selected) {
+                        effectiveness += state.tools[t].effectiveness;
+                    }
+                }
+                effectiveness = (effectiveness - .5) * (-1);
+                var spread = Math.floor(effectiveness * 100);
+                console.log(effectiveness + ' ' + spread);
                 projector.spread(spread);
                 touchscreen.reset();
                 state.numberOfSelectedTools = 0;
-                for (var _i = 0, _a = Object.keys(state.tools); _i < _a.length; _i++) {
-                    var item = _a[_i];
+                for (var _b = 0, _c = Object.keys(state.tools); _b < _c.length; _b++) {
+                    var item = _c[_b];
                     state.tools[item].selected = false;
                 }
             }
@@ -95,9 +104,14 @@ var state = {
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
+<<<<<<< HEAD
     tools: { 'mda': { selected: false, name: 'Mass Drug Administration', price: '$300', ratio: '4' }, 'irs': { selected: false, name: 'Household Spraying', price: '$100', ratio: '3' }, 'deet': { selected: false, name: 'Insect Repellent', price: '$200', ratio: '3' },
         'clothing': { selected: false, name: 'Clothing', price: '$5000', ratio: '3' }, 'bed_netting': { selected: false, name: 'Bed Nets', price: '$400', ratio: '4' }, 'gin': { selected: false, name: 'Drink gin and tonics', price: '$4000', ratio: '0' },
         'mosquito_repellant': { selected: false, name: 'Ultrasonic mosquito repellant', price: '$3000', ratio: '3' }, 'mangoes': { selected: false, name: "Don't eat mangoes", price: '$100', ratio: '0' }
+=======
+    tools: { 'bug_rep': { selected: false, effectiveness: .5 }, 'insecticide': { selected: false, effectiveness: .6 }, 'gen_modi_mos': { selected: false, effectiveness: .1 },
+        'bed_netting': { selected: false, effectiveness: .1 }, 'vaccine_trial': { selected: false, effectiveness: .2 }, 'anti_mal_medi': { selected: false, effectiveness: .7 }
+>>>>>>> master
     },
     numberOfSelectedTools: 0
 };
