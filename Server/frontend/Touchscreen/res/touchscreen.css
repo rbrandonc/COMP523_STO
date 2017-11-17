@@ -147,7 +147,7 @@ h1 {
 #toolPanel{
     visibility: hidden;
     position:absolute;
-    top:60px;
+    /*top:60px;*/
     right:85px;
     font-weight:bold;
     font-family: 'Ubuntu', cursive;
