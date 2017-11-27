@@ -110,49 +110,49 @@ var state = {
             name: 'Mass Drug Administration',
             selected: false,
             price: 300,
-            ratio: '.6'
+            ratio: .6
         },
         'irs': {
             selected: false,
             name: 'Household Spraying',
             price: 100,
-            ratio: '.4'
+            ratio: .4
         },
         'deet': {
             selected: false,
             name: 'Insect Repellent',
             price: 200,
-            ratio: '.4'
+            ratio: .4
         },
         'clothing': {
             selected: false,
             name: 'Clothing',
             price: 5000,
-            ratio: '.2'
+            ratio: .2
         },
         'bed_netting': {
             selected: false,
             name: 'Bed Nets',
             price: 400,
-            ratio: '.4'
+            ratio: .4
         },
         'gin': {
             selected: false,
             name: 'Drink gin and tonics',
             price: 4000,
-            ratio: '0'
+            ratio: 0.0
         },
         'mosquito_repellant': {
             selected: false,
             name: 'Ultrasonic mosquito repellant',
             price: 3000,
-            ratio: '.2'
+            ratio: .2
         },
         'mangos': {
             selected: false,
             name: 'Don\'t eat mangos',
             price: 100,
-            ratio: '0'
+            ratio: 0.0
         }
     },
     numberOfSelectedTools: 0

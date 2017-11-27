@@ -66,7 +66,7 @@ exports.spread = function (amount) {
             console.log("CLEARING MAP UPDATE");
             clearInterval(updateMap);
         }
-    }, 5);
+    }, 10);
 };
 exports.initialize = function () {
     for (var x = 0; x < 10; x++) {

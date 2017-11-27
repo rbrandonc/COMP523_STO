@@ -112,7 +112,7 @@ exports.spread = function(amount: any) {
       console.log("CLEARING MAP UPDATE")
       clearInterval(updateMap);
     }
-  }, 5)
+  }, 10)
 
 }
 
