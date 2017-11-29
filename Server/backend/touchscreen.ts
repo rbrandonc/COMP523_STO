@@ -50,6 +50,33 @@ var send = (data: any) => {
   }
 };
 
+exports.showShortTerm = function(tools: any) {
+  //pick 4 random short term tools
+  var temp = tools;
+  var temp2: any[] = [];
+  for(var j, x, i = temp.length; i; j = Math.floor(Math.random() * i), x = temp[--i], temp[i] = temp[j], temp[j] = x);
+  for(var k = 0; k < temp.length; k++) {
+    if(temp[i].term = 'short') { temp2.push(temp[i]); }
+    if(temp2.length >= 4) { break; }
+  }
+
+  //show these 4 tools on the front end
+  var funct = function (tools: any) {
+    var buttons = document.getElementsByClassName('tool');
+
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].setAttribute('id', tools[i].id);
+        console.log(tools[i].id);
+        buttons[i].innerHTML= tools[i].name;
+    }
+
+    send({done: true});
+  }
+
+  var data = {callback: funct.toString(), args: {tools: temp2}};
+  send(data);
+}
+
 
 //Update Price Panel
 exports.updatePanel = function(buttonID: any, state: any) {

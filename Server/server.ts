@@ -103,10 +103,7 @@ wss.on('connection', function (ws: any) {
     // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
 
     //Actual game code goes here
-
-
     //If we received a button press event
-
     if(event.data.buttonID) {
       console.log(JSON.stringify(data));
       var buttonID = event.data.buttonID;
@@ -120,7 +117,6 @@ wss.on('connection', function (ws: any) {
         touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
         touchscreen.updatePanel(buttonID,state);
 
-        //state.isPanelEmpty=event.data.isPanelEmpty;
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
           touchscreen.toggleButtonVisibility('confirm', true);
@@ -139,6 +135,7 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
+        touchscreen.showShortTerm(this.tools);
         mainscreen.hideBgTitle();
       }
         //hide mainscreen background

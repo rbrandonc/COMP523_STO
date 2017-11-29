@@ -108,51 +108,131 @@ var state = {
     tools: {
         'mda': {
             name: 'Mass Drug Administration',
+            description: 'Replace me',
             selected: false,
             price: 300,
-            ratio: .6
+            ratio: .6,
+            term: 'short'
         },
         'irs': {
             selected: false,
             name: 'Household Spraying',
+            description: 'Replace me',
             price: 100,
-            ratio: .4
+            ratio: .4,
+            term: 'short'
         },
         'deet': {
             selected: false,
             name: 'Insect Repellent',
+            description: 'Replace me',
             price: 200,
-            ratio: .4
+            ratio: .4,
+            term: 'short'
         },
         'clothing': {
             selected: false,
             name: 'Clothing',
+            description: 'Replace me',
             price: 5000,
-            ratio: .2
+            ratio: .2,
+            term: 'short'
         },
         'bed_netting': {
             selected: false,
             name: 'Bed Nets',
+            description: 'Replace me',
             price: 400,
-            ratio: .4
+            ratio: .4,
+            term: 'short'
         },
         'gin': {
             selected: false,
             name: 'Drink gin and tonics',
+            description: 'Replace me',
             price: 4000,
-            ratio: 0.0
+            ratio: 0.0,
+            term: 'short'
         },
         'mosquito_repellant': {
             selected: false,
             name: 'Ultrasonic mosquito repellant',
+            description: 'Replace me',
             price: 3000,
-            ratio: .2
+            ratio: 0.0,
+            term: 'short'
         },
         'mangos': {
             selected: false,
             name: 'Don\'t eat mangos',
+            description: 'Replace me',
             price: 100,
-            ratio: 0.0
+            ratio: 0.0,
+            term: 'short'
+        },
+        'test_treat': {
+            selected: false,
+            name: 'Rapid Diagnostic Testing',
+            description: 'Replace me',
+            price: 100,
+            ratio: .6,
+            term: 'long'
+        },
+        'env_spraying': {
+            selected: false,
+            name: 'Insecticide Killer',
+            description: 'Replace me',
+            price: 1000,
+            ratio: .2,
+            term: 'long'
+        },
+        'env_control': {
+            selected: false,
+            name: 'Environmental Control',
+            description: 'Replace me',
+            price: 1000,
+            ratio: .4,
+            term: 'long'
+        },
+        'fish': {
+            selected: false,
+            name: 'Larvicidal Fish',
+            description: 'Replace me',
+            price: 1000,
+            ratio: .4,
+            term: 'long'
+        },
+        'vaccine': {
+            selected: false,
+            name: 'Malaria Vaccine',
+            description: 'Replace me',
+            price: 100,
+            ratio: .2,
+            term: 'long'
+        },
+        'garlic': {
+            selected: false,
+            name: 'Garlic',
+            description: 'Eating garlic will alter your body odor.',
+            price: 1000,
+            ratio: .4,
+            term: 'long'
+        },
+        'cleaning': {
+            selected: false,
+            name: 'Clean Up',
+            description: 'Avoid contact with dirt.',
+            price: 1000,
+            ratio: .4,
+            term: 'long'
+        },
+        'clean_water': {
+            selected: false,
+            name: 'Drink Clean Water',
+            description: 'Do not drink dirty water.',
+            price: 1000,
+            ratio: .4,
+            term: 'long'
         }
     },
     numberOfSelectedTools: 0
