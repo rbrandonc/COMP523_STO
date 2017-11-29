@@ -93,21 +93,10 @@ exports.updatePanel = function(buttonID: any, state: any) {
                   }else if(this.id==3){
                       price = Math.ceil(state.tools[buttonID].price);
                   }
-                  panel.removeChild(panel.childNodes[1]);
-
-                  p=document.createTextNode('Price: $' + price);
-                  div.appendChild(p);
-                  div.appendChild(newLine);
-                  div.appendChild(r);
-                  div.appendChild(bt1);
-                  div.appendChild(bt2);
-                  div.appendChild(bt3);
-                  panel.appendChild(div);
-
+                  //update price
+                  p.nodeValue='Price: $' + price.toString();
               })
-
           }
-
       }
       send({done:true});
   };
