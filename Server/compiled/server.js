@@ -50,12 +50,14 @@ wss.on('connection', function (ws) {
             console.log(JSON.stringify(data));
             var buttonID = event.data.buttonID;
             if (state.tools[buttonID] !== undefined) {
-                say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
-                    if (err) {
-                        return console.error(err);
-                    }
-                    console.log('Text has been spoken.');
-                });
+                if (!state.tools[buttonID].selected) {
+                    say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                        console.log('Text has been spoken.');
+                    });
+                }
                 state.tools[buttonID].selected = !state.tools[buttonID].selected;
                 if (state.tools[buttonID].selected) {
                     state.numberOfSelectedTools++;

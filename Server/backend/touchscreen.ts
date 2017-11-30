@@ -137,13 +137,15 @@ exports.updatePanel = function(buttonID: any, state: any) {
         }
         var div = document.createElement('div');
         var b = document.createTextNode('Budget: $'+state.budget);
+        var newLine = document.createElement('br');
         div.appendChild(b);
+        div.appendChild(newLine);
 
 
         if(state.tools[buttonID].selected == true){
             //var div = document.createElement('div');
             var p = document.createTextNode('Price: $' + state.tools[buttonID].price+' ');
-            var newLine = document.createElement('br');
+
             div.className = 'info';
             var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio+' ');
             panel.style.visibility = 'visible';
