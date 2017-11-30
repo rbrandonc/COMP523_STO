@@ -4,7 +4,7 @@
 	      "suppressImplicitAnyIndexErrors": true,
         "module": "system",
         "noImplicitAny": true,
-        "removeComments": true,
+        "removeComments": false,
         "preserveConstEnums": true,
         "outDir": "compiled/",
         "sourceMap": true,

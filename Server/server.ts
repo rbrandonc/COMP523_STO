@@ -129,12 +129,14 @@ wss.on('connection', function (ws: any) {
       //If button is one of the tools
 
       if(state.tools[buttonID] !== undefined) {
-          say.speak("WOW, Cool! You choosed"+state.tools[buttonID].name,'Good News', 1.0, (err:any) => {
-              if (err) {
-                  return console.error(err)
-              }
-              console.log('Text has been spoken.')
-          });
+          if(!state.tools[buttonID].selected) {
+              say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, (err: any) => {
+                  if (err) {
+                      return console.error(err)
+                  }
+                  console.log('Text has been spoken.')
+              });
+          }
         //Toggle the selected state of the tool as long as we have less than two selected tools
         state.tools[buttonID].selected = !state.tools[buttonID].selected;
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
