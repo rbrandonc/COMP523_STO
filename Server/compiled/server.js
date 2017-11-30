@@ -1,3 +1,9 @@
+/**
+ * @overview This file is the main process.
+ * It controls connecting and disconnecting of the screens,
+ * passes them functions to run, and does game logic.
+ */
+// Websocket/express setup
 var WebSocketServer = require('ws').Server;
 var express = require('express');
 var path = require('path');
@@ -7,51 +13,97 @@ var wss = new WebSocketServer({ server: server });
 var say = require('say');
 app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(express.static('res'));
+// References to our screen functions
 var projector = require('./backend/projector');
 var mainscreen = require('./backend/mainscreen');
 var touchscreen = require('./backend/touchscreen');
+// Server start listening
 server.on('request', app);
 server.listen(8080, function () {
     console.log('listening on 8080');
     var opn = require('opn');
     opn('http://localhost:8080');
 });
+// Serve up the dev screen if we go to localhost:8080/
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/frontend/main.html');
 });
+// Screen connection debugging
 var log = setInterval(function () {
     console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)') : ''), ' projector: ' + (projector.ws ? 'connected ' + (projector.busy ? '(busy)' : '(idle)') : ''), ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)') : ''));
 }, 2000);
+// This is for detecting if we lose connection to a screen
+// Doesn't work but doesn't need to be implemented yet
+// function heartbeat() {
+//   this.isAlive = true;
+// }
+// const interval = setInterval(function ping() {
+//   wss.clients.forEach(function each(ws) {
+//     if (ws.isAlive === false) {
+//       this.resetGame();
+//       return ws.terminate();
+//     }
+//
+//     ws.isAlive = false;
+//     ws.ping('', false, true);
+//   });
+// }, 1000);
+//
 var s = 0;
+/** When a connection to a screen is made, ask it to identify itself. */
 wss.on('connection', function (ws) {
+    // Also for screen loss detection
+    // ws.isAlive = true;
+    // ws.on('pong', heartbeat);
+    //Ask connection to identify itself
     var data = { identify: true };
     ws.send(JSON.stringify(data));
+    /** When the server receives a message from a screen, if it has an ID
+     * update our reference to that websocket. If it is a message telling the server
+     * the screen is no longer busy, set that screens busy variable to false.
+     * If we don't have a connection to any of the three screens, return. If we have
+     * All 3 screens or we just had a screen reconnect, initialize the game state
+     * and continue the game. */
     ws.onmessage = function (event) {
+        //Always parse the event data as json
         event.data = JSON.parse(event.data);
         console.log(event.data);
         if (event.data.initials) {
             console.log("Got a highscore!");
         }
+        //Add connection to our list of conncetions
+        // TODO: need to reset state if we reconnect a screen
         touchscreen.ws = event.data.id === "touchscreen" ? ws : touchscreen.ws;
         mainscreen.ws = event.data.id === "mainscreen" ? ws : mainscreen.ws;
         projector.ws = event.data.id === "projector" ? ws : projector.ws;
+        //initialize spread
         if (projector.ws != undefined && state.initialized == false) {
             projector.initialize();
             state.initialized = true;
         }
+        //generate random tools
+        //If the frontend is just telling us it finished
+        //Set its busy variable to false
         if (event.data.done) {
             eval(event.data.id + '.busy' + ' = ' + false);
             return;
         }
+        //If we are still missing a connection, dont do anything
+        // if(!touchscreen.ws || !mainscreen.ws || !projector.ws) { return; }
+        //Actual game code goes here
+        //If we received a button press event
         if (event.data.budget != null) {
+            //console.log("!!!!!!I saw the "+event.data.budget);
             state.budget = event.data.budget;
         }
         if (event.data.package != null) {
+            //console.log(event.data.package['package']+event.data.package['buttonID']);
             state.tools[event.data.package['buttonID']].package = event.data.package['package'];
         }
         if (event.data.buttonID) {
             console.log(JSON.stringify(data));
             var buttonID = event.data.buttonID;
+            //If button is one of the tools
             if (state.tools[buttonID] !== undefined) {
                 say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
                     if (err) {
@@ -59,6 +111,7 @@ wss.on('connection', function (ws) {
                     }
                     console.log('Text has been spoken.');
                 });
+                //Toggle the selected state of the tool as long as we have less than two selected tools
                 state.tools[buttonID].selected = !state.tools[buttonID].selected;
                 if (state.tools[buttonID].selected) {
                     state.numberOfSelectedTools++;
@@ -67,8 +120,10 @@ wss.on('connection', function (ws) {
                     state.numberOfSelectedTools--;
                 }
                 ;
+                //Then tell the screen to toggle the button color or whatever
                 touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
                 touchscreen.updatePanel(buttonID, state);
+                //If we have two tools selected, show the confirm button
                 if (state.numberOfSelectedTools == 2) {
                     touchscreen.setButtonDisabled('confirm', false);
                 }
@@ -81,25 +136,32 @@ wss.on('connection', function (ws) {
                         state.numberOfSelectedTools--;
                     }
                     ;
+                    //Then tell the screen to toggle the button color or whatever
                     touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
                 }
                 else {
+                    //If two tools not selected, hide confirm
                     touchscreen.setButtonDisabled('confirm', true);
                 }
             }
+            //If the button was outbreak type, show the tool scree
             if (buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
                 state['outbreakType'] = buttonID;
                 touchscreen.showTools();
                 touchscreen.showShortTerm(state.tools);
                 mainscreen.hideBgTitle();
             }
+            //hide mainscreen background
+            //If the button was confirm, play the corresponding videos and update the map
             if (buttonID === 'confirm') {
                 s++;
                 if (s == 2) {
                     touchscreen.showGameover(projector.getSpreadSize());
                     touchscreen.hideTools();
                 }
+                //play videos
                 mainscreen.playVideo(state.tools);
+                //calculate spread and animate projector
                 var ratio = 0;
                 for (var _i = 0, _a = Object.keys(state.tools); _i < _a.length; _i++) {
                     var t = _a[_i];
@@ -112,8 +174,10 @@ wss.on('connection', function (ws) {
                 var spread = Math.floor(ratio * 1000);
                 console.log(ratio + ' ' + spread);
                 projector.spread(spread);
+                //reset touchscreen
                 touchscreen.reset();
                 touchscreen.showLongTerm(state.tools);
+                //reset gamestate
                 state.numberOfSelectedTools = 0;
                 for (var _b = 0, _c = Object.keys(state.tools); _b < _c.length; _b++) {
                     var item = _c[_b];
@@ -124,8 +188,16 @@ wss.on('connection', function (ws) {
     };
     ws.on('close', function () {
         console.log('closing');
+        //do this when connection is closed
+        // clearInterval(interval);
+        // clearInterval(log);
     });
 });
+/**
+ * Game State
+ * @class {GameState}
+ * @default
+ */
 var state = {
     budget: 15000,
     initialized: false,
@@ -279,4 +351,5 @@ var state = {
     },
     numberOfSelectedTools: 0
 };
+// var defaultState: any = state;
 //# sourceMappingURL=server.js.map
