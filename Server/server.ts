@@ -81,6 +81,10 @@ wss.on('connection', function (ws: any) {
     event.data = JSON.parse(event.data);
     console.log(event.data);
 
+    if(event.data.initials) {
+      console.log("Got a highscore!");
+    }
+
     //Add connection to our list of conncetions
     // TODO: need to reset state if we reconnect a screen
     touchscreen.ws = event.data.id === "touchscreen" ? ws : touchscreen.ws;
@@ -168,7 +172,7 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'confirm') {
         s++;
         if(s == 2) {
-          touchscreen.showGameover();
+          touchscreen.showGameover(projector.getSpreadSize());
           touchscreen.hideTools();
         }
 

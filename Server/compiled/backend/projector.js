@@ -20,6 +20,9 @@ var send = function (data) {
 };
 var spreadData = [];
 var spread = 0;
+exports.getSpreadSize = function () {
+    return spreadData.length;
+};
 exports.spread = function (amount) {
     var difference = amount - spread;
     var updateMap = setInterval(function () {

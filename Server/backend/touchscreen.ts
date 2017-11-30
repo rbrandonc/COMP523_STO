@@ -253,15 +253,21 @@ exports.toggleButtonVisibility = function(buttonID: any, state: any) {
 // }
 //
 //We picked the scenario, so hide the scenario buttons and show the tool buttons
-exports.showGameover = function() {
+exports.showGameover = function(score: any) {
 
-  var funct = function(){
+  var funct = function(score: any){
+    console.log(score)
     document.getElementById('gameover').style.visibility='visible';
+
+    //show existing highscores
+    // document.getElementById('highscores').innerHTML = 'highscoressssss mannnn';
+
+    document.getElementById('score').innerHTML = ' ' + score;
 
     send({done: true});
   };
 
-  var data = {callback: funct.toString(), args: {}};
+  var data = {callback: funct.toString(), args: {score: score}};
   send(data);
 };
 

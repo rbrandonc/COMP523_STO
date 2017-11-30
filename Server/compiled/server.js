@@ -29,6 +29,9 @@ wss.on('connection', function (ws) {
     ws.onmessage = function (event) {
         event.data = JSON.parse(event.data);
         console.log(event.data);
+        if (event.data.initials) {
+            console.log("Got a highscore!");
+        }
         touchscreen.ws = event.data.id === "touchscreen" ? ws : touchscreen.ws;
         mainscreen.ws = event.data.id === "mainscreen" ? ws : mainscreen.ws;
         projector.ws = event.data.id === "projector" ? ws : projector.ws;
@@ -95,7 +98,7 @@ wss.on('connection', function (ws) {
             if (buttonID === 'confirm') {
                 s++;
                 if (s == 2) {
-                    touchscreen.showGameover();
+                    touchscreen.showGameover(projector.getSpreadSize());
                     touchscreen.hideTools();
                 }
                 mainscreen.playVideo(state.tools);
