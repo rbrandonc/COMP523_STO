@@ -11,6 +11,7 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer();
 var wss = new WebSocketServer({server: server});
+var say = require('say');
 app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(express.static('res'));
 
@@ -111,12 +112,29 @@ wss.on('connection', function (ws: any) {
 
     //Actual game code goes here
     //If we received a button press event
-    if(event.data.buttonID) {
+      if(event.data.budget!=null){
+          //console.log("!!!!!!I saw the "+event.data.budget);
+          state.budget=event.data.budget;
+      }
+
+      if(event.data.package!=null){
+          //console.log(event.data.package['package']+event.data.package['buttonID']);
+          state.tools[event.data.package['buttonID']].package=event.data.package['package'];
+
+      }
+
+      if(event.data.buttonID) {
       console.log(JSON.stringify(data));
       var buttonID = event.data.buttonID;
       //If button is one of the tools
-      if(state.tools[buttonID] !== undefined) {
 
+      if(state.tools[buttonID] !== undefined) {
+          say.speak("WOW, Cool! You choosed"+state.tools[buttonID].name,'Good News', 1.0, (err:any) => {
+              if (err) {
+                  return console.error(err)
+              }
+              console.log('Text has been spoken.')
+          });
         //Toggle the selected state of the tool as long as we have less than two selected tools
         state.tools[buttonID].selected = !state.tools[buttonID].selected;
         if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
@@ -200,6 +218,7 @@ wss.on('connection', function (ws: any) {
  * @default
  */
 var state: any = {
+    budget:15000,
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
     outbreakType: false,
@@ -210,7 +229,8 @@ var state: any = {
             selected: false,
             price: 300,
             ratio: .6,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'irs':{
             selected:false,
@@ -218,7 +238,8 @@ var state: any = {
             description: 'Replace me',
             price: 100,
             ratio: .4,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'deet': {
             selected: false,
@@ -226,7 +247,8 @@ var state: any = {
             description: 'Replace me',
             price: 200,
             ratio: .4,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'clothing': {
             selected: false,
@@ -234,7 +256,8 @@ var state: any = {
             description: 'Replace me',
             price: 5000,
             ratio: .2,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'bed_netting': {
             selected: false,
@@ -242,7 +265,8 @@ var state: any = {
             description: 'Replace me',
             price: 400,
             ratio: .4,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'gin': {
             selected: false,
@@ -250,7 +274,8 @@ var state: any = {
             description: 'Replace me',
             price: 4000,
             ratio: 0.0,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'mosquito_repellant': {
             selected: false,
@@ -258,7 +283,8 @@ var state: any = {
             description: 'Replace me',
             price: 3000,
             ratio: 0.0,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'mangos': {
             selected: false,
@@ -266,7 +292,8 @@ var state: any = {
             description: 'Replace me',
             price: 100,
             ratio: 0.0,
-            term: 'short'
+            term: 'short',
+            package: 3
         },
         'test_treat': {
             selected: false,
@@ -274,7 +301,8 @@ var state: any = {
             description: 'Replace me',
             price: 100,
             ratio: .6,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'env_spraying': {
             selected: false,
@@ -282,7 +310,8 @@ var state: any = {
             description: 'Replace me',
             price: 1000,
             ratio: .2,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'env_control': {
             selected: false,
@@ -290,7 +319,8 @@ var state: any = {
             description: 'Replace me',
             price: 1000,
             ratio: .4,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'fish': {
             selected: false,
@@ -298,7 +328,8 @@ var state: any = {
             description: 'Replace me',
             price: 1000,
             ratio: .4,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'vaccine': {
             selected: false,
@@ -306,7 +337,8 @@ var state: any = {
             description: 'Replace me',
             price: 100,
             ratio: .2,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'garlic': {
             selected: false,
@@ -314,7 +346,8 @@ var state: any = {
             description: 'Eating garlic will alter your body odor.',
             price: 1000,
             ratio: .4,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'cleaning': {
             selected: false,
@@ -322,7 +355,8 @@ var state: any = {
             description: 'Avoid contact with dirt.',
             price: 1000,
             ratio: .4,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
         'clean_water': {
             selected: false,
@@ -330,11 +364,12 @@ var state: any = {
             description: 'Do not drink dirty water.',
             price: 1000,
             ratio: .4,
-            term: 'long'
+            term: 'long',
+            package: 3
         },
     },
     numberOfSelectedTools: 0
-}
+};
 
 
 // var defaultState: any = state;

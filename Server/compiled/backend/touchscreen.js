@@ -83,12 +83,14 @@ exports.updatePanel = function (buttonID, state) {
         if (panel.childNodes[1] != null) {
             panel.removeChild(panel.childNodes[1]);
         }
+        var div = document.createElement('div');
+        var b = document.createTextNode('Budget: $' + state.budget);
+        div.appendChild(b);
         if (state.tools[buttonID].selected == true) {
-            var div = document.createElement('div');
-            var p = document.createTextNode('Price: $' + state.tools[buttonID].price);
+            var p = document.createTextNode('Price: $' + state.tools[buttonID].price + ' ');
             var newLine = document.createElement('br');
             div.className = 'info';
-            var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio);
+            var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio + ' ');
             panel.style.visibility = 'visible';
             var bt1 = document.createElement('button');
             bt1.innerHTML = 'small';
@@ -105,35 +107,36 @@ exports.updatePanel = function (buttonID, state) {
             div.appendChild(p);
             div.appendChild(newLine);
             div.appendChild(r);
+            div.appendChild(newLine);
             div.appendChild(bt1);
             div.appendChild(bt2);
             div.appendChild(bt3);
             panel.appendChild(div);
             var packages = document.getElementsByClassName('package');
             var price = state.tools[buttonID].price;
+            var pre_price = 0;
             for (var i = 0; i < 3; i++) {
                 packages[i].addEventListener("click", function () {
                     console.log(this);
-                    if (this.id == 1) {
-                        price = Math.ceil(state.tools[buttonID].price * (1 / 3));
-                    }
-                    else if (this.id == 2) {
-                        price = Math.ceil(state.tools[buttonID].price * (2 / 3));
-                    }
-                    else if (this.id == 3) {
-                        price = Math.ceil(state.tools[buttonID].price);
-                    }
-                    panel.removeChild(panel.childNodes[1]);
-                    p = document.createTextNode('Price: $' + price);
-                    div.appendChild(p);
-                    div.appendChild(newLine);
-                    div.appendChild(r);
-                    div.appendChild(bt1);
-                    div.appendChild(bt2);
-                    div.appendChild(bt3);
-                    panel.appendChild(div);
+                    price = Math.floor(state.tools[buttonID].price * (this.id / 3));
+                    p.nodeValue = 'Price: $' + price.toString();
+                    state.budget += pre_price;
+                    state.budget -= price;
+                    b.nodeValue = 'Budget: $' + (state.budget).toString();
+                    console.log(state.budget.toString());
+                    pre_price = price;
+                    send({ package: { package: this.id, buttonID: buttonID } });
+                    send({ budget: Math.floor(state.budget) });
                 });
             }
+        }
+        else {
+            if ((state.budget + (state.tools[buttonID].price * (state.tools[buttonID].package / 3))) <= 15000) {
+                state.budget += (state.tools[buttonID].price * (state.tools[buttonID].package / 3));
+                b.nodeValue = 'Budget: $' + state.budget.toLocaleString();
+                send({ budget: Math.floor(state.budget) });
+            }
+            panel.appendChild(div);
         }
         send({ done: true });
     };

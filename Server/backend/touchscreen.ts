@@ -129,67 +129,83 @@ exports.showLongTerm = function(tools: any) {
 
 //Update Price Panel
 exports.updatePanel = function(buttonID: any, state: any) {
-  var funct = function(buttonID: any, state: any) {
-      var panel = document.getElementById('toolPanel');
-      if (panel.childNodes[1]!=null) {
-          panel.removeChild(panel.childNodes[1]);
-          //console.log();
-      }
-      if(state.tools[buttonID].selected == true){
-          var div = document.createElement('div');
-          var p = document.createTextNode('Price: $' + state.tools[buttonID].price);
-          var newLine = document.createElement('br');
-          div.className = 'info';
-          var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio)
-          panel.style.visibility = 'visible';
-          var bt1 = document.createElement('button');
-          bt1.innerHTML='small'; bt1.setAttribute('class','package'); bt1.setAttribute('id','1');
-          var bt2 = document.createElement('button');
-          bt2.innerHTML='medium'; bt2.setAttribute('class','package'); bt2.setAttribute('id','2');
-          var bt3 = document.createElement('button');
-          bt3.innerHTML='large'; bt3.setAttribute('class','package'); bt3.setAttribute('id','3');
+    var funct = function(buttonID: any, state: any) {
+        var panel = document.getElementById('toolPanel');
+        if (panel.childNodes[1]!=null) {
+            panel.removeChild(panel.childNodes[1]);
+            //console.log();
+        }
+        var div = document.createElement('div');
+        var b = document.createTextNode('Budget: $'+state.budget);
+        div.appendChild(b);
 
-          div.appendChild(p);
-          div.appendChild(newLine);
-          div.appendChild(r);
-          div.appendChild(bt1);
-          div.appendChild(bt2);
-          div.appendChild(bt3);
-          panel.appendChild(div);
 
-          var packages = document.getElementsByClassName('package');
-          var price = state.tools[buttonID].price;
-          for(var i=0;i<3;i++){
-              packages[i].addEventListener("click",function(){
-                  console.log(this);
-                  if(this.id==1){
-                      price =Math.ceil(state.tools[buttonID].price*(1/3));
-                  }else if(this.id==2){
-                      price = Math.ceil(state.tools[buttonID].price*(2/3));
-                  }else if(this.id==3){
-                      price = Math.ceil(state.tools[buttonID].price);
-                  }
-                  panel.removeChild(panel.childNodes[1]);
+        if(state.tools[buttonID].selected == true){
+            //var div = document.createElement('div');
+            var p = document.createTextNode('Price: $' + state.tools[buttonID].price+' ');
+            var newLine = document.createElement('br');
+            div.className = 'info';
+            var r = document.createTextNode('Impact Ratio: ' + state.tools[buttonID].ratio+' ');
+            panel.style.visibility = 'visible';
+            var bt1 = document.createElement('button');
+            bt1.innerHTML='small'; bt1.setAttribute('class','package'); bt1.setAttribute('id','1');
+            var bt2 = document.createElement('button');
+            bt2.innerHTML='medium'; bt2.setAttribute('class','package'); bt2.setAttribute('id','2');
+            var bt3 = document.createElement('button');
+            bt3.innerHTML='large'; bt3.setAttribute('class','package'); bt3.setAttribute('id','3');
 
-                  p=document.createTextNode('Price: $' + price);
-                  div.appendChild(p);
-                  div.appendChild(newLine);
-                  div.appendChild(r);
-                  div.appendChild(bt1);
-                  div.appendChild(bt2);
-                  div.appendChild(bt3);
-                  panel.appendChild(div);
+            div.appendChild(p);
+            div.appendChild(newLine);
+            div.appendChild(r);
+            div.appendChild(newLine);
+            div.appendChild(bt1);
+            div.appendChild(bt2);
+            div.appendChild(bt3);
+            panel.appendChild(div);
 
-              })
+            var packages = document.getElementsByClassName('package');
+            var price = state.tools[buttonID].price;
 
-          }
+            //b.nodeValue='Budget: $' + (state.budget-price).toString();
+            var pre_price = 0;
 
-      }
-      send({done:true});
-  };
+            for(var i=0;i<3;i++){
+                packages[i].addEventListener("click",function(){
+                    console.log(this);
+                    price = Math.floor(state.tools[buttonID].price * (this.id / 3));
+                    //update price
+                    p.nodeValue='Price: $' + price.toString();
+                    //initial condition
+                    state.budget+=pre_price;
+                    state.budget-=price;
+                    b.nodeValue='Budget: $' + (state.budget).toString();
+                    console.log(state.budget.toString());
 
-  var data = {callback: funct.toString(), args: {buttonID: buttonID, state: state}};
-  send(data);
+                    pre_price=price;
+
+                    //update package
+                    send({package:{package:this.id,buttonID:buttonID}});
+                    //update budget
+                    //console.log(Math.floor(state.budget));
+                    send({budget:Math.floor(state.budget)});
+
+                })
+            }
+        }else{
+            if((state.budget +(state.tools[buttonID].price*(state.tools[buttonID].package/3)))<=15000) {
+                state.budget += (state.tools[buttonID].price*(state.tools[buttonID].package/3));
+                b.nodeValue = 'Budget: $' + state.budget.toLocaleString();
+                //update budget
+                //console.log(Math.floor(state.budget));
+                send({budget:Math.floor(state.budget)});
+            }
+            panel.appendChild(div);
+        }
+        send({done: true});
+    };
+
+    var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
+    send(data);
 };
 
 //Toggle the disabled of the selected tool button
