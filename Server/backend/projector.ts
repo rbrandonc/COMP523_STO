@@ -51,6 +51,10 @@ var send = (data: any) => {
 var spreadData: number[][] = [];
 var spread = 0;
 
+exports.getSpreadSize = () => {
+  return spreadData.length;
+}
+
 //give a positive amount to increase spread by that amount, negative to decrease
 exports.spread = function(amount: any) {
   var difference = amount - spread;

@@ -164,12 +164,14 @@ exports.toggleButtonVisibility = function (buttonID, state) {
     var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
     send(data);
 };
-exports.showGameover = function () {
-    var funct = function () {
+exports.showGameover = function (score) {
+    var funct = function (score) {
+        console.log(score);
         document.getElementById('gameover').style.visibility = 'visible';
+        document.getElementById('score').innerHTML = ' ' + score;
         send({ done: true });
     };
-    var data = { callback: funct.toString(), args: {} };
+    var data = { callback: funct.toString(), args: { score: score } };
     send(data);
 };
 exports.hideTools = function () {
