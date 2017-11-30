@@ -52,22 +52,71 @@ var send = (data: any) => {
 
 exports.showShortTerm = function(tools: any) {
   //pick 4 random short term tools
-  var temp = tools;
-  var temp2: any[] = [];
+  var temp = Object.keys(tools);
+  var temp2 = {};
+  var count = 0;
+
+  //shuffle
   for(var j, x, i = temp.length; i; j = Math.floor(Math.random() * i), x = temp[--i], temp[i] = temp[j], temp[j] = x);
+
+  //go through shuffled till we hae 4 short term tools
   for(var k = 0; k < temp.length; k++) {
-    if(temp[i].term = 'short') { temp2.push(temp[i]); }
-    if(temp2.length >= 4) { break; }
+    if(tools[temp[k]].term == 'short') {
+      temp2[temp[k]] = tools[temp[k]];
+      count++;
+    }
+    if(count >= 4) { break; }
   }
+
+  console.log(temp2);
 
   //show these 4 tools on the front end
   var funct = function (tools: any) {
+    console.log(tools);
     var buttons = document.getElementsByClassName('tool');
-
+    var keys = Object.keys(tools);
     for(var i = 0; i < buttons.length; i++){
-        buttons[i].setAttribute('id', tools[i].id);
-        console.log(tools[i].id);
-        buttons[i].innerHTML= tools[i].name;
+        buttons[i].setAttribute('id', keys[i]);
+        buttons[i].children[0].innerHTML= tools[keys[i]].name;
+        buttons[i].children[1].setAttribute('src', '/Touchscreen/res/' + keys[i] + '.jpg');
+    }
+
+    send({done: true});
+  }
+
+  var data = {callback: funct.toString(), args: {tools: temp2}};
+  send(data);
+}
+
+exports.showLongTerm = function(tools: any) {
+  //pick 4 random short term tools
+  var temp = Object.keys(tools);
+  var temp2 = {};
+  var count = 0;
+
+  //shuffle
+  for(var j, x, i = temp.length; i; j = Math.floor(Math.random() * i), x = temp[--i], temp[i] = temp[j], temp[j] = x);
+
+  //go through shuffled till we hae 4 short term tools
+  for(var k = 0; k < temp.length; k++) {
+    if(tools[temp[k]].term == 'long') {
+      temp2[temp[k]] = tools[temp[k]];
+      count++;
+    }
+    if(count >= 4) { break; }
+  }
+
+  console.log(temp2);
+
+  //show these 4 tools on the front end
+  var funct = function (tools: any) {
+    console.log(tools);
+    var buttons = document.getElementsByClassName('tool');
+    var keys = Object.keys(tools);
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].setAttribute('id', keys[i]);
+        buttons[i].children[0].innerHTML= tools[keys[i]].name;
+        buttons[i].children[1].setAttribute('src', '/Touchscreen/res/' + keys[i] + '.jpg');
     }
 
     send({done: true});
@@ -139,7 +188,18 @@ exports.updatePanel = function(buttonID: any, state: any) {
       send({done:true});
   };
 
-  var data = {callback:funct.toString(),args:{buttonID:buttonID,state:state}};
+  var data = {callback: funct.toString(), args: {buttonID: buttonID, state: state}};
+  send(data);
+};
+
+//Toggle the disabled of the selected tool button
+exports.setButtonDisabled = function(buttonID: any, state: any) {
+  var funct = function(buttonID: any) {
+    (document.getElementById('confirm') as HTMLButtonElement).disabled = state;
+    send({done: true});
+  };
+
+  var data = {callback: funct.toString(), args: {buttonID: buttonID, state: state}};
   send(data);
 };
 
@@ -147,7 +207,8 @@ exports.updatePanel = function(buttonID: any, state: any) {
 exports.toggleButtonSelected = function(buttonID: any, state: any) {
   var funct = function(buttonID: any, state: any) {
     // console.log(buttonID, state);
-    document.getElementById(buttonID).style.backgroundColor = state ? '#7FFF00' : '#F5F5DC';
+    document.getElementById(buttonID).style.border = state ? '1px solid black' : 'none';
+
     send({done: true});
   };
 
@@ -172,15 +233,40 @@ exports.toggleButtonVisibility = function(buttonID: any, state: any) {
 //     var click = {eventType: 'buttonClick', msg: msg};
 //     this.send(click);
 // }
+//
+//We picked the scenario, so hide the scenario buttons and show the tool buttons
+exports.showGameover = function() {
+
+  var funct = function(){
+    document.getElementById('gameover').style.visibility='visible';
+
+    send({done: true});
+  };
+
+  var data = {callback: funct.toString(), args: {}};
+  send(data);
+};
+
+//We picked the scenario, so hide the scenario buttons and show the tool buttons
+exports.hideTools = function() {
+
+  var funct = function(){
+    document.getElementById('tools').style.display='none';
+
+    send({done: true});
+  };
+
+  var data = {callback: funct.toString(), args: {}};
+  send(data);
+};
 
 //We picked the scenario, so hide the scenario buttons and show the tool buttons
 exports.showTools = function() {
 
   var funct = function(){
     document.getElementById('tools').style.visibility='visible';
-    document.getElementById('outbreakTypes').style.visibility='hidden';
+    document.getElementById('outbreakTypes').style.display='none';
 
-    // document.getElementById('confirm').disabled=true;
     send({done: true});
   };
 
@@ -192,13 +278,12 @@ exports.reset = function() {
 
   var funct = function (arg1: any, arg2: any) {
     // This is where all your stuff goes
-    var buttons = Array.prototype.slice.call(document.getElementsByTagName('button'));
+    var buttons = Array.prototype.slice.call(document.getElementsByClassName('button'));
     console.log(buttons)
     for(let button of buttons) {
-      button.style.backgroundColor = "#F5F5DC";
+      button.style.border = 'none';
     }
-    document.getElementById('confirm').style.backgroundColor = "#F5F5DC";
-    document.getElementById('confirm').style.visibility='hidden';
+    (document.getElementById('confirm') as HTMLButtonElement).disabled = true;
 
      send({done: true});
   }

@@ -21,6 +21,7 @@ app.get('/', function (req, res) {
 var log = setInterval(function () {
     console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)') : ''), ' projector: ' + (projector.ws ? 'connected ' + (projector.busy ? '(busy)' : '(idle)') : ''), ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)') : ''));
 }, 2000);
+var s = 0;
 wss.on('connection', function (ws) {
     var data = { identify: true };
     ws.send(JSON.stringify(data));
@@ -53,7 +54,7 @@ wss.on('connection', function (ws) {
                 touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
                 touchscreen.updatePanel(buttonID, state);
                 if (state.numberOfSelectedTools == 2) {
-                    touchscreen.toggleButtonVisibility('confirm', true);
+                    touchscreen.setButtonDisabled('confirm', false);
                 }
                 else if (state.numberOfSelectedTools > 2) {
                     state.tools[buttonID].selected = !state.tools[buttonID].selected;
@@ -67,15 +68,21 @@ wss.on('connection', function (ws) {
                     touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
                 }
                 else {
-                    touchscreen.toggleButtonVisibility('confirm', false);
+                    touchscreen.setButtonDisabled('confirm', true);
                 }
             }
             if (buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
                 state['outbreakType'] = buttonID;
                 touchscreen.showTools();
+                touchscreen.showShortTerm(state.tools);
                 mainscreen.hideBgTitle();
             }
             if (buttonID === 'confirm') {
+                s++;
+                if (s == 2) {
+                    touchscreen.showGameover();
+                    touchscreen.hideTools();
+                }
                 mainscreen.playVideo(state.tools);
                 var ratio = 0;
                 for (var _i = 0, _a = Object.keys(state.tools); _i < _a.length; _i++) {
@@ -84,11 +91,13 @@ wss.on('connection', function (ws) {
                         ratio += state.tools[t].ratio;
                     }
                 }
+                console.log('ratio ' + ratio);
                 ratio = (ratio - .5) * (-1);
                 var spread = Math.floor(ratio * 1000);
                 console.log(ratio + ' ' + spread);
                 projector.spread(spread);
                 touchscreen.reset();
+                touchscreen.showLongTerm(state.tools);
                 state.numberOfSelectedTools = 0;
                 for (var _b = 0, _c = Object.keys(state.tools); _b < _c.length; _b++) {
                     var item = _c[_b];

@@ -17,7 +17,22 @@
     box-sizing: border-box;
 }
 
-html section button, body section button {
+.tool {
+  height: 40vh;
+  width: 100%;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.img {
+  height: 100%;
+}
+
+.slot {
+  height: 30vh;
+}
+
+/*html section button, body section button {
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
     align-self: center;
@@ -32,16 +47,17 @@ html section button, body section button {
     outline: none;
     box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-}
+}*/
+/*
 html section button:hover, body section button:hover {
     box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
 }
 
 html section button.lined.thin, body section button.lined.thin {
     border: solid 2px #41403E;
-}
+}*/
 
-@media (max-width: 620px) {
+/*@media (max-width: 620px) {
     body h1 {
         margin-top: 2rem;
     }
@@ -64,21 +80,21 @@ html section button.lined.thin, body section button.lined.thin {
         align-self: center;
         margin-bottom: 2rem;
     }
-}
+}*/
 
 
-body {
+/*body {
     min-height: 450px;
     height: 100vh;
     margin: 0;
     background: radial-gradient(circle, #3C3B3F, #3C3B3F, #605C3C, #000000);
-}
+}*/
 
-.wrapper {
+/*.wrapper {
     text-align: center;
-}
+}*/
 
-.button {
+/*.button {
     position: relative;
     color: #DAA520;
     outline: none;
@@ -89,16 +105,16 @@ body {
     -webkit-transition: all 100ms ease-in-out;
     transition: all 100ms ease-in-out;
     /* Pass any colors you like, I hope the mixin will handle it */
-    padding: 0.5em 1em;
+    /*padding: 0.5em 1em;
     font: normal normal 3em/1 "Lobster", serif;
-    text-decoration: none;
-}
+    text-decoration: none;*/
+/*}
 .button:hover {
     text-shadow: 0 0 5px rgba(243, 141, 16, 0.65), -1px -1px 0 rgba(26, 26, 26, 0.5);
 }
 .button:active, .button:focus {
     top: 4px;
-}
+}*/
 
 
 [class*='col-'] {
@@ -109,13 +125,12 @@ body {
     margin: 2px;
 }
 
-.col-6{
+.col-6 {
     background-color: beige;
-    }
+}
 
 .row {
-    width:700px;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
 }
@@ -125,7 +140,7 @@ body {
     flex-direction: column;
 }
 
-.type{
+.type {
     visibility: hidden;
 }
 
@@ -135,43 +150,25 @@ type .show {
 
 
 h1 {
-    font-family: "Seaweed Script";
-    color: orange;
-    padding-left: 10px;
-    text-align: left;
-    font-size: 50px;
-    position: relative;
-    margin:0;
+    /*font-family: "Seaweed Script";*/
+    /*color: orange;*/
+    /*padding-left: 10px;*/
+    text-align: center;
+    font-size: 20px;
+    /*position: relative;*/
+    /*margin:0;*/
 }
 
 #toolPanel{
     visibility: hidden;
-    position:absolute;
-    /*top:60px;*/
-    right:85px;
-    font-weight:bold;
+    font-weight: bold;
     font-family: 'Ubuntu', cursive;
     text-transform: uppercase;
     font-size: 20px;
     letter-spacing: 0.05em;
-    color: darkorange;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #34495E;
-    text-shadow:
-            -1px 1px 0 #34495E,
-            -2px 2px 0 #34495E,
-            -3px 3px 0 #34495E,
-            -4px 4px 0 #34495E,
-            -5px 5px 0 #34495E,
-            7px 8px 0 rgba(0, 0, 0, 0.1);
-    margin: 0 0 10px 0;
+    color: black;
 }
 
 .hidden {
-    visibility: hidden;
-}
-
-#confirm{
-    background-color: cornflowerblue; /* Green */
     visibility: hidden;
 }

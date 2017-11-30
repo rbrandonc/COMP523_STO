@@ -77,7 +77,7 @@ exports.initialize = function () {
         var canvas = document.getElementById('canvas');
         var heat = simpleheat(canvas);
         heat.data(spreadData);
-        heat.gradient({ 0.0: 'rgb(150, 255, 0)', 0.5: 'rgb(255, 237, 0)', 1: 'rgb(255, 0, 0)' });
+        heat.gradient({ 0.0: 'rgb(150, 255, 0)', 1: 'rgb(255, 0, 0)' });
         heat.resize();
         heat.radius(15, 25);
         heat.draw(.01);

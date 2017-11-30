@@ -17,6 +17,66 @@ var send = function (data) {
         console.log('touchscreen not connected');
     }
 };
+exports.showShortTerm = function (tools) {
+    var temp = Object.keys(tools);
+    var temp2 = {};
+    var count = 0;
+    for (var j, x, i = temp.length; i; j = Math.floor(Math.random() * i), x = temp[--i], temp[i] = temp[j], temp[j] = x)
+        ;
+    for (var k = 0; k < temp.length; k++) {
+        if (tools[temp[k]].term == 'short') {
+            temp2[temp[k]] = tools[temp[k]];
+            count++;
+        }
+        if (count >= 4) {
+            break;
+        }
+    }
+    console.log(temp2);
+    var funct = function (tools) {
+        console.log(tools);
+        var buttons = document.getElementsByClassName('tool');
+        var keys = Object.keys(tools);
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].setAttribute('id', keys[i]);
+            buttons[i].children[0].innerHTML = tools[keys[i]].name;
+            buttons[i].children[1].setAttribute('src', '/Touchscreen/res/' + keys[i] + '.jpg');
+        }
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: { tools: temp2 } };
+    send(data);
+};
+exports.showLongTerm = function (tools) {
+    var temp = Object.keys(tools);
+    var temp2 = {};
+    var count = 0;
+    for (var j, x, i = temp.length; i; j = Math.floor(Math.random() * i), x = temp[--i], temp[i] = temp[j], temp[j] = x)
+        ;
+    for (var k = 0; k < temp.length; k++) {
+        if (tools[temp[k]].term == 'long') {
+            temp2[temp[k]] = tools[temp[k]];
+            count++;
+        }
+        if (count >= 4) {
+            break;
+        }
+    }
+    console.log(temp2);
+    var funct = function (tools) {
+        console.log(tools);
+        var buttons = document.getElementsByClassName('tool');
+        var keys = Object.keys(tools);
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].setAttribute('id', keys[i]);
+            buttons[i].children[0].innerHTML = tools[keys[i]].name;
+            buttons[i].children[1].setAttribute('src', '/Touchscreen/res/' + keys[i] + '.jpg');
+        }
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: { tools: temp2 } };
+    send(data);
+};
 exports.updatePanel = function (buttonID, state) {
     var funct = function (buttonID, state) {
         var panel = document.getElementById('toolPanel');
@@ -80,9 +140,17 @@ exports.updatePanel = function (buttonID, state) {
     var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
     send(data);
 };
+exports.setButtonDisabled = function (buttonID, state) {
+    var funct = function (buttonID) {
+        document.getElementById('confirm').disabled = state;
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
+    send(data);
+};
 exports.toggleButtonSelected = function (buttonID, state) {
     var funct = function (buttonID, state) {
-        document.getElementById(buttonID).style.backgroundColor = state ? '#7FFF00' : '#F5F5DC';
+        document.getElementById(buttonID).style.border = state ? '1px solid black' : 'none';
         send({ done: true });
     };
     var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
@@ -96,10 +164,26 @@ exports.toggleButtonVisibility = function (buttonID, state) {
     var data = { callback: funct.toString(), args: { buttonID: buttonID, state: state } };
     send(data);
 };
+exports.showGameover = function () {
+    var funct = function () {
+        document.getElementById('gameover').style.visibility = 'visible';
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: {} };
+    send(data);
+};
+exports.hideTools = function () {
+    var funct = function () {
+        document.getElementById('tools').style.display = 'none';
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: {} };
+    send(data);
+};
 exports.showTools = function () {
     var funct = function () {
         document.getElementById('tools').style.visibility = 'visible';
-        document.getElementById('outbreakTypes').style.visibility = 'hidden';
+        document.getElementById('outbreakTypes').style.display = 'none';
         send({ done: true });
     };
     var data = { callback: funct.toString(), args: {} };
@@ -107,14 +191,13 @@ exports.showTools = function () {
 };
 exports.reset = function () {
     var funct = function (arg1, arg2) {
-        var buttons = Array.prototype.slice.call(document.getElementsByTagName('button'));
+        var buttons = Array.prototype.slice.call(document.getElementsByClassName('button'));
         console.log(buttons);
         for (var _i = 0, buttons_1 = buttons; _i < buttons_1.length; _i++) {
             var button = buttons_1[_i];
-            button.style.backgroundColor = "#F5F5DC";
+            button.style.border = 'none';
         }
-        document.getElementById('confirm').style.backgroundColor = "#F5F5DC";
-        document.getElementById('confirm').style.visibility = 'hidden';
+        document.getElementById('confirm').disabled = true;
         send({ done: true });
     };
     var data = { callback: funct.toString(), args: {} };

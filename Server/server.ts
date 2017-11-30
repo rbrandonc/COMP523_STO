@@ -55,6 +55,9 @@ var log = setInterval(() => {
 //     ws.ping('', false, true);
 //   });
 // }, 1000);
+//
+
+var s = 0;
 
 /** When a connection to a screen is made, ask it to identify itself. */
 wss.on('connection', function (ws: any) {
@@ -119,7 +122,7 @@ wss.on('connection', function (ws: any) {
 
         //If we have two tools selected, show the confirm button
         if(state.numberOfSelectedTools == 2) {
-          touchscreen.toggleButtonVisibility('confirm', true);
+          touchscreen.setButtonDisabled('confirm', false);
         } else if(state.numberOfSelectedTools > 2) {
           state.tools[buttonID].selected = !state.tools[buttonID].selected;
           if(state.tools[buttonID].selected) { state.numberOfSelectedTools++ } else { state.numberOfSelectedTools-- };
@@ -127,7 +130,7 @@ wss.on('connection', function (ws: any) {
           touchscreen.toggleButtonSelected(buttonID, state.tools[buttonID].selected);
         } else {
           //If two tools not selected, hide confirm
-          touchscreen.toggleButtonVisibility('confirm', false);
+          touchscreen.setButtonDisabled('confirm', true);
         }
       }
 
@@ -135,7 +138,7 @@ wss.on('connection', function (ws: any) {
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
         touchscreen.showTools();
-        touchscreen.showShortTerm(this.tools);
+        touchscreen.showShortTerm(state.tools);
         mainscreen.hideBgTitle();
       }
         //hide mainscreen background
@@ -143,6 +146,12 @@ wss.on('connection', function (ws: any) {
 
       //If the button was confirm, play the corresponding videos and update the map
       if(buttonID === 'confirm') {
+        s++;
+        if(s == 2) {
+          touchscreen.showGameover();
+          touchscreen.hideTools();
+        }
+
         //play videos
         mainscreen.playVideo(state.tools);
 
@@ -153,6 +162,7 @@ wss.on('connection', function (ws: any) {
             ratio += state.tools[t].ratio;
           }
         }
+        console.log('ratio ' + ratio)
         ratio = (ratio - .5)*(-1);
         var spread = Math.floor(ratio * 1000);
         console.log(ratio + ' ' + spread)
@@ -160,6 +170,7 @@ wss.on('connection', function (ws: any) {
 
         //reset touchscreen
         touchscreen.reset();
+        touchscreen.showLongTerm(state.tools);
 
         //reset gamestate
         state.numberOfSelectedTools = 0;

@@ -12,8 +12,7 @@ var listeners = false;
 
 //set button click handlers
 document.addEventListener("DOMContentLoaded", function(event) {
-  var buttons = document.getElementsByTagName('button');
-  console.log("finished loading");
+  var buttons = document.getElementsByClassName('button');
   //If a button is clicked, send the ID to the server
   for (var i = 0; i != buttons.length; ++i){
     if(!listeners) {
@@ -25,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
   listeners = true;
+  console.log("finished loading");
 });
 
 /** Either identify ourself or run the function send by the server if it exists */

@@ -8,11 +8,11 @@
 
 <body>
 <div id='outbreakTypes' class='row'>
-  <button id='vac_resistant' onclick="initialize_tools()" class='col-6'>
+  <button id='vac_resistant' class='col-6 button'>
     Vaccine resistant
   </button>
 
-  <button id='ins_resistant' onclick="initialize_tools()" class='col-6'>
+  <button id='ins_resistant' class='col-6 button'>
     Insecticide resistant
   </button>
 </div>
@@ -28,16 +28,16 @@
     <!-- Two random tools -->
     <div class='col-2'>
       <div class='row'>
-        <div class='col-6'>
-          <button class='col-6 lined thin tool' style='background-color: rgb(245, 245, 220)'>
-          </button>
+        <div class='col-6 tool button' style='background-color: rgb(245, 245, 220)'>
+          <h1 'tool-title'></h1>
+          <img class='img' />
         </div>
       </div>
 
       <div class='row'>
-        <div class='col-6'>
-          <button class='col-6 lined thin tool' style='background-color: rgb(245, 245, 220)'>
-          </button>
+        <div class='col-6 tool button' style='background-color: rgb(245, 245, 220)'>
+          <h1 'tool-title'></h1>
+          <img class='img' />
         </div>
       </div>
     </div>
@@ -47,13 +47,14 @@
       <div class='row'>
         <div class='col-6'>
           <div class='slot' id='a'>
+            Drag an item here!
           </div>
         </div>
       </div>
 
       <div class='row'>
         <div class='col-6'>
-          <button  class='col-6 lined thin' id='confirm' style='background-color: rgb(245, 245, 220)'>
+          <button disabled class='col-6 button' id='confirm' style='background-color: rgb(245, 245, 220)'>
             Confirm
           </button>
         </div>
@@ -62,6 +63,7 @@
       <div class='row'>
         <div class='col-6'>
           <div class='slot' id='b'>
+            Drag an item here!
           </div>
         </div>
       </div>
@@ -70,18 +72,45 @@
     <!-- Two random tools -->
     <div class='col-2'>
       <div class='row'>
-        <div class='col-6'>
-          <button class='col-6 lined thin tool' style='background-color: rgb(245, 245, 220)'>
-          </button>
+        <div class='col-6 tool button' style='background-color: rgb(245, 245, 220)'>
+          <h1 class='tool-title'></h1>
+          <img class='img' />
         </div>
       </div>
 
       <div class='row'>
-        <div class='col-6'>
-          <button class='col-6 lined thin tool' style='background-color: rgb(245, 245, 220)'>
-          </button>
+        <div class='col-6 tool button' style='background-color: rgb(245, 245, 220)'>
+          <h1 'tool-title'></h1>
+          <img class='img' />
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class='gameover row'>
+  <div class='col'>
+    <div class='row'>
+      <div class='col'>
+        <h1>Game Over<br /></h1>
+        <h1>Final Score: <span id='score'></span><br /></h1>
+      </div>
+    </div>
+
+    <!-- //Highscores -->
+    <div class='row'>
+      <div class='col'>
+
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col'>
+        <input maxlength="2" type='text' />
+        <button>Submit Score</button>
+      </div>
+    </div>
+
     </div>
   </div>
 </div>
