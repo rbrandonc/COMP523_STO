@@ -4,11 +4,13 @@
  * @module FrontEndTouchscreen
  */
 
+
 /** @type {WebSocket} Websocket reference */
 var ws = new WebSocket('ws://' + 'localhost' + ':8080');
 /** @type {String} Screen ID */
 var id = 'touchscreen';
 var listeners = false;
+
 
 //list of tools
 var tools = [{id:'mda',selected: false, name:'Mass Drug Administration',price:'$300', ratio:'4'}, {id:'irs',selected: false, name:'Household Spraying',price:'$100', ratio:'3'}, {id:'deet',selected: false, name:'Insect Repellent',price:'$200', ratio:'3'},

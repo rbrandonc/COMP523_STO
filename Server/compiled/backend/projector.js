@@ -23,7 +23,6 @@ var spread = 0;
 exports.spread = function (amount) {
     var difference = amount - spread;
     var updateMap = setInterval(function () {
-        console.log(difference);
         if (difference > 0) {
             var idx = Math.floor(Math.random() * spreadData.length);
             if (spreadData[idx][2] < 1) {
@@ -55,7 +54,6 @@ exports.spread = function (amount) {
         };
         var data = { callback: funct.toString(), args: { spreadData: spreadData } };
         send(data);
-        console.log('checking difference');
         if (difference > 0) {
             difference--;
         }
