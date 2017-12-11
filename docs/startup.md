@@ -11,6 +11,8 @@ In terminal:
 
 A window with the 3 screens will open automatically. To have one screen on each browser window you can just go into the project folder and open each screens .html file under it corresponding folder.
 
+To restart, Ctrl + C in terminal (windows may have to kill node through task manager).
+
 # Production
 
 Do:
