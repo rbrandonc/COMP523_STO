@@ -2,6 +2,10 @@
 
 Do:
 
+Go to /ProjectFolder/Server/
+
+In terminal:
+
 ```npm start```
 
 A window with the 3 screens will open automatically. To have one screen on each browser window you can just go into the project folder and open each screens .html file under it corresponding folder.
