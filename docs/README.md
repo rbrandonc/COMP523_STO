@@ -26,15 +26,4 @@ Architect       - Brandon Clark <br>
 ## Formatting Guide
 https://google.github.io/styleguide/jsguide.html#features-functions
 
-## Launch Instructions
-Step 1:
-
-Windows: Go to Server/ and run server-win.exe<br>
-Mac: Go to Server/ and run server-macos<br>
-
-Step 2:
-
-Go to Project/ and open projector.html<br>
-Go to Touchscreen/ and open touchscreen.html<br>
-
 Github.io link: https://rbrandonc.github.io/COMP523_STO/
