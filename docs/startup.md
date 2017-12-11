@@ -1,8 +1,9 @@
 # Dev
-
 Do:
 
 Go to /ProjectFolder/Server/
+
+Before running for the first time you will have to run ```npm install``` to install all node dependencies.
 
 In terminal:
 
