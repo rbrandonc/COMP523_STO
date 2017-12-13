@@ -236,7 +236,7 @@ exports.showGameover = function (score) {
         document.getElementById('gameover').style.visibility = 'visible';
         //show existing highscores
         // document.getElementById('highscores').innerHTML = 'highscoressssss mannnn';
-        document.getElementById('score').innerHTML = ' ' + score;
+        document.getElementById('score').innerHTML = score;
         send({ done: true });
     };
     var data = { callback: funct.toString(), args: { score: score } };

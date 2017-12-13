@@ -256,13 +256,13 @@ exports.toggleButtonVisibility = function(buttonID: any, state: any) {
 exports.showGameover = function(score: any) {
 
   var funct = function(score: any){
-    console.log(score)
+      console.log(score)
     document.getElementById('gameover').style.visibility='visible';
 
     //show existing highscores
     // document.getElementById('highscores').innerHTML = 'highscoressssss mannnn';
 
-    document.getElementById('score').innerHTML = ' ' + score;
+    document.getElementById('score').innerHTML = score;
 
     send({done: true});
   };

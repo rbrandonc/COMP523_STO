@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   document.getElementById('submit').addEventListener("click", function(){
     console.log('submitting');
-    send({initials: (document.getElementById('initials') as HTMLInputElement).value});
+    send({initials: (document.getElementById('initials') as HTMLInputElement).value, score: (document.getElementById('score').innerHTML)});
   });
 
   listeners = true;

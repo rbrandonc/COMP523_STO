@@ -17,6 +17,8 @@ app.use(express.static('res'));
 var projector = require('./backend/projector');
 var mainscreen = require('./backend/mainscreen');
 var touchscreen = require('./backend/touchscreen');
+var dbHelper = require('./backend/dbHelper');
+dbHelper.initDB();
 // Server start listening
 server.on('request', app);
 server.listen(8080, function () {
@@ -29,9 +31,11 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/frontend/main.html');
 });
 // Screen connection debugging
-var log = setInterval(function () {
-    console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)') : ''), ' projector: ' + (projector.ws ? 'connected ' + (projector.busy ? '(busy)' : '(idle)') : ''), ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)') : ''));
-}, 2000);
+// var log = setInterval(() => {
+//   console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)'): ''),
+//               ' projector: ' + (projector.ws ? 'connected '  + (projector.busy ? '(busy)' : '(idle)') : ''),
+//               ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)'): ''))
+// }, 2000);
 // This is for detecting if we lose connection to a screen
 // Doesn't work but doesn't need to be implemented yet
 // function heartbeat() {
@@ -67,9 +71,12 @@ wss.on('connection', function (ws) {
     ws.onmessage = function (event) {
         //Always parse the event data as json
         event.data = JSON.parse(event.data);
-        console.log(event.data);
+        // console.log(event.data);
         if (event.data.initials) {
-            console.log("Got a highscore!");
+            console.log(event.data);
+            dbHelper.insertScore(event.data.initials, event.data.score);
+            // sqlite3 is asynchronous, kept getting score before inserting. 1 second timeout fix.
+            setTimeout(dbHelper.getScores, 500);
         }
         //Add connection to our list of conncetions
         // TODO: need to reset state if we reconnect a screen
@@ -105,12 +112,14 @@ wss.on('connection', function (ws) {
             var buttonID = event.data.buttonID;
             //If button is one of the tools
             if (state.tools[buttonID] !== undefined) {
-                say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
-                    if (err) {
-                        return console.error(err);
-                    }
-                    console.log('Text has been spoken.');
-                });
+                if (!state.tools[buttonID].selected) {
+                    say.speak("WOW, Cool! You choose" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                        console.log('Text has been spoken.');
+                    });
+                }
                 //Toggle the selected state of the tool as long as we have less than two selected tools
                 state.tools[buttonID].selected = !state.tools[buttonID].selected;
                 if (state.tools[buttonID].selected) {

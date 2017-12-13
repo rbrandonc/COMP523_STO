@@ -19,6 +19,9 @@ app.use(express.static('res'));
 var projector = require('./backend/projector');
 var mainscreen = require('./backend/mainscreen');
 var touchscreen = require('./backend/touchscreen');
+var dbHelper = require('./backend/dbHelper');
+
+dbHelper.initDB();
 
 // Server start listening
 server.on('request', app);
@@ -34,11 +37,11 @@ app.get('/', function (req: any, res: any) {
 })
 
 // Screen connection debugging
-var log = setInterval(() => {
-  console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)'): ''),
-              ' projector: ' + (projector.ws ? 'connected '  + (projector.busy ? '(busy)' : '(idle)') : ''),
-              ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)'): ''))
-}, 2000);
+// var log = setInterval(() => {
+//   console.log('touchscreen: ' + (touchscreen.ws ? 'connected ' + (touchscreen.busy ? '(busy)' : '(idle)'): ''),
+//               ' projector: ' + (projector.ws ? 'connected '  + (projector.busy ? '(busy)' : '(idle)') : ''),
+//               ' mainscreen: ' + (mainscreen.ws ? 'connected ' + (mainscreen.busy ? '(busy)' : '(idle)'): ''))
+// }, 2000);
 
 // This is for detecting if we lose connection to a screen
 // Doesn't work but doesn't need to be implemented yet
@@ -79,10 +82,13 @@ wss.on('connection', function (ws: any) {
   ws.onmessage = function(event: any) {
     //Always parse the event data as json
     event.data = JSON.parse(event.data);
-    console.log(event.data);
+    // console.log(event.data);
 
     if(event.data.initials) {
-      console.log("Got a highscore!");
+        console.log(event.data);
+        dbHelper.insertScore(event.data.initials,event.data.score);
+        // sqlite3 is asynchronous, kept getting score before inserting. Half-second fix.
+        setTimeout(dbHelper.getScores, 500);
     }
 
     //Add connection to our list of conncetions
@@ -130,7 +136,7 @@ wss.on('connection', function (ws: any) {
 
       if(state.tools[buttonID] !== undefined) {
           if(!state.tools[buttonID].selected) {
-              say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, (err: any) => {
+              say.speak("WOW, Cool! You choose" + state.tools[buttonID].name, 'Good News', 1.0, (err: any) => {
                   if (err) {
                       return console.error(err)
                   }
@@ -166,6 +172,7 @@ wss.on('connection', function (ws: any) {
         mainscreen.hideBgTitle();
       }
         //hide mainscreen background
+
 
 
       //If the button was confirm, play the corresponding videos and update the map

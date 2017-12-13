@@ -61,7 +61,7 @@ exports.spread = function(amount: any) {
   var updateMap = setInterval(() => {
 
     //if the difference between spread on the map and what we want is +, increase intensity, otherwise decrase
-    console.log(difference)
+    // console.log(difference)
     if(difference > 0) {
       //pick a random point
       var idx = Math.floor(Math.random()*spreadData.length);
@@ -107,7 +107,7 @@ exports.spread = function(amount: any) {
     var data = {callback: funct.toString(), args: {spreadData: spreadData}};
     send(data);
 
-    console.log('checking difference')
+    // console.log('checking difference')
     if(difference > 0) {
       difference--;
     } else if(difference < 0) {
