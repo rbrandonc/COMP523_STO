@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="054be055-b25e-4924-b8d9-7611e793daf9" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/res/outbreak_phase1.mp4" afterPath="$PROJECT_DIR$/Server/frontend/Mainscreen/res/outbreak_phase1.mp4" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/res/outbreak_phase2.mp4" afterPath="$PROJECT_DIR$/Server/frontend/Mainscreen/res/outbreak_phase2.mp4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/backend/mainscreen.ts" afterPath="$PROJECT_DIR$/Server/backend/mainscreen.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/backend/touchscreen.ts" afterPath="$PROJECT_DIR$/Server/backend/touchscreen.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/backend/mainscreen.js" afterPath="$PROJECT_DIR$/Server/compiled/backend/mainscreen.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/backend/mainscreen.js.map" afterPath="$PROJECT_DIR$/Server/compiled/backend/mainscreen.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/backend/touchscreen.js" afterPath="$PROJECT_DIR$/Server/compiled/backend/touchscreen.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/backend/touchscreen.js.map" afterPath="$PROJECT_DIR$/Server/compiled/backend/touchscreen.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/frontend/Mainscreen/mainscreen.html" afterPath="$PROJECT_DIR$/Server/compiled/frontend/Mainscreen/mainscreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/frontend/Touchscreen/res/touchscreen.css" afterPath="$PROJECT_DIR$/Server/compiled/frontend/Touchscreen/res/touchscreen.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/server.js" afterPath="$PROJECT_DIR$/Server/compiled/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/compiled/server.js.map" afterPath="$PROJECT_DIR$/Server/compiled/server.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/frontend/Mainscreen/mainscreen.html" afterPath="$PROJECT_DIR$/Server/frontend/Mainscreen/mainscreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/frontend/Touchscreen/res/touchscreen.css" afterPath="$PROJECT_DIR$/Server/frontend/Touchscreen/res/touchscreen.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/server.ts" afterPath="$PROJECT_DIR$/Server/server.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/Server/compiled/frontend/Touchscreen/touchscreen.js/" />
@@ -38,18 +37,18 @@
       <file leaf-file-name="touchscreen.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/frontend/Touchscreen/touchscreen.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="1375">
+              <caret line="82" column="13" lean-forward="false" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainscreen.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainscreen.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/backend/mainscreen.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="61" column="47" lean-forward="false" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+            <state relative-caret-position="375">
+              <caret line="108" column="18" lean-forward="true" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -60,8 +59,8 @@
       <file leaf-file-name="server.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/server.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+            <state relative-caret-position="2028">
+              <caret line="170" column="8" lean-forward="false" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -70,8 +69,8 @@
       <file leaf-file-name="touchscreen.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/backend/touchscreen.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,14 +79,14 @@
       <file leaf-file-name="mainscreen.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/frontend/Mainscreen/mainscreen.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="14" lean-forward="false" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            <state relative-caret-position="109">
+              <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainscreen.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mainscreen.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/frontend/Mainscreen/res/mainscreen.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -124,10 +123,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>button click</find>
-      <find>selected</find>
       <find>console.log</find>
       <find>isPanelempty</find>
-      <find>done</find>
       <find>initializeToos</find>
       <find>buttonID</find>
       <find>newline</find>
@@ -138,6 +135,11 @@
       <find>longterm</find>
       <find>playvideo</find>
       <find>playin</find>
+      <find>done</find>
+      <find>player</find>
+      <find>video</find>
+      <find>phase1</find>
+      <find>selected</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,8 +168,8 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/Server/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1030" />
   </component>
@@ -234,7 +236,14 @@
               <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Touchscreen" type="462c0819:PsiDirectoryNode" />
+              <item name="Mainscreen" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="COMP523_STO" type="b2602c69:ProjectViewProjectNode" />
+              <item name="COMP523_STO" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -246,6 +255,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jiayi\COMP523_STO\Server\frontend\Mainscreen\res" />
+      <recent name="C:\Users\jiayi\COMP523_STO\Server\res" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -275,18 +290,19 @@
       <workItem from="1510840014435" duration="12637000" />
       <workItem from="1513122642551" duration="394000" />
       <workItem from="1513123060050" duration="864000" />
-      <workItem from="1513123943949" duration="462000" />
+      <workItem from="1513123943949" duration="7460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24973000" />
+    <option name="totallyTimeSpent" value="31971000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
+    <frame x="950" y="0" width="980" height="1030" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22916667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.003131524" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -615,7 +631,7 @@
         <state relative-caret-position="735">
           <caret line="51" column="1" lean-forward="false" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -641,6 +657,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-171">
           <caret line="244" column="14" lean-forward="false" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -666,52 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/frontend/Touchscreen/touchscreen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/frontend/common/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/backend/touchscreen.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/server.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/backend/mainscreen.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="61" column="47" lean-forward="false" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/frontend/Mainscreen/mainscreen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="14" lean-forward="false" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -721,6 +696,48 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/frontend/Mainscreen/mainscreen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/frontend/Touchscreen/touchscreen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1375">
+          <caret line="82" column="13" lean-forward="false" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/server.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2028">
+          <caret line="170" column="8" lean-forward="false" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/backend/touchscreen.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/backend/mainscreen.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="108" column="18" lean-forward="true" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

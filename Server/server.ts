@@ -123,6 +123,12 @@ wss.on('connection', function (ws: any) {
 
       }
 
+      if(event.data.ready!=null){
+          //play videos
+          console.log('phase2!!!!!');
+          mainscreen.playIntervalVideos(state.phase2);
+      }
+
       if(event.data.buttonID) {
       console.log(JSON.stringify(data));
       var buttonID = event.data.buttonID;
@@ -162,12 +168,13 @@ wss.on('connection', function (ws: any) {
       //If the button was outbreak type, show the tool scree
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
-         //play videos
+        //play videos
         mainscreen.playIntervalVideos(state.phase1);
         touchscreen.showTools();
         touchscreen.showShortTerm(state.tools);
         mainscreen.hideBgTitle();
       }
+
         //hide mainscreen background
 
 
@@ -196,8 +203,7 @@ wss.on('connection', function (ws: any) {
         projector.spread(spread);
 
 
-        //play videos
-          mainscreen.playIntervalVideos(state.phase2);;
+
         //reset touchscreen
         touchscreen.reset();
         touchscreen.showLongTerm(state.tools);
@@ -207,6 +213,7 @@ wss.on('connection', function (ws: any) {
         for(let item of Object.keys(state.tools)) {
           state.tools[item].selected = false;
         }
+
       }
 
     }

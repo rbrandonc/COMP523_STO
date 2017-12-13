@@ -53,12 +53,20 @@ exports.hideBgTitle = function () {
 };
 exports.playIntervalVideos = function (videos) {
     console.log('play');
+    console.log(videos);
     var funct = function (videos) {
         // This is where all your stuff goes
+        var player = document.getElementById('video');
         var source = document.getElementById('source');
-        var i = 0;
-        source['src'] = '/' + videos + '.mp4';
-        send({ done: true });
+        // player.addEventListener('ended', function() {
+        //     next();
+        // }, false);
+        var next = function () {
+            source.setAttribute('src', 'res/' + videos + '.mp4');
+            player['load']();
+            send({ done: true });
+        };
+        next();
     };
     var data = { callback: funct.toString(), args: { videos: videos } };
     send(data);
@@ -75,6 +83,12 @@ exports.playVideo = function (videos) {
         var next = function () {
             console.log('video should be playing!!!');
             for (var j = i; j <= Object.keys(videos).length; j++) {
+                if (videos[Object.keys(videos)[j]] == null) {
+                    //Ready for second phase
+                    send({ ready: true });
+                    console.log('Phase2');
+                    break;
+                }
                 if (videos[Object.keys(videos)[j]].selected) {
                     source['src'] = '/' + Object.keys(videos)[j] + '.mp4';
                     console.log('telling the player to load the video');

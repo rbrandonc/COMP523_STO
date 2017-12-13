@@ -157,6 +157,7 @@ exports.updatePanel = function(buttonID: any, state: any) {
         panel.appendChild(p);
 
         send({budget:Math.floor(state.budget)});
+
         send({done: true});
     };
 

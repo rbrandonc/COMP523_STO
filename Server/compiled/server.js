@@ -100,6 +100,11 @@ wss.on('connection', function (ws) {
             //console.log(event.data.package['package']+event.data.package['buttonID']);
             state.tools[event.data.package['buttonID']].package = event.data.package['package'];
         }
+        if (event.data.ready != null) {
+            //play videos
+            console.log('phase2!!!!!');
+            mainscreen.playIntervalVideos(state.phase2);
+        }
         if (event.data.buttonID) {
             console.log(JSON.stringify(data));
             var buttonID = event.data.buttonID;
@@ -179,9 +184,6 @@ wss.on('connection', function (ws) {
                 var spread = Math.floor(ratio * 1000);
                 console.log(ratio + ' ' + spread);
                 projector.spread(spread);
-                //play videos
-                mainscreen.playIntervalVideos(state.phase2);
-                ;
                 //reset touchscreen
                 touchscreen.reset();
                 touchscreen.showLongTerm(state.tools);
