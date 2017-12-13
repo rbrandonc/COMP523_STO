@@ -75,7 +75,7 @@ wss.on('connection', function (ws) {
         if (event.data.initials) {
             console.log(event.data);
             dbHelper.insertScore(event.data.initials, event.data.score);
-            // sqlite3 is asynchronous, kept getting score before inserting. 1 second timeout fix.
+            // sqlite3 is asynchronous, kept getting score before inserting. Half-second fix.
             setTimeout(dbHelper.getScores, 500);
         }
         //Add connection to our list of conncetions
