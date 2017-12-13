@@ -51,6 +51,18 @@ exports.hideBgTitle = function () {
     var data = { callback: funct.toString(), args: {} };
     send(data);
 };
+exports.playIntervalVideos = function (videos) {
+    console.log('play');
+    var funct = function (videos) {
+        // This is where all your stuff goes
+        var source = document.getElementById('source');
+        var i = 0;
+        source['src'] = '/' + videos + '.mp4';
+        send({ done: true });
+    };
+    var data = { callback: funct.toString(), args: { videos: videos } };
+    send(data);
+};
 exports.playVideo = function (videos) {
     var funct = function (videos) {
         // This is where all your stuff goes

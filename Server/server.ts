@@ -130,7 +130,8 @@ wss.on('connection', function (ws: any) {
 
       if(state.tools[buttonID] !== undefined) {
           if(!state.tools[buttonID].selected) {
-              say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, (err: any) => {
+              say.stop();
+              say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.5, (err: any) => {
                   if (err) {
                       return console.error(err)
                   }
@@ -161,6 +162,8 @@ wss.on('connection', function (ws: any) {
       //If the button was outbreak type, show the tool scree
       if(buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
         state['outbreakType'] = buttonID;
+         //play videos
+        mainscreen.playIntervalVideos(state.phase1);
         touchscreen.showTools();
         touchscreen.showShortTerm(state.tools);
         mainscreen.hideBgTitle();
@@ -192,6 +195,9 @@ wss.on('connection', function (ws: any) {
         console.log(ratio + ' ' + spread)
         projector.spread(spread);
 
+
+        //play videos
+          mainscreen.playIntervalVideos(state.phase2);;
         //reset touchscreen
         touchscreen.reset();
         touchscreen.showLongTerm(state.tools);
@@ -220,6 +226,8 @@ wss.on('connection', function (ws: any) {
  * @default
  */
 var state: any = {
+    phase1:'outbreak_phase1',
+    phase2:'outbreak_phase2',
     budget:15000,
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],

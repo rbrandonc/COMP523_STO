@@ -105,12 +105,15 @@ wss.on('connection', function (ws) {
             var buttonID = event.data.buttonID;
             //If button is one of the tools
             if (state.tools[buttonID] !== undefined) {
-                say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.0, function (err) {
-                    if (err) {
-                        return console.error(err);
-                    }
-                    console.log('Text has been spoken.');
-                });
+                if (!state.tools[buttonID].selected) {
+                    say.stop();
+                    say.speak("WOW, Cool! You choosed" + state.tools[buttonID].name, 'Good News', 1.5, function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                        console.log('Text has been spoken.');
+                    });
+                }
                 //Toggle the selected state of the tool as long as we have less than two selected tools
                 state.tools[buttonID].selected = !state.tools[buttonID].selected;
                 if (state.tools[buttonID].selected) {
@@ -147,6 +150,8 @@ wss.on('connection', function (ws) {
             //If the button was outbreak type, show the tool scree
             if (buttonID === 'vac_resistant' || buttonID === 'ins_resistant') {
                 state['outbreakType'] = buttonID;
+                //play videos
+                mainscreen.playIntervalVideos(state.phase1);
                 touchscreen.showTools();
                 touchscreen.showShortTerm(state.tools);
                 mainscreen.hideBgTitle();
@@ -174,6 +179,9 @@ wss.on('connection', function (ws) {
                 var spread = Math.floor(ratio * 1000);
                 console.log(ratio + ' ' + spread);
                 projector.spread(spread);
+                //play videos
+                mainscreen.playIntervalVideos(state.phase2);
+                ;
                 //reset touchscreen
                 touchscreen.reset();
                 touchscreen.showLongTerm(state.tools);
@@ -199,6 +207,8 @@ wss.on('connection', function (ws) {
  * @default
  */
 var state = {
+    phase1: 'outbreak_phase1',
+    phase2: 'outbreak_phase2',
     budget: 15000,
     initialized: false,
     outbreakTypes: ['ins_resistance', 'vaccine_resistance'],
